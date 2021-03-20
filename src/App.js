@@ -1,5 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import RegisterHeader from './RegisterHeader.js';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
           <Route path="/login">
           </Route>
           <Route path="/register">
+            <RegisterHeader />
           </Route>
         </Switch>
       </Router>

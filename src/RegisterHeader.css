@@ -1,0 +1,63 @@
+body {
+    background-color: #D0B4CD;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-repeat: no-repeat;
+}
+
+.header__bg {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    z-index: -1;
+    align-items: top !important;
+}
+
+.header__logo {
+    height: 60px;
+    object-fit: contain;
+    margin-top: 30px;
+    margin-left: 80px;
+}
+
+@font-face {
+    font-family: schoolbell;
+    src: url(resources/Schoolbell-Regular.ttf);
+}
+
+.header__text {
+    font-family: schoolbell;
+    font-size: large;
+}
+
+.header__input1 {
+    width: 30%;
+    height: 35px;
+    margin-right: 15px;
+    margin-top: 5px;
+    font-size: medium;
+}
+
+.header__input2 {
+    width: 30%;
+    height: 35px;
+    margin-right: 17px;
+    margin-top: 5px;
+    font-size: medium;
+}
+
+.header__submit {
+    width: 15%;
+    height: 35px;
+    color: #ffffff;
+    font-weight: 600;
+    display: inline;
+    background-color: #399E62;
+    border: none;
+    margin-right: 100px;
+    font-size: medium;
+}
