@@ -46,6 +46,8 @@ body {
     margin-right: 15px;
     margin-top: 5px;
     font-size: medium;
+    border: none;
+    border-radius: 5px;
 }
 
 .header__input2 {
@@ -54,6 +56,8 @@ body {
     margin-right: 17px;
     margin-top: 5px;
     font-size: medium;
+    border: none;
+    border-radius: 5px;
 }
 
 .header__submit {
@@ -64,6 +68,27 @@ body {
     display: inline;
     background-color: #399E62;
     border: none;
+    border-radius: 2px;
     margin-right: 100px;
     font-size: medium;
+}
+
+.header__button {
+    width: 180px;
+    height: 35px;
+    color: #ffffff;
+    font-weight: 400;
+    margin-top: 9px;
+    padding-top: 7px;
+    border-radius: 2px;
+    background-color: #42a32e;
+    border: none;
+    position: relative;
+    margin-right: 330px;
+    font-family: poppins-bold;
+}
+
+.header__button:hover {
+    background-color: #32971e;
+    transition: 0.2s;
 }
