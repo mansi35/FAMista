@@ -57,7 +57,7 @@ function Login() {
                         <button type="submit" onClick={login} className="login__login">Log In</button>
                     </center>
                     <center>
-                        <h6>Forgotten Password</h6>
+                        <h6>Forgot Password</h6>
                     </center>
                     <center>
                         <hr />
