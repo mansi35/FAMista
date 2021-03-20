@@ -1,8 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Register.css';
 import design from "./resources/images.png";
+import { auth } from './firebase.js';
+import { useHistory } from 'react-router-dom';
 
 function Register() {
+    const history = useHistory('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [phone, setPhoneNumber] = useState('');
+    const [password, setPassword] = useState('');
+
+    const register = (event) => {
+        event.preventDefault();
+        auth.createUserWithEmailAndPassword(email, password)
+        .then((auth) => {
+            if (auth.user) {
+                auth.user.updateProfile({
+                    displayName: firstName + " " + lastName,
+                    phoneNumber: phone
+                }).then((s) => {
+                    history.push("/");
+                })
+            }
+        })
+        .catch((e) => {
+            alert(e.message);
+        })
+    }
+
     return (
         <div className="register">
             <div className="register__left">
@@ -13,17 +40,17 @@ function Register() {
                 <h3>It's quick and easy..</h3>
                 <form>
                     <center>
-                        <input className="register__name" type="name" placeholder="First Name" />
-                        <input className="register__name" type="name" placeholder="Last Name" />
+                        <input onChange={(e) => setFirstName(e.target.value)} className="register__name" type="name" placeholder="First Name" />
+                        <input onChange={(e) => setLastName(e.target.value)} className="register__name" type="name" placeholder="Last Name" />
                     </center>
                     <center>
-                        <input type="email" placeholder="Email" />
+                        <input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Email" />
                     </center>
                     <center>
-                        <input type="email" placeholder="Mobile Number" />
+                        <input onChange={(e) => setPhoneNumber(e.target.value)} type="tel" placeholder="Mobile Number" />
                     </center>
                     <center>
-                        <input type="password" placeholder="Password" />
+                        <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password" />
                     </center>
                     <center>
                         <input type="password" placeholder="Confirm Password" />
@@ -46,7 +73,7 @@ function Register() {
                     </p>
 
                     <center>
-                        <button type="submit" className="register__register">Sign Up</button>
+                        <button onClick={register} type="submit" className="register__register">Sign Up</button>
                     </center>
                 </form>
             </div>

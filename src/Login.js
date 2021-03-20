@@ -1,9 +1,44 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Login.css';
-import { Link } from 'react-router-dom';
 import design from "./resources/fashion.png";
+import { Link } from 'react-router-dom';
+import { auth } from './firebase.js';
+import { useHistory } from 'react-router-dom';
 
 function Login() {
+    const [email, setEmail] = useState('');
+    const history = useHistory('');
+    const [password, setPassword] = useState('');
+
+    const login = (event) => {
+        event.preventDefault();
+        auth.signInWithEmailAndPassword(email, password)
+        .then((auth) => {
+            console.log(auth);
+            history.push("/");
+        })
+        .catch((e) => {
+            if (
+                e.message ===
+                "The password is invalid or the user does not have a password."
+            ) {
+                alert("Please check your credentials again");
+            } else if (
+                e.message ===
+                "There is no user record corresponding to this identifier. The user may have been deleted."
+            ) {
+                history.push("/register");
+                window.scrollTo({
+                    top: document.body.scrollHeight,
+                    left: 0,
+                    behavior: "smooth",
+                });
+            } else {
+                alert(e.message);
+            }
+        });
+    }
+
     return (
         <div className="login">
             <div className="login__left">
@@ -13,13 +48,13 @@ function Login() {
                 <h3>Log In To FAMista!</h3>
                 <form>
                     <center>
-                        <input type="email" placeholder="Email" />
+                        <input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Email" />
                     </center>
                     <center>
-                        <input type="password" placeholder="Password" />
+                        <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password" />
                     </center>
                     <center>
-                        <button type="submit" className="login__login">Log In</button>
+                        <button type="submit" onClick={login} className="login__login">Log In</button>
                     </center>
                     <center>
                         <h6>Forgotten Password</h6>
