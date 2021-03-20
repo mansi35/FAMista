@@ -2,13 +2,13 @@ import firebase from "firebase";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDFstEnsOAuFIUUqLZYecwvNV7omStzFh4",
-  authDomain: "the-mafia-store.firebaseapp.com",
-  projectId: "the-mafia-store",
-  storageBucket: "the-mafia-store.appspot.com",
-  messagingSenderId: "268306764492",
-  appId: "1:268306764492:web:d61fc0afbbbd3b08db2869",
-  measurementId: "G-RQ8HW2R388"
+  apiKey: "AIzaSyBLgQfWc6el2LYskeO2f1pU_5fNPyso6Dc",
+  authDomain: "famista-cb7e9.firebaseapp.com",
+  projectId: "famista-cb7e9",
+  storageBucket: "famista-cb7e9.appspot.com",
+  messagingSenderId: "731015836197",
+  appId: "1:731015836197:web:3b14578987e9d8b14185cc",
+  measurementId: "G-W7GS8N6Q51"
 };
 
 firebase.initializeApp(firebaseConfig);
