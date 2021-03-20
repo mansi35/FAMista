@@ -3,6 +3,7 @@ body {
 }
 
 .header {
+    font-family: poppins-bold;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -21,12 +22,17 @@ body {
     height: 60px;
     object-fit: contain;
     margin-top: 30px;
-    margin-left: 80px;
+    margin-left: 100px;
 }
 
 @font-face {
     font-family: schoolbell;
     src: url(resources/Schoolbell-Regular.ttf);
+}
+
+@font-face {
+    font-family: poppins-bold;
+    src: url(./resources/Poppins-Bold.ttf);
 }
 
 .header__text {

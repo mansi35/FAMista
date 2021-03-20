@@ -1,0 +1,117 @@
+@font-face {
+    font-family: poppins-bold;
+    src: url(./resources/Poppins-Bold.ttf);
+}
+
+.register {
+    font-family: poppins-bold;
+    height: auto;
+    display: flex;
+    margin-top: 4%;
+}
+
+.register__images {
+    height: 560px;
+    object-fit: contain;
+    margin-left: 100px;
+}
+
+.register__container {
+    width: 500px;
+    height: 490px;
+    display :flex;
+    padding: 10px;
+    background-color: rgba(187, 209, 222, 0.69);
+    flex-direction: column;
+    margin-left: 370px;
+    border-radius: 20px;
+}
+
+.register__container > h1 {
+    font-weight: 630;
+    font-size: 40px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.register__container > h3 {
+    font-weight: 330;
+    color:black;
+    font-size: 25px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.register__container > form > center > input {
+    height: 33px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    background-color: white;
+    width: 396px;
+    border: 0.5px solid gray;
+    border-radius: 5px;
+}
+
+.register__container > form > center > input::-webkit-input-placeholder {
+    font-size: 22px;
+    color: rgb(170, 170, 170);
+    padding-left: 10px;
+    padding-top: 40px;
+}
+
+.register__register {
+    background-color: #5e994b;
+    border: none;
+    width: 196px;
+    height: 38px;
+    border-radius: 3px;
+    border: 1px sollid rgb(59, 110, 34);
+    color: white;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.register__name {
+    height: 36px !important;
+    margin-bottom: 10px;
+    background-color: white;
+    width: 193px !important;
+    border: 0.5px solid gray;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+
+.register__gender {
+    display: flex;
+    color: rgb(144,148, 156);
+    font-size: 18px;
+    margin-left: 110px;
+}
+
+.register__container > form > .register__radiocontainer > label {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 30px;
+    font-size: 18px;
+    margin-left: 6px;
+}
+.register__container > form > .register__radiocontainer {
+    margin-left: 110px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.register__policy {
+    font-size: 11px;
+    line-height: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #777;
+    font-weight: 400;
+    max-width: 300px;
+    margin-left: 110px;
+    margin-bottom: 20px;
+}
+
+.register__policy span {
+    color: rgb(56, 148, 207);
+}
