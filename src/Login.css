@@ -7,24 +7,23 @@
     font-family: poppins-bold;
     height: auto;
     display: flex;
-    margin-top: 4%;
 }
 
 .login__images {
-    height: 530px;
+    margin-top: 8%;
+    width: 63%;
     object-fit: contain;
-    margin-left: 100px;
 }
 
 .login__container {
-    width: 500px;
-    height: 350px;
+    width: 75%;
+    height: 65%;
     display :flex;
     padding: 10px;
     background-color: rgba(187, 209, 222, 0.69);
     flex-direction: column;
     margin-top: 80px;
-    margin-left: 300px;
+    margin-left: 15%;
     border-radius: 20px;
 }
 
@@ -32,6 +31,7 @@
     font-weight: 330;
     color:black;
     font-size: 25px;
+    margin-top: 20px;
     margin-bottom: 20px;
     text-align: center;
 }
@@ -41,7 +41,7 @@
     margin-bottom: 10px;
     margin-left: 10px;
     background-color: white;
-    width: 396px;
+    width: 92%;
     border: 0.5px solid gray;
     border-radius: 5px;
 }
@@ -66,10 +66,10 @@
 }
 
 .login__container > form > center > hr {
-    margin: 25px;
+    margin: 25px 30%;
     color: rgb(221, 221, 221);
     border: 1px solid;
-    width: 100px;
+    width: 20%;
 }
 
 .login__container > form > center > h6 {

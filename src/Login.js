@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Container, Row, Col } from 'react-bootstrap';
 import './Login.css';
 import design from "./resources/fashion.png";
 import { Link } from 'react-router-dom';
@@ -41,34 +42,42 @@ function Login() {
 
     return (
         <div className="login">
-            <div className="login__left">
-                <img src={design} alt="fashion"  className="login__images"></img>
-            </div>
-            <div className="login__container">
-                <h3>Log In To FAMista!</h3>
-                <form>
+            <Container fluid> 
+                <Row>
+                    <Col xs={12} md={6} className="login__left">
                     <center>
-                        <input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Email" />
+                        <img src={design} alt="fashion"  className="login__images"></img>
                     </center>
-                    <center>
-                        <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password" />
-                    </center>
-                    <center>
-                        <button type="submit" onClick={login} className="login__login">Log In</button>
-                    </center>
-                    <center>
-                        <h6>Forgot Password</h6>
-                    </center>
-                    <center>
-                        <hr />
-                    </center>
-                    <center>
-                        <Link to="/register">
-                            <button className="login__createNewAccount">Create New Account</button>
-                        </Link>
-                    </center>
-                </form>
-            </div>
+                    </Col>
+                    <Col xs={12} md={6}>
+                        <div className="login__container">
+                            <h3>Log In To FAMista!</h3>
+                            <form>
+                                <center>
+                                    <input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Email" />
+                                </center>
+                                <center>
+                                    <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password" />
+                                </center>
+                                <center>
+                                    <button type="submit" onClick={login} className="login__login">Log In</button>
+                                </center>
+                                <center>
+                                    <h6>Forgot Password</h6>
+                                </center>
+                                <center>
+                                    <hr />
+                                </center>
+                                <center>
+                                    <Link to="/register">
+                                        <button className="login__createNewAccount">Create New Account</button>
+                                    </Link>
+                                </center>
+                            </form>
+                        </div>
+                    </Col>
+                </Row>
+            </Container>
         </div>
     )
 }

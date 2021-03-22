@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Container, Row, Col } from 'react-bootstrap';
 import './Register.css';
 import design from "./resources/images.png";
 import { auth } from './firebase.js';
@@ -32,51 +33,62 @@ function Register() {
 
     return (
         <div className="register">
-            <div className="register__left">
-                <img src={design} alt="fashion"  className="register__images"></img>
-            </div>
-            <div className="register__container">
-                <h1>Register Today!</h1>
-                <h3>It's quick and easy..</h3>
-                <form>
+            <Container fluid>
+            <Row>
+                <Col xs={12} md={6} className="register__left">
                     <center>
-                        <input onChange={(e) => setFirstName(e.target.value)} className="register__name" type="name" placeholder="First Name" />
-                        <input onChange={(e) => setLastName(e.target.value)} className="register__name" type="name" placeholder="Last Name" />
+                    <img src={design} alt="fashion"  className="register__images"></img>
                     </center>
-                    <center>
-                        <input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Email" />
-                    </center>
-                    <center>
-                        <input onChange={(e) => setPhoneNumber(e.target.value)} type="tel" placeholder="Mobile Number" />
-                    </center>
-                    <center>
-                        <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password" />
-                    </center>
-                    <center>
-                        <input type="password" placeholder="Confirm Password" />
-                    </center>
-                    <h5 className="register__gender">Gender</h5>
+                </Col>
+                <Col xs={12} md={6}>
+                <center>
+                <div className="register__container">
+                    <h1>Register Today!</h1>
+                    <h3>It's quick and easy..</h3>
+                    <form>
+                        <center>
+                            <input onChange={(e) => setFirstName(e.target.value)} className="register__name" type="name" placeholder="First Name" />
+                            <input onChange={(e) => setLastName(e.target.value)} className="register__name" type="name" placeholder="Last Name" />
+                        </center>
+                        <center>
+                            <input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Email" />
+                        </center>
+                        <center>
+                            <input onChange={(e) => setPhoneNumber(e.target.value)} type="tel" placeholder="Mobile Number" />
+                        </center>
+                        <center>
+                            <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password" />
+                        </center>
+                        <center>
+                            <input type="password" placeholder="Confirm Password" />
+                        </center>
+                        <h5 className="register__gender">Gender</h5>
 
-                    <div className="register__radiocontainer">
-                        <input type="radio" name="gender" value="Male" />
-                        <label>Male</label>
-                        <input type="radio" name="gender" value="Female" />
-                        <label>Female</label>
-                        <input type="radio" name="gender" value="Other" />
-                        <label>Other</label>
-                    </div>
+                        <div className="register__radiocontainer">
+                            <input type="radio" name="gender" value="Male" />
+                            <label>Male</label>
+                            <input type="radio" name="gender" value="Female" />
+                            <label>Female</label>
+                            <input type="radio" name="gender" value="Other" />
+                            <label>Other</label>
+                        </div>
+                        <center>
+                        <p className="register__policy">
+                            By clicking sign up, you agree to our{" "}
+                            <span>Terms, Data Policy</span> and <span>Cookie Policy</span>. You 
+                            may recieve SMS notifications from us and can opt out at any time.
+                        </p>
+                        </center>
 
-                    <p className="register__policy">
-                        By clicking sign up, you agree to our{" "}
-                        <span>Terms, Data Policy</span> and <span>Cookie Policy</span>. You 
-                        may recieve SMS notifications from us and can opt out at any time.
-                    </p>
-
-                    <center>
-                        <button onClick={register} type="submit" className="register__register">Sign Up</button>
-                    </center>
-                </form>
-            </div>
+                        <center>
+                            <button onClick={register} type="submit" className="register__register">Sign Up</button>
+                        </center>
+                    </form>
+                </div>
+                </center>
+                </Col>
+            </Row>
+            </Container>
         </div>
     )
 }

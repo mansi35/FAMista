@@ -7,23 +7,22 @@
     font-family: poppins-bold;
     height: auto;
     display: flex;
-    margin-top: 4%;
 }
 
 .register__images {
-    height: 560px;
+    margin-top: 8%;
+    width: 63%;
     object-fit: contain;
-    margin-left: 100px;
 }
 
 .register__container {
-    width: 500px;
-    height: 490px;
+    width: 75%;
+    height: 85%;
     display :flex;
     padding: 10px;
     background-color: rgba(187, 209, 222, 0.69);
     flex-direction: column;
-    margin-left: 370px;
+    margin-top: 8%;
     border-radius: 20px;
 }
 
@@ -47,7 +46,7 @@
     margin-bottom: 10px;
     margin-left: 10px;
     background-color: white;
-    width: 396px;
+    width: 92%;
     border: 0.5px solid gray;
     border-radius: 5px;
 }
@@ -75,7 +74,7 @@
     height: 36px !important;
     margin-bottom: 10px;
     background-color: white;
-    width: 193px !important;
+    width: 45% !important;
     border: 0.5px solid gray;
     margin-left: 10px;
     border-radius: 5px;
@@ -85,18 +84,17 @@
     display: flex;
     color: rgb(144,148, 156);
     font-size: 18px;
-    margin-left: 110px;
+    margin-left: 6%;
 }
 
 .register__container > form > .register__radiocontainer > label {
     margin-top: 10px;
     margin-bottom: 10px;
-    margin-right: 30px;
+    margin-right: 20px;
     font-size: 18px;
     margin-left: 6px;
 }
 .register__container > form > .register__radiocontainer {
-    margin-left: 110px;
     margin-top: 10px;
     margin-bottom: 20px;
 }
@@ -107,8 +105,7 @@
     font-family: Arial, Helvetica, sans-serif;
     color: #777;
     font-weight: 400;
-    max-width: 300px;
-    margin-left: 110px;
+    max-width: 90%;
     margin-bottom: 20px;
 }
 
