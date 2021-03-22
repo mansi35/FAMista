@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { Container, Row, Col, Alert } from 'react-bootstrap';
-import './Register.css';
-import design from "./resources/images.png";
+import '../css/Register.css';
+import design from "../resources/images.png";
 import { useHistory } from 'react-router-dom';
-import { useAuth } from "./contexts/AuthContext";
+import { useAuth } from "../contexts/AuthContext";
 
 function Register() {
     const history = useHistory('');

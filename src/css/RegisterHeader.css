@@ -26,12 +26,12 @@ body {
 
 @font-face {
     font-family: schoolbell;
-    src: url(resources/Schoolbell-Regular.ttf);
+    src: url(../resources/Schoolbell-Regular.ttf);
 }
 
 @font-face {
     font-family: poppins-bold;
-    src: url(./resources/Poppins-Bold.ttf);
+    src: url(../resources/Poppins-Bold.ttf);
 }
 
 .header__text {

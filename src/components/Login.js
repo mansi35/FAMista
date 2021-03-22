@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { Container, Row, Col, Alert } from 'react-bootstrap';
-import './Login.css';
-import design from "./resources/fashion.png";
+import '../css/Login.css';
+import design from "../resources/fashion.png";
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
-import { useAuth } from "./contexts/AuthContext";
+import { useAuth } from "../contexts/AuthContext";
 
 function Login() {
     const [email, setEmail] = useState('');

@@ -1,13 +1,13 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import RegisterHeader from './RegisterHeader.js';
-import Register from './Register.js';
-import LoginHeader from './LoginHeader.js';
-import Login from './Login.js';
-import Dashboard from './Dashboard.js';
-import PrivateRoute from './PrivateRoute.js';
-import ForgotPassword from './ForgotPassword.js';
-import UpdateProfile from './UpdateProfile.js';
+import RegisterHeader from './components/RegisterHeader.js';
+import Register from './components/Register.js';
+import LoginHeader from './components/LoginHeader.js';
+import Login from './components/Login.js';
+import Dashboard from './components/Dashboard.js';
+import PrivateRoute from './components/PrivateRoute.js';
+import ForgotPassword from './components/ForgotPassword.js';
+import UpdateProfile from './components/UpdateProfile.js';
 import { AuthProvider } from "./contexts/AuthContext.js"
 
 function App() {
