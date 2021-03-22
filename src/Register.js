@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Alert } from 'react-bootstrap';
 import './Register.css';
 import design from "./resources/images.png";
-import { auth } from './firebase.js';
 import { useHistory } from 'react-router-dom';
+import { useAuth } from "./contexts/AuthContext";
 
 function Register() {
     const history = useHistory('');
@@ -12,11 +12,22 @@ function Register() {
     const [email, setEmail] = useState('');
     const [phone, setPhoneNumber] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [error, setError] = useState('');
+    const { signup } = useAuth();
+    const [loading, setLoading] = useState(false);
 
-    const register = (event) => {
+    async function register(event) {
         event.preventDefault();
-        auth.createUserWithEmailAndPassword(email, password)
-        .then((auth) => {
+
+        if (password !== confirmPassword) {
+            return setError('Passwords do not match');
+        }
+
+        try {
+            setError("");
+            setLoading(true);
+            const auth = await signup(email, password);
             if (auth.user) {
                 auth.user.updateProfile({
                     displayName: firstName + " " + lastName,
@@ -25,10 +36,11 @@ function Register() {
                     history.push("/");
                 })
             }
-        })
-        .catch((e) => {
-            alert(e.message);
-        })
+          } catch {
+            setError("Failed to create an account");
+          }
+      
+          setLoading(false);
     }
 
     return (
@@ -45,6 +57,7 @@ function Register() {
                 <div className="register__container">
                     <h1>Register Today!</h1>
                     <h3>It's quick and easy..</h3>
+                    {error && <Alert variant="danger">{error}</Alert>}
                     <form>
                         <center>
                             <input onChange={(e) => setFirstName(e.target.value)} className="register__name" type="name" placeholder="First Name" />
@@ -60,7 +73,7 @@ function Register() {
                             <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password" />
                         </center>
                         <center>
-                            <input type="password" placeholder="Confirm Password" />
+                            <input onChange={(e) => setConfirmPassword(e.target.value)} type="password" placeholder="Confirm Password" />
                         </center>
                         <h5 className="register__gender">Gender</h5>
 
@@ -81,7 +94,7 @@ function Register() {
                         </center>
 
                         <center>
-                            <button onClick={register} type="submit" className="register__register">Sign Up</button>
+                            <button disabled={loading} onClick={register} type="submit" className="register__register">Sign Up</button>
                         </center>
                     </form>
                 </div>
