@@ -19,7 +19,7 @@ function LoginHeader() {
                             </Link>
                         </center>
                     </Col>
-                    <Col xs={12} md={6} className="d-none d-sm-block">
+                    <Col xs={12} md={6} className="d-none d-md-block">
                         <Link className="/register" to="/register">
                             <button className="header__button">Create New Account</button>
                         </Link>

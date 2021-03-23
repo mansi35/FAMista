@@ -94,3 +94,10 @@ body {
     background-color: #32971e;
     transition: 0.2s;
 }
+
+.alert {
+    position: absolute;
+    left: 88px;
+    height: 40px;
+    text-align: center;
+}
