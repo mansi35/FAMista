@@ -3,7 +3,7 @@ import { AttachFile, MoreVert, SearchOutlined } from '@material-ui/icons';
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
 import MicIcon from '@material-ui/icons/Mic';
 import React from 'react';
-import "./Chat.css";
+import "../css/Chat.css";
 
 function Chat() {
     return (
@@ -68,12 +68,12 @@ function Chat() {
                 </p>
             </div>
             <div className="chat__footer">
-                <InsertEmoticonIcon />
+                <InsertEmoticonIcon fontSize="large" />
                 <form>
                     <input placeholder="Type a message" type="text" />
                     <button type="submit">Send a message</button>
                 </form>
-                <MicIcon />
+                <MicIcon fontSize="large"/>
             </div>
         </div>
     )

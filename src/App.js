@@ -8,6 +8,8 @@ import Dashboard from './components/Dashboard.js';
 import PrivateRoute from './components/PrivateRoute.js';
 import ForgotPassword from './components/ForgotPassword.js';
 import UpdateProfile from './components/UpdateProfile.js';
+import Sidebar from "./components/Sidebar";
+import Chat from "./components/Chat";
 import { AuthProvider } from "./contexts/AuthContext.js"
 
 function App() {
@@ -28,6 +30,14 @@ function App() {
           </Route>
           <Route path="/forgot-password">
           <ForgotPassword />
+          </Route>
+          <Route path="/chat">
+            <div className="app">
+              <div className="app__body">
+                <Sidebar />
+                <Chat />
+              </div>
+            </div>
           </Route>
         </Switch>
         </AuthProvider>
