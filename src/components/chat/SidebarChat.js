@@ -1,5 +1,5 @@
 import React from 'react';
-import "../css/SidebarChat.css";
+import "../../css/SidebarChat.css";
 import {Avatar} from "@material-ui/core";
 
 
