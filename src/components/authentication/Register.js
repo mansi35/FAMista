@@ -4,6 +4,7 @@ import '../../css/Register.css';
 import design from "../../resources/images.png";
 import { useHistory } from 'react-router-dom';
 import { useAuth } from "../../contexts/AuthContext";
+import db from '../../firebase';
 
 function Register() {
     const history = useHistory('');
@@ -11,6 +12,7 @@ function Register() {
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhoneNumber] = useState('');
+    const [gender, setGender] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
@@ -30,9 +32,17 @@ function Register() {
             const auth = await signup(email, password);
             if (auth.user) {
                 auth.user.updateProfile({
-                    displayName: firstName + " " + lastName,
-                    phoneNumber: phone
-                }).then((s) => {
+                    displayName: firstName + " " + lastName
+                })
+                db.collection('users').doc(auth.user.uid).set({
+                    name: firstName + " " + lastName,
+                    emailAdd: email,
+                    phoneNumber: phone,
+                    gender: gender,
+                    subtotal: 0,
+                    noItems: 0
+                })
+                .then((s) => {
                     history.push("/");
                 })
             }
@@ -77,7 +87,7 @@ function Register() {
                         </center>
                         <h5 className="register__gender">Gender</h5>
 
-                        <div className="register__radiocontainer">
+                        <div onChange={(e) => setGender(e.target.value)} className="register__radiocontainer">
                             <input type="radio" name="gender" value="Male" />
                             <label>Male</label>
                             <input type="radio" name="gender" value="Female" />

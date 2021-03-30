@@ -1,23 +1,28 @@
 import React from 'react'
 import '../../css/Product.css'
-import { useStateValue } from "./StateProvider";
+import db from '../../firebase'
 
-function Product({id, title, image, price, rating}) {
-    const [{ basket }, dispatch] = useStateValue();
+function Product({id, title, image, price, rating, userId, setLength}) {
+    const addToBasket = (event) => {
+        event.preventDefault();
 
-    const addToBasket = () => {
-        // dispatch the item into the data layer
-        dispatch({
-          type: "ADD_TO_BASKET",
-          item: {
-            id: id,
-            title: title,
-            image: image,
-            price: price,
-            rating: rating,
-          },
+        db.collection("users").doc(userId).collection("basketItems").doc(id).set({
+            itemId: id,
+            itemName: title,
+            itemImage: image,
+            itemPrice: price,
+            itemRating: rating,
         });
-    };
+
+        db.collection("users").doc(userId).get().then(docc => {
+            const data = docc.data()
+            db.collection("users").doc(userId).update({
+                subtotal: data.subtotal + price,
+                noItems: data.noItems + 1
+            })
+            setLength(data.noItems + 1);
+        })
+    }
     return (
         <div className="product">
             <div className="product_info">

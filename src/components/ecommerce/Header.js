@@ -1,19 +1,22 @@
 import React from 'react'
 import SearchIcon from '@material-ui/icons/Search';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 import '../../css/Header.css';
-import { useStateValue } from "./StateProvider";
-import { auth } from "./firebase";
 
-function Header() {
-    const [{ basket, user }, dispatch] = useStateValue();
+function Header({length}) {
+    const { currentUser, logout } = useAuth();
+    const history = useHistory();
 
-    const handleAuthenticaton = () => {
-        if (user) {
-          auth.signOut();
+    async function handleAuthenticaton() {
+        try {
+            await logout();
+            history.push("/login");
+        } catch {
+            alert("Failed to log out");
         }
-      }
+    }
 
     return (
         <div className="header">
@@ -35,10 +38,10 @@ function Header() {
             </div>
 
             <div className="header_nav">
-                <Link to={!user && '/login'}>
+                <Link to={!currentUser && '/login'}>
                     <div onClick={handleAuthenticaton} className="header_option">
-                        <span className="header__optionLineOne">Hello {!user ? 'Guest' : user.email}</span>
-                        <span className="header__optionLineTwo">{user ? 'Sign Out' : 'Sign In'}</span>
+                        <span className="header__optionLineOne">Hello {!currentUser ? 'Guest' : currentUser.displayName}</span>
+                        <span className="header__optionLineTwo">{currentUser ? 'Sign Out' : 'Sign In'}</span>
                     </div>
                 </Link>                
                 <div className="header_option">
@@ -60,7 +63,7 @@ function Header() {
                 <Link to="/checkout">
                     <div className="header_optionBasket">
                         <ShoppingBasketIcon />
-                        <span className="header_optionLineTwo header_basketCount">{basket?.length}</span>
+                        <span className="header_optionLineTwo header_basketCount">{length}</span>
                     </div>
                 </Link>
                 
@@ -71,4 +74,3 @@ function Header() {
 }
 
 export default Header
-

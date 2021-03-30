@@ -1,10 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../../css/Checkout.css";
-import Subtotal from './Subtotal';
-import { useStateValue } from "./StateProvider";
 import CheckoutProduct from './CheckoutProduct';
+import db from '../../firebase';
+import {useAuth} from '../../contexts/AuthContext';
+import Subtotal from "./Subtotal";
+
 function Checkout() {
-    const [{ basket, user }, dispatch] = useStateValue();
+    const {currentUser} = useAuth();
+    const [items, setItems] = useState([]);
+    const [length, setLength] = useState(0);
+    const [total, setTotal] = useState(0);
+
+    useEffect(() => {
+        if (currentUser) {
+            db.collection("users").doc(currentUser.uid).get().then(docc => {
+                const data = docc.data();
+                setTotal(data.subtotal);
+                setLength(data.noItems);
+            })
+        }
+    })
+    
+
+    useEffect(() => {
+        db.collection("users").doc(currentUser.uid).collection("basketItems")
+            .onSnapshot((snapshot) => 
+            setItems(snapshot.docs.map((doc) => ({
+                id: doc.id,
+                item: doc.data()
+            })))
+        );
+    // eslint-disable-next-line
+    }, [])
+
     return (
     <div className="checkout">
       <div className="checkout__left">
@@ -16,23 +44,25 @@ function Checkout() {
 
         <div>
           <h2 className="checkout__title">Your shopping Basket</h2>
-          {basket.map(item => (
+          {items.map(({ id, item }) => (
               <CheckoutProduct 
-                id = {item.id}
-                title = {item.title}
-                price = {item.price}
-                image = {item.image}
-                rating = {item.rating} 
+                key = {id}
+                productId = {id}
+                title = {item.itemName}
+                price = {item.itemPrice}
+                image = {item.itemImage}
+                rating = {item.itemRating} 
+                setLength = {setLength}
+                setTotal = {setTotal}
               />
           ))}
-          
-          {/* CheckoutProduct */}
-          {/* CheckoutProduct */}
-          {/* CheckoutProduct */}
         </div>
       </div>
       <div className="checkout__right">
-          <Subtotal />
+          <Subtotal 
+            length = {length}
+            total = {total}
+          />
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ function LoginHeader() {
     return (
         <div>
             <img src={bg} className="header__bg" alt="background"></img>
-            <div className="header">
+            <div className="register__header">
             <Container fluid>
                 <Row>
                     <Col xs={12} md={6} className="header__left">

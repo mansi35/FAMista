@@ -1,14 +1,28 @@
 import React from 'react'
-import '../../css/CheckoutProduct.css'
-import { useStateValue } from "./StateProvider";
+import '../../css/CheckoutProduct.css';
+import db from '../../firebase';
+import {useAuth} from '../../contexts/AuthContext';
 
-function CheckoutProduct({id, title, price, image, rating}) {
-    const [{ basket }, dispatch] = useStateValue();
+function CheckoutProduct({productId, title, price, image, rating, setLength, setTotal}) {
+    const {currentUser} = useAuth();
 
     const removeFromBasket = () => {
-        dispatch({
-            type: 'REMOVE_FROM_BASKET',
-            id: id,
+        db.collection("users").doc(currentUser.uid).collection("basketItems").doc(productId).delete().then(() => {
+            console.log("Item successfully deleted!");
+            db.collection("users").doc(currentUser.uid).get().then(docc => {
+                const data = docc.data()
+                db.collection("users").doc(currentUser.uid).update({
+                    subtotal: data.subtotal - price,
+                    noItems: data.noItems - 1
+                })
+                setLength(data.noItems - 1);
+                setTotal(data.subtotal - price);
+                if (data.noItems - 1 === 0) {
+                    setTotal(0);
+                }
+            })
+        }).catch((error) => {
+            console.error("Error removing item: ", error);
         });
     };
     return (
