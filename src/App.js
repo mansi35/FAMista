@@ -14,6 +14,7 @@ import { AuthProvider } from './contexts/AuthContext.js';
 import Home from './components/ecommerce/Home.js';
 import Checkout from './components/ecommerce/Checkout.js';
 import Header from './components/ecommerce/Header';
+import MyFeed from './components/social/MyFeed';
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
               </div>
             </div>
           </Route>
+          <PrivateRoute path="/social" component={MyFeed} />
         </Switch>
         </AuthProvider>
       </Router>
