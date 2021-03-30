@@ -1,5 +1,9 @@
 * {
-    box-sizing: initial;
+    box-sizing: inherit;
+}
+
+.row {
+    box-sizing: border-box;
 }
 
 .app {
