@@ -1,21 +1,22 @@
-import React, {useState,useEffect} from 'react';
+// import React, {useState,useEffect} from 'react';
+import React from 'react';
 import { Avatar, IconButton } from '@material-ui/core';
 import { AttachFile, MoreVert, SearchOutlined } from '@material-ui/icons';
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
 import MicIcon from '@material-ui/icons/Mic';
-import { useParams } from 'react-router-dom';
-import db from './firebase';
-import firebase from 'firebase';
-import {useStateValue} from "./StateProvider";
+// import { useParams } from 'react-router-dom';
+// import db from './firebase';
+// import firebase from 'firebase';
+// import {useStateValue} from "./StateProvider";
 import "../../css/Chat.css";
 
 function Chat() {
-    const [input, setInput] = useState("");
-    const [seed, setSeed] = useState("");
-    const {roomId} = useParams();
-    const [roomName, setRoomName] = useState("");
-    const [messages, setMessages] = useState([]);
-    const [{user}, dispatch] = useStateValue();
+    // const [input, setInput] = useState("");
+    // const [seed, setSeed] = useState("");
+    // const {roomId} = useParams();
+    // const [roomName, setRoomName] = useState("");
+    // const [messages, setMessages] = useState([]);
+    // const [{user}, dispatch] = useStateValue();
 
     useEffect(()=>{
         if(roomId){
