@@ -1,16 +1,20 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import RegisterHeader from './components/RegisterHeader.js';
-import Register from './components/Register.js';
-import LoginHeader from './components/LoginHeader.js';
-import Login from './components/Login.js';
-import Dashboard from './components/Dashboard.js';
-import PrivateRoute from './components/PrivateRoute.js';
-import ForgotPassword from './components/ForgotPassword.js';
-import UpdateProfile from './components/UpdateProfile.js';
-import Sidebar from "./components/Sidebar";
-import Chat from "./components/Chat";
-import { AuthProvider } from "./contexts/AuthContext.js"
+import RegisterHeader from './components/authentication/RegisterHeader.js';
+import Register from './components/authentication/Register.js';
+import LoginHeader from './components/authentication/LoginHeader.js';
+import Login from './components/authentication/Login.js';
+import Dashboard from './components/authentication/Dashboard.js';
+import PrivateRoute from './PrivateRoute.js';
+import ForgotPassword from './components/authentication/ForgotPassword.js';
+import UpdateProfile from './components/authentication/UpdateProfile.js';
+import Sidebar from './components/chat/Sidebar';
+import Chat from './components/chat/Chat';
+import { AuthProvider } from './contexts/AuthContext.js';
+import Home from './components/ecommerce/Home.js';
+import Checkout from './components/ecommerce/Checkout.js';
+import Header from './components/ecommerce/Header';
+import MyFeed from './components/social/MyFeed';
 
 function App() {
   return (
@@ -18,7 +22,8 @@ function App() {
       <Router>
       <AuthProvider>
         <Switch>
-          <PrivateRoute exact path="/" component={Dashboard} />
+          <PrivateRoute exact path="/" component= {Home} />
+          <PrivateRoute path="/dashboard" component={Dashboard} />
           <PrivateRoute path="/update-profile" component={UpdateProfile} />
           <Route path="/login">
             <LoginHeader />
@@ -31,6 +36,10 @@ function App() {
           <Route path="/forgot-password">
           <ForgotPassword />
           </Route>
+          <Route path="/checkout">
+            <Header />
+            <Checkout />
+          </Route>
           <Route path="/chat">
             <div className="app">
               <div className="app__body">
@@ -39,6 +48,7 @@ function App() {
               </div>
             </div>
           </Route>
+          <PrivateRoute path="/social" component={MyFeed} />
         </Switch>
         </AuthProvider>
       </Router>

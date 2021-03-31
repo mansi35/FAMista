@@ -1,8 +1,8 @@
 body {
-    background-color: #D0B4CD;
+    background-color: #B4CBD0;
 }
 
-.header {
+.register__header {
     font-family: poppins-bold;
     display: flex;
     align-items: center;

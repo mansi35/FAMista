@@ -1,3 +1,11 @@
+* {
+    box-sizing: inherit;
+}
+
+.row {
+    box-sizing: border-box;
+}
+
 .app {
     display: grid;
     place-items: center;
@@ -12,4 +20,18 @@
     height: 90vh;
     width: 90vw;
     box-shadow: -1px 4px 20px -6px rgba(0, 0, 0, 0.75);
+}
+
+.app__bodySocial {
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+}
+
+.h4, h4{
+    font-size: 1rem;
+}
+
+p {
+    margin-bottom: 0;
 }
