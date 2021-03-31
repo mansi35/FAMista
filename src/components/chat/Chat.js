@@ -1,5 +1,5 @@
-// import React, {useState,useEffect} from 'react';
-import React from 'react';
+import React, {useState,useEffect} from 'react';
+// import React from 'react';
 import { Avatar, IconButton } from '@material-ui/core';
 import { AttachFile, MoreVert, SearchOutlined } from '@material-ui/icons';
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
@@ -11,37 +11,38 @@ import MicIcon from '@material-ui/icons/Mic';
 import "../../css/Chat.css";
 
 function Chat() {
-    // const [input, setInput] = useState("");
-    // const [seed, setSeed] = useState("");
+    const [input, setInput] = useState("");
+    const [seed, setSeed] = useState("");
     // const {roomId} = useParams();
     // const [roomName, setRoomName] = useState("");
     // const [messages, setMessages] = useState([]);
     // const [{user}, dispatch] = useStateValue();
 
-    useEffect(()=>{
-        if(roomId){
-            db.collection('rooms').doc(roomId).onSnapshot(snapshot => {
-                setRoomName(snapshot.data().name);
-            });
+    // useEffect(()=>{
+    //     if(roomId){
+    //         db.collection('rooms').doc(roomId).onSnapshot(snapshot => {
+    //             setRoomName(snapshot.data().name);
+    //         });
 
-            db.collection('rooms').doc(roomId).collection("messages").orderBy("timestamp","asc").onSnapshot(snapshot => {
-                setMessages(snapshot.docs.map(doc => doc.data()))
-            });
+    //         db.collection('rooms').doc(roomId).collection("messages").orderBy("timestamp","asc").onSnapshot(snapshot => {
+    //             setMessages(snapshot.docs.map(doc => doc.data()))
+    //         });
 
-        }
-    },[roomId])
+    //     }
+    // },[roomId])
 
     useEffect(() => {
         setSeed(Math.floor(Math.random() * 5000));        
-    }, [roomId]);
+    }, []);
 
     const sendMessage = (e) => {
         e.preventDefault();
-        db.collection('rooms').doc(roomId).collection('messages').add({
-            message: input,
-            name: user.displayName,
-            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-        })
+        // db.collection('rooms').doc(roomId).collection('messages').add({
+        //     message: input,
+        //     name: user.displayName,
+        //     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        // })
+        console.log("You typed >>>> ", input);
 
         setInput("");
     }
