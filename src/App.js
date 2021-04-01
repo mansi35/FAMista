@@ -4,7 +4,6 @@ import RegisterHeader from './components/authentication/RegisterHeader.js';
 import Register from './components/authentication/Register.js';
 import LoginHeader from './components/authentication/LoginHeader.js';
 import Login from './components/authentication/Login.js';
-import Dashboard from './components/authentication/Dashboard.js';
 import PrivateRoute from './PrivateRoute.js';
 import ForgotPassword from './components/authentication/ForgotPassword.js';
 import UpdateProfile from './components/authentication/UpdateProfile.js';
@@ -15,6 +14,9 @@ import Home from './components/ecommerce/Home.js';
 import Checkout from './components/ecommerce/Checkout.js';
 import Header from './components/ecommerce/Header';
 import MyFeed from './components/social/MyFeed';
+import Users from './components/friends/Users';
+import Requests from './components/friends/Requests';
+import Friends from './components/friends/Friends';
 
 function App() {
   return (
@@ -23,8 +25,10 @@ function App() {
       <AuthProvider>
         <Switch>
           <PrivateRoute exact path="/" component= {Home} />
-          <PrivateRoute path="/dashboard" component={Dashboard} />
+          <PrivateRoute path="/dashboard" component={Friends} />
+          <PrivateRoute path="/users" component={Users} />
           <PrivateRoute path="/update-profile" component={UpdateProfile} />
+          <PrivateRoute path="/requests" component={Requests} />
           <Route path="/login">
             <LoginHeader />
             <Login />
