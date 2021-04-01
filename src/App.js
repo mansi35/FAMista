@@ -4,7 +4,6 @@ import RegisterHeader from './components/authentication/RegisterHeader.js';
 import Register from './components/authentication/Register.js';
 import LoginHeader from './components/authentication/LoginHeader.js';
 import Login from './components/authentication/Login.js';
-import Dashboard from './components/authentication/Dashboard.js';
 import PrivateRoute from './PrivateRoute.js';
 import ForgotPassword from './components/authentication/ForgotPassword.js';
 import UpdateProfile from './components/authentication/UpdateProfile.js';
