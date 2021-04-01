@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
 import "../../css/Checkout.css";
-import Request from './Request';
+import Friend from './Friend';
 import db from '../../firebase';
 import {useAuth} from '../../contexts/AuthContext';
 
 
-function Requests() {
+function Friends() {
     const {currentUser} = useAuth();
     const [friends, setFriends] = useState([]);
 
     useEffect(() => {
-        db.collection("users").doc(currentUser.uid).collection("friendRequests")
+        db.collection("users").doc(currentUser.uid).collection("friends")
         .onSnapshot((snapshot) => 
             setFriends(snapshot.docs.map((doc) => ({
-                requestId: doc.id,
-                request: doc.data()
+                friendId: doc.id,
+                friend: doc.data()
             })))
         );
     // eslint-disable-next-line
@@ -25,13 +25,13 @@ function Requests() {
       <div className="checkout__left">
 
         <div>
-          <h2 className="checkout__title">Friend Requests</h2>
-          {friends.map(({ requestId, request }) => (
-              <Request 
-                key = {requestId}
-                id = {requestId}
-                emailAdd = {request.requestEmail}
-                name = {request.requestName}
+          <h2 className="checkout__title">My Shopping Buddies</h2>
+          {friends.map(({ friendId, friend }) => (
+              <Friend 
+                key = {friendId}
+                id = {friendId}
+                emailAdd = {friend.friendEmail}
+                name = {friend.friendName}
               />
           ))}
         </div>
@@ -40,4 +40,4 @@ function Requests() {
   );
 }
 
-export default Requests;
+export default Friends;

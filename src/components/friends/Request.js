@@ -9,25 +9,23 @@ function Request({key, id, emailAdd, name}) {
     const acceptRequest = (event) => {
         event.preventDefault();
 
-        db.collection("users").doc(id).collection("friends").doc(currentUser.uid).update({
-            requestAccepted: true
+        db.collection("users").doc(id).collection("friends").doc(currentUser.uid).set({
+            friendEmail: currentUser.email,
+            friendName: currentUser.displayName
         });
 
-        db.collection("users").doc(currentUser.uid).collection("friends").doc(id).update({
-            requestAccepted: true
+        db.collection("users").doc(currentUser.uid).collection("friends").doc(id).set({
+            friendEmail: emailAdd,
+            friendName: name
+        }).then(() => {
+            db.collection("users").doc(currentUser.uid).collection("friendRequests").doc(id).delete();
         });
     }
 
     const declineRequest = (event) => {
         event.preventDefault();
 
-        db.collection("users").doc(id).collection("friends").doc(currentUser.uid).delete().then(() => {
-            console.log("Item successfully deleted!");
-        }).catch((error) => {
-            console.error("Error removing item: ", error);
-        });
-
-        db.collection("users").doc(currentUser.uid).collection("friends").doc(id).delete().then(() => {
+        db.collection("users").doc(id).collection("friendRequests").doc(currentUser.uid).delete().then(() => {
             console.log("Item successfully deleted!");
         }).catch((error) => {
             console.error("Error removing item: ", error);
@@ -38,10 +36,10 @@ function Request({key, id, emailAdd, name}) {
         <div className="checkoutProduct">
             <div className="checkoutProduct_info">
                 <p className="checkoutProduct_title">
-                    {name}
+                    Hello {name}
                 </p>
                 <p className="checkoutProduct_price">
-                    <strong>{emailAdd}</strong>
+                    <strong>Email ID: {emailAdd}</strong>
                 </p>
                 <button onClick={acceptRequest}>Accept</button>
                 <button onClick={declineRequest}>Decline</button>

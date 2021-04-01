@@ -9,20 +9,19 @@ function User({key, id, emailAdd, gender, name}) {
     const sendRequest = (event) => {
         event.preventDefault();
 
-        db.collection("users").doc(id).collection("friends").doc(currentUser.uid).set({
-            friendName: currentUser.displayName,
-            friendEmail: currentUser.email,
-            requestAccepted: false
-        });
-
-        db.collection("users").doc(currentUser.uid).collection("friends").doc(id).set({
-            friendName: name,
-            friendEmail: emailAdd,
+        db.collection("users").doc(id).collection("friendRequests").doc(currentUser.uid).set({
+            requestName: currentUser.displayName,
+            requestEmail: currentUser.email,
             requestAccepted: false
         });
     }
 
-
+    if (currentUser.email === emailAdd) {
+        return (
+            <div>
+            </div>
+        )
+    }
 
     return (
         <div className="checkoutProduct">
