@@ -42,10 +42,14 @@ function App() {
           </Route>
           <Route path="/chat">
             <div className="app">
-              <div className="app__body">
-                <Sidebar />
-                <Chat />
-              </div>
+                <div className="app_body">
+                  
+                      <Sidebar/>
+                      <Route path="/rooms/:roomId">
+                        <Chat/>
+                      </Route>             
+                    
+                </div>
             </div>
           </Route>
           <PrivateRoute path="/social" component={MyFeed} />
