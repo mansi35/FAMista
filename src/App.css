@@ -1,10 +1,10 @@
-* {
+/* * {
     box-sizing: inherit;
 }
 
 .row {
     box-sizing: border-box;
-}
+} */
 
 .app {
     display: grid;

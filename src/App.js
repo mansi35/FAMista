@@ -15,6 +15,7 @@ import Home from './components/ecommerce/Home.js';
 import Checkout from './components/ecommerce/Checkout.js';
 import Header from './components/ecommerce/Header';
 import MyFeed from './components/social/MyFeed';
+import Users from './components/friends/Users';
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
       <AuthProvider>
         <Switch>
           <PrivateRoute exact path="/" component= {Home} />
-          <PrivateRoute path="/dashboard" component={Dashboard} />
+          <PrivateRoute path="/dashboard" component={Users} />
           <PrivateRoute path="/update-profile" component={UpdateProfile} />
           <Route path="/login">
             <LoginHeader />
