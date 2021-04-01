@@ -44,14 +44,15 @@ function App() {
             <Header />
             <Checkout />
           </Route>
+          <Route path="/chat/rooms/:roomId">
+            <Sidebar />
+            <Chat/>
+          </Route>
           <Route path="/chat">
             <div className="app">
                 <div className="app_body">
-                  
-                      <Sidebar/>
-                      <Route path="/rooms/:roomId">
-                        <Chat/>
-                      </Route>             
+                  <Sidebar/>
+                  <Chat />
                     
                 </div>
             </div>
