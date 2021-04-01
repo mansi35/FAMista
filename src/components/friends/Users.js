@@ -29,6 +29,7 @@ function Users() {
           {users.map(({ userId, user }) => (
               <User 
                 key = {userId}
+                id = {userId}
                 emailAdd = {user.emailAdd}
                 gender = {user.gender}
                 name = {user.name}

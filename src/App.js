@@ -16,6 +16,7 @@ import Checkout from './components/ecommerce/Checkout.js';
 import Header from './components/ecommerce/Header';
 import MyFeed from './components/social/MyFeed';
 import Users from './components/friends/Users';
+import Requests from './components/friends/Requests';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <PrivateRoute exact path="/" component= {Home} />
           <PrivateRoute path="/dashboard" component={Users} />
           <PrivateRoute path="/update-profile" component={UpdateProfile} />
+          <PrivateRoute path="/requests" component={Requests} />
           <Route path="/login">
             <LoginHeader />
             <Login />

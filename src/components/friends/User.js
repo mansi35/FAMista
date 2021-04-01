@@ -3,48 +3,23 @@ import '../../css/CheckoutProduct.css';
 import db from '../../firebase';
 import {useAuth} from '../../contexts/AuthContext';
 
-function User({key, emailAdd, gender, name}) {
+function User({key, id, emailAdd, gender, name}) {
     const {currentUser} = useAuth();
 
-    // const removeFromBasket = () => {
-    //     db.collection("users").doc(key).collection("friends").doc(productId).delete().then(() => {
-    //         console.log("Item successfully deleted!");
-    //         db.collection("users").doc(currentUser.uid).get().then(docc => {
-    //             const data = docc.data()
-    //             db.collection("users").doc(currentUser.uid).update({
-    //                 subtotal: data.subtotal - price,
-    //                 noItems: data.noItems - 1
-    //             })
-    //             setLength(data.noItems - 1);
-    //             setTotal(data.subtotal - price);
-    //             if (data.noItems - 1 === 0) {
-    //                 setTotal(0);
-    //             }
-    //         })
-    //     }).catch((error) => {
-    //         console.error("Error removing item: ", error);
-    //     });
-    // };
-
-    const addToBasket = (event) => {
+    const sendRequest = (event) => {
         event.preventDefault();
 
-        db.collection("users").doc(key).collection("friends").doc(currentUser.uid).set({
-            itemId: id,
-            itemName: title,
-            itemImage: image,
-            itemPrice: price,
-            itemRating: rating,
+        db.collection("users").doc(id).collection("friends").doc(currentUser.uid).set({
+            friendName: currentUser.displayName,
+            friendEmail: currentUser.email,
+            requestAccepted: false
         });
 
-        db.collection("users").doc(userId).get().then(docc => {
-            const data = docc.data()
-            db.collection("users").doc(userId).update({
-                subtotal: data.subtotal + price,
-                noItems: data.noItems + 1
-            })
-            setLength(data.noItems + 1);
-        })
+        db.collection("users").doc(currentUser.uid).collection("friends").doc(id).set({
+            friendName: name,
+            friendEmail: emailAdd,
+            requestAccepted: false
+        });
     }
 
 
@@ -59,7 +34,7 @@ function User({key, emailAdd, gender, name}) {
                     <strong>{gender}</strong>
                     <strong>{emailAdd}</strong>
                 </p>
-                <button>Add Buddy</button>
+                <button onClick={sendRequest}>Add Buddy</button>
             </div>
         </div>
     )
