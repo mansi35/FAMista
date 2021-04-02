@@ -6,7 +6,7 @@ import db from '../../firebase'
 function Product({id, title, image, price, rating, userId, setLength}) {
     const {currentUser} = useAuth();
     var [twinCount, setTwinCount]  = useState(0);
-    // const [twins, setTwins] = useState([]);
+    const [twins, setTwins] = useState([]);
     const addToBasket = (event) => {
         event.preventDefault();
 
@@ -33,6 +33,7 @@ function Product({id, title, image, price, rating, userId, setLength}) {
         db.collection("users").doc(currentUser.uid).collection("friends").get().then(querySnapshot => {
             querySnapshot.forEach(doc => {
                 console.log(doc.id);
+                setTwins(twins => [...twins, doc.id]);
                 db.collection("users").doc(doc.id).collection("basketItems").doc(id).get().then((docc) => { 
                     if (docc.exists) { 
                         console.log("Document data:", docc.data()); 
@@ -72,6 +73,10 @@ function Product({id, title, image, price, rating, userId, setLength}) {
                         <p className="star">🌟</p>
                     ))}
                 </div>
+                <div>{twins.map( e =>
+                    <div>{ e }</div>
+                  )}
+                  </div>
             </div>
             <img
             alt="Lean Startup"
