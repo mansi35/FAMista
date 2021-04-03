@@ -44,6 +44,12 @@ function Chat() {
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         })
 
+        db.collection('users').doc(roomId.slice(28)).collection('friendRooms').doc(roomId).collection('messages').add({
+            message: input,
+            name: currentUser.displayName,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        })
+
         setInput("");
     }
 
