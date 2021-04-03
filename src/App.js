@@ -9,6 +9,7 @@ import ForgotPassword from './components/authentication/ForgotPassword.js';
 import UpdateProfile from './components/authentication/UpdateProfile.js';
 import Sidebar from './components/chat/Sidebar';
 import Chat from './components/chat/Chat';
+import ChatEmpty from './components/chat/ChatEmpty';
 import { AuthProvider } from './contexts/AuthContext.js';
 import Home from './components/ecommerce/Home.js';
 import Checkout from './components/ecommerce/Checkout.js';
@@ -46,19 +47,18 @@ function App() {
           </Route>
           <Route path="/chat/rooms/:roomId">
             <div className="app">
-              <div className="app__body">
-                <Sidebar />
-                <Chat/>
-              </div>
+                <div className="app__body">
+                  <Sidebar />
+                  <Chat/>
+                </div>
             </div>
           </Route>
           <Route path="/chat">
             <div className="app">
-                <div className="app__body">
-                  <Sidebar/>
-                  <Chat />
-                    
-                </div>
+              <div className="app__body">
+                <Sidebar/>
+                <ChatEmpty />
+              </div>
             </div>
           </Route>
           <PrivateRoute path="/social" component={MyFeed} />
