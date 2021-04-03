@@ -53,7 +53,8 @@ function Chat() {
                 <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`}/>
                 <div className="chat__headerInfo">
                     <h3>{roomName}</h3>
-                    <p>Last Seen...</p>
+                    <p>Last Seen{" "}
+                    {new Date(messages[messages.length - 1]?.timestamp?.toDate()).toUTCString()}</p>
                 </div>
                 <div className="chat__headerRight">
                     <IconButton>
