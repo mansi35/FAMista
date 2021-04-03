@@ -48,22 +48,22 @@ function App() {
             <Header />
             <Checkout />
           </Route>
-          <Route path="/chat/rooms/:roomId">
+          <PrivateRoute path="/chat/rooms/:roomId">
             <div className="app">
                 <div className="app__body">
                   <Sidebar />
                   <Chat/>
                 </div>
             </div>
-          </Route>
-          <Route path="/chat">
+          </PrivateRoute>
+          <PrivateRoute path="/chat">
             <div className="app">
               <div className="app__body">
                 <Sidebar/>
                 <ChatEmpty />
               </div>
             </div>
-          </Route>
+          </PrivateRoute>
           <Route path="/call" exact component={CreateRoom} />
           <Route path="/room/:roomID" component={Room} />
           <PrivateRoute path="/social" component={MyFeed} />

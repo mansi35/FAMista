@@ -3,14 +3,16 @@ import "../../css/SidebarChat.css";
 import {Avatar} from "@material-ui/core";
 import db from "../../firebase";
 import {Link} from "react-router-dom";
+import {useAuth} from '../../contexts/AuthContext';
 
 function SidebarChat({id, name, addNewChat}) {
     const [seed, setSeed] = useState("");
     const [messages, setMessages] = useState("");
+    const {currentUser} = useAuth();
 
     useEffect(() => {
         if(id) {
-            db.collection('rooms').doc(id).collection('messages').orderBy('timestamp', 'desc').onSnapshot(snapshot => (
+            db.collection('users').doc(currentUser.uid).collection('friendRooms').doc(id).collection('messages').orderBy('timestamp', 'desc').onSnapshot(snapshot => (
                 setMessages(snapshot.docs.map((doc) => doc.data())))
             );
         }

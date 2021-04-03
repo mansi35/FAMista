@@ -20,6 +20,14 @@ function Request({key, id, emailAdd, name}) {
         }).then(() => {
             db.collection("users").doc(currentUser.uid).collection("friendRequests").doc(id).delete();
         });
+
+        db.collection("users").doc(id).collection("friendRooms").doc(currentUser.uid + id).set({
+            friendName: currentUser.displayName
+        });
+
+        db.collection("users").doc(currentUser.uid).collection("friendRooms").doc(currentUser.uid + id).set({
+            friendName: name
+        });
     }
 
     const declineRequest = (event) => {

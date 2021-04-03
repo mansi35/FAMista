@@ -45,14 +45,14 @@ const Room = (props) => {
     const userVideo = useRef();
     const peersRef = useRef([]);
     const myPeer = useRef();
-    // const roomID = props.match.params.roomID;
+    const roomID = props.match.params.roomID;
 
     useEffect(() => {
         socketRef.current = io.connect("/");
         navigator.mediaDevices.getUserMedia({ video: videoConstraints, audio: true }).then(stream => {
             setStream(stream);
             userVideo.current.srcObject = stream;
-            socketRef.current.emit("join room");
+            socketRef.current.emit("join room", roomID);
             socketRef.current.on("all users", users => {
                 const peers = [];
                 users.forEach(userID => {
@@ -62,18 +62,18 @@ const Room = (props) => {
                         peer,
                     })
                     peers.push(peer);
-                });
+                })
                 setPeers(peers);
             })
 
             socketRef.current.on("user joined", payload => {
-                    const peer = addPeer(payload.signal, payload.callerID, stream);
-                    peersRef.current.push({
-                        peerID: payload.callerID,
-                        peer,
-                    })
+                const peer = addPeer(payload.signal, payload.callerID, stream);
+                peersRef.current.push({
+                    peerID: payload.callerID,
+                    peer,
+                })
 
-                    setPeers(users => [...users, peer]);
+                setPeers(users => [...users, peer]);
             });
 
             socketRef.current.on("receiving returned signal", payload => {
@@ -84,7 +84,6 @@ const Room = (props) => {
     }, []);
 
     function createPeer(userToSignal, callerID, stream) {
-        console.log("hello")
         const peer = new Peer({
             initiator: true,
             trickle: false,
@@ -92,7 +91,7 @@ const Room = (props) => {
         });
 
         peer.on("signal", signal => {
-            socketRef.current.emit("sending signal", {userToSignal, callerID, signal})
+            socketRef.current.emit("sending signal", { userToSignal, callerID, signal })
         })
 
         return peer;
@@ -106,7 +105,7 @@ const Room = (props) => {
         })
 
         peer.on("signal", signal => {
-            socketRef.current.emit("returning signal", {signal, callerID})
+            socketRef.current.emit("returning signal", { signal, callerID })
         })
 
         peer.signal(incomingSignal);
