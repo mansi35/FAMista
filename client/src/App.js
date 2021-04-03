@@ -1,3 +1,4 @@
+import React from "react";
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import RegisterHeader from './components/authentication/RegisterHeader.js';
@@ -18,6 +19,8 @@ import MyFeed from './components/social/MyFeed';
 import Users from './components/friends/Users';
 import Requests from './components/friends/Requests';
 import Friends from './components/friends/Friends';
+import Room from './components/Room';
+import CreateRoom from './components/CreateRoom';
 
 function App() {
   return (
@@ -61,6 +64,8 @@ function App() {
               </div>
             </div>
           </Route>
+          <Route path="/call" exact component={CreateRoom} />
+          <Route path="/room/:roomID" component={Room} />
           <PrivateRoute path="/social" component={MyFeed} />
         </Switch>
         </AuthProvider>
