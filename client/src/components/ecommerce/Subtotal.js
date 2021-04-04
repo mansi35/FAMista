@@ -2,7 +2,7 @@ import React from "react";
 import "../../css/Subtotal.css";
 import CurrencyFormat from "react-currency-format";
 
-function Subtotal({length, total}) {
+function Subtotal({length, total, checkout}) {
     return (
         <div className="subtotal">
         <CurrencyFormat
@@ -12,7 +12,7 @@ function Subtotal({length, total}) {
                 Subtotal ({length} items): <strong>{value}</strong>
                 </p>
                 <small className="subtotal__gift">
-                <input type="checkbox" /> This order contains a gift
+                {checkout? <label><input type="checkbox" /> This order contains a gift</label> : <div></div>}
                 </small>
             </>
             )}
@@ -22,8 +22,8 @@ function Subtotal({length, total}) {
             thousandSeparator={true}
             prefix={"$"}
         />
-
-        <button>Proceed to Checkout</button>
+        {checkout? <button>Proceed to Checkout</button>: <div></div>}
+        
         </div>
     );
 }

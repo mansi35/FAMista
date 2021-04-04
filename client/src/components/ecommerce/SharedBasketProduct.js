@@ -3,7 +3,7 @@ import '../../css/CheckoutProduct.css';
 // import db from '../../firebase';
 // import {useAuth} from '../../contexts/AuthContext';
 
-function SharedBasketProduct({productId, title, price, image, rating}) {
+function SharedBasketProduct({productId, title, price, image, rating, setLength, setTotal}) {
     // const {currentUser} = useAuth();
 
     // const removeFromBasket = () => {

@@ -6,28 +6,24 @@ import SharedFriendBasket from './SharedFriendBasket';
 function SharedBaskets() {
     const [friends, setFriends] = useState([]);
     const {currentUser} = useAuth();
+
     useEffect(() => {
-        const unsubscribe = db.collection('users').doc(currentUser.uid).collection('friends').onSnapshot(snapshot => (
-            setFriends(snapshot.docs.map(doc => (
-                {
-                    id: doc.id,
-                    data: doc.data()
-                }
-            )
-
-            ))
-        ));
-
-        return () => {
-            unsubscribe();
-        }
+        db.collection("users").doc(currentUser.uid).collection("friends").get().then(querySnapshot => {
+            setFriends(querySnapshot.docs.map((doc) => ({
+                id: doc.id,
+                data: doc.data()
+            })))
+        });
     // eslint-disable-next-line
-    },[]);
+    }, [])
+
     return (
         <div>
-        {friends.map(({userid, friend}) => (
-                <SharedFriendBasket key={userid} userid={userid} />
-        ))}
+        {friends.map(({id, data}) => {
+            console.log(id);
+            return(
+                <SharedFriendBasket key={id} userId={id} name={data.friendName} />
+        )})}
         </div>
     )
 }

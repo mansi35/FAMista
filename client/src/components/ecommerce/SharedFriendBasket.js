@@ -3,42 +3,41 @@ import "../../css/Checkout.css";
 import SharedBasketProduct from './SharedBasketProduct';
 import db from '../../firebase';
 import { useAuth } from '../../contexts/AuthContext';
+import Subtotal from "./Subtotal";
 
-function SharedFriendBasket({key, userId}) {
+function SharedFriendBasket({key, userId, name}) {
     const {currentUser} = useAuth();
     const [items, setItems] = useState([]);
+    const [length, setLength] = useState(0);
+    const [total, setTotal] = useState(0);
 
-    // useEffect(() => {
-    //     if (currentUser) {
-    //         db.collection("users").doc(currentUser.uid).collection("friends").get().then(docc => {
-    //             const data = docc.data();
-    //             setTotal(data.subtotal);
-    //             setLength(data.noItems);
-    //         })
-    //     }
-    // })
+    useEffect(() => {
+        if (currentUser) {
+            db.collection("users").doc(userId).get().then(docc => {
+                const data = docc.data();
+                setTotal(data.subtotal);
+                setLength(data.noItems);
+            })
+        }
+    })
     
 
     useEffect(() => {
-        db.collection("users").doc(currentUser.uid).collection("friends").doc(userId).collection("basketItems").get().then(querySnapshot => {
-            querySnapshot.forEach(snapshot => {
-              setItems(snapshot.docs.map((doc) => ({
+        db.collection("users").doc(currentUser.uid).collection("friends").doc(userId).collection("basketItems")
+          .onSnapshot((snapshot) => 
+            setItems(snapshot.docs.map((doc) => ({
                 id: doc.id,
                 item: doc.data()
             })))
-            })
-        })
+        );
     // eslint-disable-next-line
     }, [])
 
-    // const showModal = () => {
-    //     setShow(true);
-    // };
-  
-  	// const hideModal = () => {
-    //   	setShow(false);
-  	// };
-
+    if (items.length === 0) {
+      return (
+        <div></div>
+      )
+    }
     return (
     <div className="checkout">
       <div className="checkout__left">
@@ -49,7 +48,7 @@ function SharedFriendBasket({key, userId}) {
         />
 
         <div>
-          <h2 className="checkout__title">Your shopping Basket</h2>
+          <h2 className="checkout__title">{name}'s shopping Basket</h2>
           {items.map(({ id, item }) => (
               <SharedBasketProduct 
                 key = {id}
@@ -58,20 +57,18 @@ function SharedFriendBasket({key, userId}) {
                 price = {item.itemPrice}
                 image = {item.itemImage}
                 rating = {item.itemRating}
+                setLength = {setLength}
+                setTotal = {setTotal}
               />
           ))}
         </div>
       </div>
-     {/* <div className="checkout__right">
-			<Subtotal 
+     <div className="checkout__right">
+			<Subtotal
 				length = {length}
 				total = {total}
 			/>
-		  	<ShareBasketModal show={show} handleClose={hideModal}>
-                <p>Modal</p>
-            </ShareBasketModal>
-          <Button onClick={showModal}>Share Basket</Button>
-          </div>*/}
+          </div>
     </div>
   );
 }

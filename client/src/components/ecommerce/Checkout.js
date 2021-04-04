@@ -71,6 +71,7 @@ function Checkout() {
       </div>
       <div className="checkout__right">
 			<Subtotal 
+				checkout
 				length = {length}
 				total = {total}
 			/>
