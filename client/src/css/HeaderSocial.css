@@ -7,7 +7,7 @@ h4 {
     display: flex;
     justify-content: space-between;
     position: sticky;
-    background-color: #f5c6e5;
+    background-color: #fb88d5;
     z-index: 100;
     top: 0;
     box-shadow: 0px 5px 8px -9px rgba(0, 0, 0, 0.75);
@@ -41,15 +41,7 @@ h4 {
 
 .header__option2 {
     cursor: pointer;
-    color: #f86bc7;
-}
-
-.header__option2--active > .MuiSvgIcon-root {
-    color: #F05524;
-}
-
-.header__option2--active {
-    border-bottom: 4px solid #F05524;
+    color: #eff2f5;
 }
 
 .header__option {

@@ -15,13 +15,13 @@ function Sidebar() {
     return (
         <div className="sidebar__social">
             <SidebarRow src={currentUser.photoURL} title={currentUser.displayName} />
-            <SidebarRow Icon={LocalHospitalIcon} title="COVID-19 Information Center" />
+            {/* <SidebarRow Icon={LocalHospitalIcon} title="COVID-19 Information Center" /> */}
             <SidebarRow Icon={EmojiFlagsIcon} title="Pages" />
             <SidebarRow Icon={PeopleIcon} title="Friends" />
-            <SidebarRow Icon={ChatIcon} title="Messanger" />
+            <SidebarRow Icon={ChatIcon} title="Chat" />
             <SidebarRow Icon={StorefrontIcon} title="Marketplace" />
             <SidebarRow Icon={VideoLibraryIcon} title="Videos" />
-            <SidebarRow Icon={ExpandMoreOutlinedIcon} title="Marketplace" />
+            <SidebarRow Icon={ExpandMoreOutlinedIcon} title="More" />
         </div>
     )
 }
