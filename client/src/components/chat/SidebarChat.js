@@ -38,14 +38,14 @@ function SidebarChat({id, name, addNewChat}) {
             <div className="sidebarChat">
                 <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`}/>
                 <div className="sidebarChat__info">
-                    <h2>{name}</h2>
+                    <h2 style={{color: '#440a67'}}>{name}</h2>
                     <p>{messages[0]?.message}</p>
                 </div>
             </div>
         </Link>
     ) : (
         <div onClick={createChat} className="sidebarChat">
-            <h3 className="add-new-chat-title" style={{color: 'white'}}>Add New Chat</h3>
+            <h3 className="add-new-chat-title" style={{color: '#440a67'}}>Add New Chat</h3>
         </div>
     )
 }

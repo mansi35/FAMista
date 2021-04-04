@@ -1,9 +1,9 @@
 p {
-    color: black;
+    color: black !important;
 }
 .post {
     margin-top: 15px;
-    background-color: #ffffff;
+    background-color: #d8d3ff;
     border-radius: 15px;
     box-shadow: 0px 5px 7px -7px rgba(0, 0, 0, 0.75);
     width: 100%;
@@ -53,12 +53,12 @@ p {
 }
 
 .post__options {
-    border-top: 1px solid lightgray;
-    border-bottom: 1px solid lightgray;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
     display: flex;
     justify-content: space-evenly;
     font-size: medium;
-    color: gray;
+    color: white;
     cursor: pointer;
     padding: 8px;
 }
@@ -137,7 +137,7 @@ p {
 .comments__show.myself {
     display: flex;
     flex-direction: row;
-    border-left: 2px solid #4080ff;
+    border-left: 2px solid #440a67;
     padding-left: 15px;
     margin-left: -15px;
 }
@@ -161,11 +161,11 @@ p {
 }
 
 .like.blue {
-    color: #4080FF;
+    color: #440a67;
 }
 
 .textforlike.bluetextforlike {
-    color: #4080FF;
+    color: #440a67;
 }
 
 .post__notLiked {
@@ -241,7 +241,7 @@ p {
 
 .post__commentInput {
     border-radius: 20px;
-    border: 1px solid gray;
+    border: 1px solid white;
     outline: none;
     background-color: #F2F3F5;
     height: 27px !important;
