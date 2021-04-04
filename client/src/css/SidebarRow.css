@@ -6,7 +6,7 @@
 }
 
 .sidebarRow:hover {
-    background-color: lightgray;
+    background-color: #eff2f5;
     border-radius: 10px;
 }
 
@@ -17,5 +17,5 @@
 
 .sidebarRow > .MuiSvgIcon-root {
     font-size: xx-large;
-    color: #2e81f4;
+    color: #F05524;
 }
