@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useAuth } from '../../contexts/AuthContext';
 import '../../css/Product.css'
 import db from '../../firebase'
-import Modal from './Modal'
+import ShareProductModal from './ShareProductModal'
 
 function Product({id, title, image, price, rating, userId, setLength}) {
     const {currentUser} = useAuth();
@@ -96,9 +96,9 @@ function Product({id, title, image, price, rating, userId, setLength}) {
             />
             <button onClick={seeTwinCount}>Twin Count</button>
             <button onClick={addToBasket}>Add to Basket</button>
-            <Modal show={show} handleClose={hideModal} image={image}>
+            <ShareProductModal show={show} handleClose={hideModal} image={image}>
                 <p>Modal</p>
-            </Modal>
+            </ShareProductModal>
             <button onClick={showModal}>Share Product</button>
         </div>
     )

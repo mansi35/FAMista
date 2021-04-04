@@ -4,7 +4,7 @@ import db from '../../firebase';
 import firebase from "firebase";
 import {useAuth} from "../../contexts/AuthContext";
 
-function Share({key, id, emailAdd, name, itemImage}) {
+function ShareProduct({key, id, emailAdd, name, itemImage}) {
     const {currentUser} = useAuth();
 
     const share = () => {
@@ -38,4 +38,4 @@ function Share({key, id, emailAdd, name, itemImage}) {
     )
 }
 
-export default Share
+export default ShareProduct
