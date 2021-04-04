@@ -34,7 +34,7 @@ function Header() {
                 <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="fb-logo"></img>
                 <div className="header__input">
                     <SearchIcon />
-                    <input type="text" placeholder="Search Facebook" />
+                    <input type="text" placeholder="Search FAMista" />
                 </div>
             </div>
             <div className="header__middle">
@@ -60,16 +60,24 @@ function Header() {
                     <h4>{currentUser.displayName}</h4>
                 </div>
                 <IconButton>
-                    <AddIcon />
+                    <div className="header__option2">
+                        <AddIcon />
+                    </div>
                 </IconButton>
                 <IconButton>
-                    <ForumIcon />
+                    <div className="header__option2">
+                        <ForumIcon />
+                    </div>
                 </IconButton>
                 <IconButton>
-                    <NotificationsActiveIcon />
+                    <div className="header__option2">
+                        <NotificationsActiveIcon />
+                    </div>
                 </IconButton>
                 <IconButton onClick={handleSubmit}>
-                    <ExitToAppIcon />
+                    <div className="header__option2">
+                        <ExitToAppIcon />
+                    </div>
                 </IconButton>
             </div>
         </div>

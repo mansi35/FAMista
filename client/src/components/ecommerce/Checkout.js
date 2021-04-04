@@ -4,12 +4,15 @@ import CheckoutProduct from './CheckoutProduct';
 import db from '../../firebase';
 import {useAuth} from '../../contexts/AuthContext';
 import Subtotal from "./Subtotal";
+import { Button } from 'react-bootstrap'
+import ShareProductModal from './ShareProductModal'
 
 function Checkout() {
     const {currentUser} = useAuth();
     const [items, setItems] = useState([]);
     const [length, setLength] = useState(0);
     const [total, setTotal] = useState(0);
+    const [show, setShow] = useState(false);
 
     useEffect(() => {
         if (currentUser) {
@@ -32,6 +35,14 @@ function Checkout() {
         );
     // eslint-disable-next-line
     }, [])
+
+    const showModal = () => {
+        setShow(true);
+    };
+  
+  	const hideModal = () => {
+      	setShow(false);
+  	};
 
     return (
     <div className="checkout">
@@ -59,10 +70,14 @@ function Checkout() {
         </div>
       </div>
       <div className="checkout__right">
-          <Subtotal 
-            length = {length}
-            total = {total}
-          />
+			<Subtotal 
+				length = {length}
+				total = {total}
+			/>
+		  	<ShareProductModal show={show} handleClose={hideModal}>
+                <p>Modal</p>
+            </ShareProductModal>
+          <Button onClick={showModal}>Share Basket</Button>
       </div>
     </div>
   );

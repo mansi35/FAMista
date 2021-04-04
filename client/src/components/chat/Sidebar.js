@@ -37,13 +37,13 @@ function Sidebar() {
                 <Avatar src="https://cdn.hashnode.com/res/hashnode/image/upload/v1610800167922/SFTAjmhl3.jpeg" />
                 <div className="sidebar__headerRight">
                     <IconButton>
-                        <DonutLargeIcon />
+                        <DonutLargeIcon style={{color: '#eff2f5'}} />
                     </IconButton>
                     <IconButton>
-                        <ChatIcon />
+                        <ChatIcon style={{color: '#eff2f5'}} />
                     </IconButton>
                     <IconButton>
-                        <MoreVertIcon />
+                        <MoreVertIcon style={{color: '#eff2f5'}} />
                     </IconButton>
                 </div>
             </div>
