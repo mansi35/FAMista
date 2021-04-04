@@ -17,7 +17,7 @@ function Chat() {
     const [roomName, setRoomName] = useState("");
     const [messages, setMessages] = useState([]);
     const {currentUser} = useAuth();
-    const [id, setId] = useState('');
+    var [id, setId] = useState('');
 
     useEffect(() => {
         if (roomId) {
@@ -65,7 +65,8 @@ function Chat() {
         a.appendChild(link);
         a.title = "Enter room";
         a.href = `/room/${id}`;
-        var customInput = `${currentUser.displayName} is inviting you to shop virtually! Please follow ${a}`;
+        var customInput = `${currentUser.displayName} is inviting you to shop virtually! Please click on this message to join! ${a}`;
+        console.log(customInput.slice(0, customInput.length-36))
         var clickEvent = new Event( 'click' );
         sendMessage(clickEvent, customInput);
     }
@@ -97,22 +98,26 @@ function Chat() {
                 {messages.map(message => (
                     <p className={`chat__message ${message.name === currentUser.displayName && "chat__receiver"}`}>
                         <span className="chat__name">{message.name}</span>
-                        <img src={message.imageUrl} alt="" />
-                        {message.message}
+                        {!message.imageUrl? <span className="d-none"></span> : 
+                        <Link to="/">
+                            <img height="250" src={message.imageUrl} alt="" /><br />
+                        </Link>
+                        }
+                        {id === '' && message.message.slice(0, message.message.length-36) === `${message.name} is inviting you to shop virtually! Please click on this message to join! http://localhost:3000/room/`? 
+                            <span className="d-none">{id = message.message.slice(message.message.length-36)}</span> : 
+                            id = ''
+                        }
+                        {id !== '' ? 
+                            <Link to={`/room/${id}`} target="_blank">
+                                {message.message}
+                            </Link> 
+                            : <span>{message.message}</span>
+                        }
                         <span className="chat__timestamp">
                             {new Date(message.timestamp?.toDate()).toUTCString()}
                         </span>
                     </p>
                 ))}
-
-                {/* <p className="chat__message">
-                        <span className="chat__name">{message.name}</span>
-                        <img src={message.image} alt="" />
-                        {message.message}
-                        <span className="chat__timestamp">
-                            {new Date(message.timestamp?.toDate()).toUTCString()}
-                        </span>
-                    </p> */}
             </div>
             <div className="chat__footer">
                 <InsertEmoticonIcon fontSize="large" />
