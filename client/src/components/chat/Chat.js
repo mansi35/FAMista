@@ -9,11 +9,8 @@ import "../../css/Chat.css";
 import firebase from "firebase";
 import {useAuth} from "../../contexts/AuthContext";
 import { v1 as uuid } from "uuid";
-import { useHistory } from 'react-router-dom';
-// import User from '../friends/User';
 
 function Chat() {
-    const history = useHistory('');
     var [input, setInput] = useState("");
     const [seed, setSeed] = useState("");
     const {roomId} = useParams();
@@ -100,6 +97,7 @@ function Chat() {
                 {messages.map(message => (
                     <p className={`chat__message ${message.name === currentUser.displayName && "chat__receiver"}`}>
                         <span className="chat__name">{message.name}</span>
+                        <img src={message.imageUrl} alt="" />
                         {message.message}
                         <span className="chat__timestamp">
                             {new Date(message.timestamp?.toDate()).toUTCString()}
@@ -109,6 +107,7 @@ function Chat() {
 
                 {/* <p className="chat__message">
                         <span className="chat__name">{message.name}</span>
+                        <img src={message.image} alt="" />
                         {message.message}
                         <span className="chat__timestamp">
                             {new Date(message.timestamp?.toDate()).toUTCString()}

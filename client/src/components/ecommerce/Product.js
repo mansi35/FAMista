@@ -2,11 +2,13 @@ import React, { useState } from 'react'
 import { useAuth } from '../../contexts/AuthContext';
 import '../../css/Product.css'
 import db from '../../firebase'
+import Modal from './Modal'
 
 function Product({id, title, image, price, rating, userId, setLength}) {
     const {currentUser} = useAuth();
     const [twinCount, setTwinCount]  = useState(0);
     const [twins, setTwins] = useState([]);
+    const [show, setShow] = useState(false);
     const addToBasket = (event) => {
         event.preventDefault();
 
@@ -56,6 +58,13 @@ function Product({id, title, image, price, rating, userId, setLength}) {
         setTwins([]);
     }
 
+    const showModal = () => {
+        setShow(true);
+    };
+    
+    const hideModal = () => {
+        setShow(false);
+    };
 
     return (
         <div className="product">
@@ -87,6 +96,10 @@ function Product({id, title, image, price, rating, userId, setLength}) {
             />
             <button onClick={seeTwinCount}>Twin Count</button>
             <button onClick={addToBasket}>Add to Basket</button>
+            <Modal show={show} handleClose={hideModal} image={image}>
+                <p>Modal</p>
+            </Modal>
+            <button onClick={showModal}>Share Product</button>
         </div>
     )
 }
