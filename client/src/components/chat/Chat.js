@@ -76,8 +76,8 @@ function Chat() {
             <div className="chat__header">
                 <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`}/>
                 <div className="chat__headerInfo">
-                    <h3>{roomName}</h3>
-                    <p>Last Seen{" "}
+                    <h3 style={{color: 'white'}}>{roomName}</h3>
+                    <p style={{color: 'white'}}>Last Seen{" "}
                     {new Date(messages[messages.length - 1]?.timestamp?.toDate()).toUTCString()}</p>
                 </div>
                 <div className="chat__headerRight">
@@ -87,10 +87,10 @@ function Chat() {
                         </Link>
                     </IconButton>
                     <IconButton>
-                        <AttachFile />
+                        <AttachFile  />
                     </IconButton>
                     <IconButton>
-                        <MoreVert />
+                        <MoreVert  />
                     </IconButton>
                 </div>
             </div>
@@ -120,12 +120,12 @@ function Chat() {
                 ))}
             </div>
             <div className="chat__footer">
-                <InsertEmoticonIcon fontSize="large" />
+                <InsertEmoticonIcon fontSize="large" style={{color: '#eff2f5'}}/>
                 <form>
                     <input value={input} onChange={(e) => setInput(e.target.value)} type="text" placeholder="Type a message"/>
                     <button type="submit" onClick={sendMessage}> Send a Message</button>
                 </form>
-                <MicIcon fontSize="large"/>
+                <MicIcon fontSize="large" style={{color: '#eff2f5'}}/>
             </div>
         </div>
     )
