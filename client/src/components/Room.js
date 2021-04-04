@@ -81,6 +81,7 @@ const Room = (props) => {
                 item.peer.signal(payload.signal);
             });
         })
+    // eslint-disable-next-line
     }, []);
 
     function createPeer(userToSignal, callerID, stream) {
@@ -116,12 +117,14 @@ const Room = (props) => {
     function shareScreen(){
         navigator.mediaDevices.getDisplayMedia({cursor: true})
         .then(screenStream => {
+            // eslint-disable-next-line
             peers.map(peer => {
                 myPeer.current = peer;
                 myPeer.current.replaceTrack(stream.getVideoTracks()[0], screenStream.getVideoTracks()[0], stream);
                 userVideo.current.srcObject = screenStream;
             })
             screenStream.getTracks()[0].onended = () => {
+                // eslint-disable-next-line
                 peers.map(peer => {
                     myPeer.current = peer;
                     myPeer.current.replaceTrack(screenStream.getVideoTracks()[0], stream.getVideoTracks()[0], stream);

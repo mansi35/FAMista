@@ -14,7 +14,7 @@ function Sidebar() {
     const {currentUser} = useAuth();
 
     useEffect(() => {
-        const unsubscribe = db.collection('users').doc(currentUser.uid).collection('friendRooms').onSnapshot(snapshot => (
+        const unsubscribe = db.collection('users').doc(currentUser.uid).collection('friends').onSnapshot(snapshot => (
             setRooms(snapshot.docs.map(doc => (
                 {
                     id: doc.id,
@@ -28,6 +28,7 @@ function Sidebar() {
         return () => {
             unsubscribe();
         }
+    // eslint-disable-next-line
     },[]); 
 
     return (

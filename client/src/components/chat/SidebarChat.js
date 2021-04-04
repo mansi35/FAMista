@@ -12,10 +12,11 @@ function SidebarChat({id, name, addNewChat}) {
 
     useEffect(() => {
         if(id) {
-            db.collection('users').doc(currentUser.uid).collection('friendRooms').doc(id).collection('messages').orderBy('timestamp', 'desc').onSnapshot(snapshot => (
+            db.collection('users').doc(currentUser.uid).collection('friends').doc(id).collection('messages').orderBy('timestamp', 'desc').onSnapshot(snapshot => (
                 setMessages(snapshot.docs.map((doc) => doc.data())))
             );
         }
+    // eslint-disable-next-line
     }, [id])
 
     useEffect(() => {
