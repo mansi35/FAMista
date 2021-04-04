@@ -22,6 +22,7 @@ import Friends from './components/friends/Friends';
 import Room from './components/videocall/Room';
 import CreateRoom from './components/videocall/CreateRoom';
 import HeaderSocial from './components/social/Header.js';
+import SharedBaskets from "./components/ecommerce/SharedBaskets";
 
 function App() {
   return (
@@ -68,6 +69,7 @@ function App() {
             </div>
           </PrivateRoute>
           <Route path="/call" exact component={CreateRoom} />
+          <Route path="/baskets" component={SharedBaskets} />
           <Route path="/room/:roomID" component={Room} />
           <PrivateRoute path="/social" component={MyFeed} />
         </Switch>
