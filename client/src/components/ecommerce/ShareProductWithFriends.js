@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "../../css/Checkout.css";
-import Share from './Share';
+import ShareProduct from './ShareProduct';
 import db from '../../firebase';
 import {useAuth} from '../../contexts/AuthContext';
 
 
-function ShareWithFriends({itemImage}) {
+function ShareProductWithFriends({itemImage}) {
     const [friends, setFriends] = useState([]);
     const { currentUser } = useAuth();
 
@@ -27,7 +27,7 @@ function ShareWithFriends({itemImage}) {
         <div>
           <h2 className="checkout__title">Share with...</h2>
           {friends.map(({ friendId, friend }) => (
-              <Share 
+              <ShareProduct 
                 key = {friendId}
                 id = {friendId}
                 emailAdd = {friend.friendEmail}
@@ -41,4 +41,4 @@ function ShareWithFriends({itemImage}) {
   );
 }
 
-export default ShareWithFriends;
+export default ShareProductWithFriends;
