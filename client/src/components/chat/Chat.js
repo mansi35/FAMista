@@ -97,7 +97,7 @@ function Chat() {
                 {messages.map(message => (
                     <p className={`chat__message ${message.name === currentUser.displayName && "chat__receiver"}`}>
                         <span className="chat__name">{message.name}</span>
-                        <img src={message.imageUrl} alt="" />
+                        <img src={message.imageUrl} alt="" /> <br></br>
                         {message.message}
                         <span className="chat__timestamp">
                             {new Date(message.timestamp?.toDate()).toUTCString()}
