@@ -19,8 +19,8 @@ import MyFeed from './components/social/MyFeed';
 import Users from './components/friends/Users';
 import Requests from './components/friends/Requests';
 import Friends from './components/friends/Friends';
-import Room from './components/Room';
-import CreateRoom from './components/CreateRoom';
+import Room from './components/videocall/Room';
+import CreateRoom from './components/videocall/CreateRoom';
 
 function App() {
   return (
