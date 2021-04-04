@@ -7,7 +7,7 @@ h4 {
     display: flex;
     justify-content: space-between;
     position: sticky;
-    background-color: #fb88d5;
+    background-color: #b4aee8;
     z-index: 100;
     top: 0;
     box-shadow: 0px 5px 8px -9px rgba(0, 0, 0, 0.75);
@@ -53,7 +53,7 @@ h4 {
 }
 
 .header__option:hover {
-    background-color: #f86bc7;
+    background-color: #6d11a7;
     border-radius: 10px;
     align-items: center;
     padding: 0 30px;
@@ -61,11 +61,11 @@ h4 {
 }
 
 .header__option--active > .MuiSvgIcon-root {
-    color: #F05524;
+    color: #440a67;
 }
 
 .header__option--active {
-    border-bottom: 4px solid #F05524;
+    border-bottom: 4px solid #440a67;
 }
 
 .header__info {

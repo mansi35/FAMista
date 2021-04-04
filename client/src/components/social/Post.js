@@ -119,7 +119,7 @@ function Post({postId, profilePic, message, timestamp, username, image, userId, 
 
             <div className="post__options">
                 <div className="post__option post__notLiked" onClick={likeHandle}>
-                    <ThumbUpIcon className={show} />
+                    <ThumbUpIcon className={show}/>
                     <p className={show2}>Like</p>
                 </div>
                 <div className="post__option post__comment">
