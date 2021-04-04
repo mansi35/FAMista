@@ -1,5 +1,5 @@
 p {
-    color: #000;
+    color: #fff !important;
 }
 
 a {
@@ -48,13 +48,13 @@ a {
     padding: 10px;
     width: fit-content;
     border-radius: 10px;
-    background-color: #fb88d5;
+    background-color: #b4aee8;
     margin-bottom: 15px;
 }
 
 .chat__receiver {
     margin-left: auto;
-    background-color: #fb3754;
+    background-color: #440a67;
 }
 
 .chat__name {
