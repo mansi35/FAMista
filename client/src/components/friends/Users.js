@@ -27,7 +27,7 @@ function Users() {
       <Header />
       <h2 className="users-heading">Find your shopping buddy! <span><img src="https://img.icons8.com/emoji/48/000000/purple-heart.png"/>
         <img src="https://img.icons8.com/color/48/000000/friends-hanging-out.png"/></span></h2>
-      <div className="row">
+      <div className="user__row">
         {users.map(({ userId, user }) => (
             <User 
               key = {userId}

@@ -35,8 +35,9 @@ function User({key, id, emailAdd, gender, name, profilePic}) {
                 
             </div>
             <div class="card-body">
-                <Avatar src={profilePic} />
-                <h3>{name}</h3>
+                <div className='card-inline'><Avatar src={profilePic} />&nbsp;&nbsp;
+                    <h3>{name}</h3>
+                </div>
                 <p><span><img src={likeIcon} alt="like" style={{height:16, width:16, marginRight:10}} /></span>{gender}</p>
                 <p><span><img src={emailIcon} alt="like" style={{height:22, width:22, marginRight:5}} /></span>{emailAdd}</p>
                 <button onClick={sendRequest}>Add Buddy</button>
