@@ -34,7 +34,7 @@ function SharedFriendBasket() {
     
 
     useEffect(() => {
-        db.collection("users").doc(currentUser.uid).collection("friends").doc(userId).collection("basketItems")
+        db.collection("users").doc(userId).collection("basketItems")
           .onSnapshot((snapshot) => 
             setItems(snapshot.docs.map((doc) => ({
                 id: doc.id,
@@ -44,11 +44,6 @@ function SharedFriendBasket() {
     // eslint-disable-next-line
     }, [])
 
-    if (items.length === 0) {
-      return (
-        <div></div>
-      )
-    }
     return (
     <div className="checkout">
       <div className="checkout__left">
@@ -68,6 +63,7 @@ function SharedFriendBasket() {
                 price = {item.itemPrice}
                 image = {item.itemImage}
                 rating = {item.itemRating}
+                quantity = {item.itemQuantity}
                 setLength = {setLength}
                 setTotal = {setTotal}
                 write = {writePermission}

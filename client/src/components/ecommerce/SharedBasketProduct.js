@@ -1,35 +1,49 @@
 import React from 'react'
 import '../../css/CheckoutProduct.css';
 import db from '../../firebase';
-import {useAuth} from '../../contexts/AuthContext';
 
-function SharedBasketProduct({productId, title, price, image, rating, setLength, setTotal, write, friendId}) {
-    const {currentUser} = useAuth();
+function SharedBasketProduct({productId, title, price, image, rating, quantity, setLength, setTotal, write, friendId}) {
 
     const removeFromBasket = () => {
-        db.collection("users").doc(currentUser.uid).collection("friends").doc(friendId).collection('basketItems').doc(productId).delete().then(() => {
-            console.log("Item successfully deleted!");
-        }).catch((error) => {
-            console.error("Error removing item: ", error);
-        });
-
-        db.collection("users").doc(friendId).collection('basketItems').doc(productId).delete().then(() => {
-            db.collection("users").doc(friendId).get().then(docc => {
-                const data = docc.data()
-                db.collection("users").doc(friendId).update({
-                    subtotal: data.subtotal - price,
-                    noItems: data.noItems - 1
+        if(quantity > 1) {
+            db.collection("users").doc(friendId).collection("basketItems").doc(productId).update({
+                itemQuantity: quantity - 1
+            }).then(() => {
+                console.log("Item successfully deleted!");
+                db.collection("users").doc(friendId).get().then(docc => {
+                    const data = docc.data()
+                    db.collection("users").doc(friendId).update({
+                        subtotal: data.subtotal - price,
+                        noItems: data.noItems - 1
+                    })
+                    setLength(data.noItems - 1);
+                    setTotal(data.subtotal - price);
+                    if (data.noItems - 1 === 0) {
+                        setTotal(0);
+                    }
                 })
-                setLength(data.noItems - 1);
-                setTotal(data.subtotal - price);
-                if (data.noItems - 1 === 0) {
-                    setTotal(0);
-                }
-            })
-        }).catch((error) => {
-            console.error("Error removing item: ", error);
-        });
-
+            }).catch((error) => {
+                console.error("Error removing item: ", error);
+            });
+        }
+        else {
+            db.collection("users").doc(friendId).collection('basketItems').doc(productId).delete().then(() => {
+                db.collection("users").doc(friendId).get().then(docc => {
+                    const data = docc.data()
+                    db.collection("users").doc(friendId).update({
+                        subtotal: data.subtotal - price,
+                        noItems: data.noItems - 1
+                    })
+                    setLength(data.noItems - 1);
+                    setTotal(data.subtotal - price);
+                    if (data.noItems - 1 === 0) {
+                        setTotal(0);
+                    }
+                })
+            }).catch((error) => {
+                console.error("Error removing item: ", error);
+            });
+        }
     };
     return (
         <div className="checkoutProduct">
@@ -41,6 +55,9 @@ function SharedBasketProduct({productId, title, price, image, rating, setLength,
                 <p className="checkoutProduct_price">
                     <small>$</small>
                     <strong>{price}</strong>
+                </p>
+                <p>Quantity: &nbsp;
+                    <strong>{quantity}</strong>
                 </p>
                 <div className="checkoutProduct_rating">
                     {Array(rating)

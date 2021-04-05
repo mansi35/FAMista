@@ -9,18 +9,6 @@ function ShareProduct({key, id, emailAdd, name, handleClose}) {
     const [checked, setChecked] = useState(false);
 
     const share = () => {
-        db.collection('users').doc(currentUser.uid).collection('basketItems').get().then(querySnapshot => {
-            querySnapshot.forEach(doc => {
-                db.collection('users').doc(id).collection('friends').doc(currentUser.uid).collection('basketItems').doc(doc.id).set({
-                    itemId: doc.data().itemId,
-                    itemImage: doc.data().itemImage,
-                    itemName: doc.data().itemName,
-                    itemPrice: doc.data().itemPrice,
-                    itemRating: doc.data().itemRating,
-                })
-            })
-        })
-
         db.collection('users').doc(id).collection('friends').doc(currentUser.uid).update({
             read: true,
             write: false
