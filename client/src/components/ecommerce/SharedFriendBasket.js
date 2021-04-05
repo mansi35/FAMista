@@ -4,12 +4,18 @@ import SharedBasketProduct from './SharedBasketProduct';
 import db from '../../firebase';
 import { useAuth } from '../../contexts/AuthContext';
 import Subtotal from "./Subtotal";
+import { useParams } from "react-router";
 
-function SharedFriendBasket({key, userId, name}) {
+function SharedFriendBasket() {
     const {currentUser} = useAuth();
     const [items, setItems] = useState([]);
     const [length, setLength] = useState(0);
     const [total, setTotal] = useState(0);
+    const [name, setName] = useState('');
+    const [writePermission, setWritePermission] = useState(false);
+    const {userId} = useParams();
+
+    console.log(userId);
 
     useEffect(() => {
         if (currentUser) {
@@ -17,7 +23,12 @@ function SharedFriendBasket({key, userId, name}) {
                 const data = docc.data();
                 setTotal(data.subtotal);
                 setLength(data.noItems);
+                setName(data.name);
             })
+            db.collection("users").doc(currentUser.uid).collection('friends').doc(userId).get().then(doc => {
+              const data = doc.data();
+              setWritePermission(data.write);
+          })
         }
     })
     
@@ -59,6 +70,8 @@ function SharedFriendBasket({key, userId, name}) {
                 rating = {item.itemRating}
                 setLength = {setLength}
                 setTotal = {setTotal}
+                write = {writePermission}
+                friendId = {userId}
               />
           ))}
         </div>

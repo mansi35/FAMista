@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import db from '../../firebase';
-import SharedFriendBasket from './SharedFriendBasket';
+import Friend from '../friends/Friend';
 
 function SharedBaskets() {
     const [friends, setFriends] = useState([]);
@@ -19,10 +21,20 @@ function SharedBaskets() {
 
     return (
         <div>
+        <h2 className="checkout__title">Shared Baskets</h2>
         {friends.map(({id, data}) => {
-            console.log(id);
             return(
-                <SharedFriendBasket key={id} userId={id} name={data.friendName} />
+                <div>
+                {data.read === true? 
+                    <div>
+                    <Friend key={id} userId={id} name={data.friendName} emailAdd={data.friendEmail} />
+                    <Link to={`/basket/${id}`}>
+                        <Button>See Shared Basket</Button>
+                    </Link>
+                    </div>
+                    : <div></div>
+                }
+                </div>
         )})}
         </div>
     )

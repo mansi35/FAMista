@@ -23,6 +23,7 @@ import Room from './components/videocall/Room';
 import CreateRoom from './components/videocall/CreateRoom';
 import HeaderSocial from './components/social/Header.js';
 import SharedBaskets from "./components/ecommerce/SharedBaskets";
+import SharedFriendBasket from "./components/ecommerce/SharedFriendBasket";
 
 function App() {
   return (
@@ -70,6 +71,7 @@ function App() {
           </PrivateRoute>
           <Route path="/call" exact component={CreateRoom} />
           <Route path="/baskets" component={SharedBaskets} />
+          <Route path="/basket/:userId" component={SharedFriendBasket} />
           <Route path="/room/:roomID" component={Room} />
           <PrivateRoute path="/social" component={MyFeed} />
         </Switch>

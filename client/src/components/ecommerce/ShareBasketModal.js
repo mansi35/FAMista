@@ -7,7 +7,7 @@ const ShareBasketModal = ({ handleClose, show }) => {
   return (
     <div className={showHideClassName}>
       <section className="modal-main">
-        <ShareBasketWithFriends />
+        <ShareBasketWithFriends handleClose={handleClose} />
         <button type="button" onClick={handleClose}>
           Close
         </button>

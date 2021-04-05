@@ -1,10 +1,12 @@
-p {
-    color: #fff !important;
-}
-
-a {
+.chat__boxmessage {
     color: #fff;
 }
+
+.chat__boxmessage a {
+    color: #fff;
+    text-decoration: none;
+}
+
 .chat {
     display: flex;
     flex-direction: column;

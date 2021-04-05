@@ -4,7 +4,7 @@ import db from '../../firebase';
 import firebase from "firebase";
 import {useAuth} from "../../contexts/AuthContext";
 
-function ShareProduct({key, id, emailAdd, name, itemImage}) {
+function ShareProduct({key, id, emailAdd, name, itemImage, handleClose}) {
     const {currentUser} = useAuth();
 
     const share = () => {
@@ -21,6 +21,8 @@ function ShareProduct({key, id, emailAdd, name, itemImage}) {
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
             imageUrl: itemImage
         })
+
+        handleClose();
     }
 
     return (

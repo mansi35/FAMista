@@ -107,12 +107,15 @@ function Chat() {
                             <span className="d-none">{id = message.message.slice(message.message.length-36)}</span> : 
                             <span></span>
                         }
-                        {id !== '' ? 
+                        <span className="chat__boxmessage">{id !== '' ? 
+                            <div>
                             <Link to={`/room/${id}`} target="_blank">
                                 {message.message}
                             </Link> 
+                            {id=''}
+                            </div>
                             : <span>{message.message}</span>
-                        }
+                        }</span>
                         <span className="chat__timestamp">
                             {new Date(message.timestamp?.toDate()).toUTCString()}
                         </span>

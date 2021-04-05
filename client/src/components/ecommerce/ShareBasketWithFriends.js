@@ -5,7 +5,7 @@ import db from '../../firebase';
 import {useAuth} from '../../contexts/AuthContext';
 
 
-function ShareBasketWithFriends() {
+function ShareBasketWithFriends({handleClose}) {
     const [friends, setFriends] = useState([]);
     const { currentUser } = useAuth();
 
@@ -32,6 +32,7 @@ function ShareBasketWithFriends() {
                 id = {friendId}
                 emailAdd = {friend.friendEmail}
                 name = {friend.friendName}
+                handleClose={handleClose}
               />
           ))}
         </div>
