@@ -25,17 +25,17 @@ function Home() {
         <div className="home_container">
             <img
             className="home_image"
-            src="https://images-eu.ssl-images-amazon.com/images/G/02/digital/video/merch2016/Hero/Covid19/Generic/GWBleedingHero_ENG_COVIDUPDATE__XSite_1500x600_PV_en-GB._CB428684220_.jpg"
+            src="https://assets.myntassets.com/f_webp,w_980,c_limit,fl_progressive,dpr_2.0/assets/images/2021/4/4/7ab2bdef-5673-4cf5-a308-61ca66f4bd871617537128691-AAY_Desk_Banner.jpg"
             alt=""
             />
 
             <div className="home_row">
             <Product
                 id="12321341"
-                title="The Lean Startup: How Constant Innovation Creates Radically Successful Businesses Paperback"
+                title="Women Extra Stretch Black Panther Sports Wear, sweat-proof, high durability and low maintanence"
                 price={11.96}
                 rating={5}
-                image="https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._SX325_BO1,204,203,200_.jpg"
+                image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxaXnUdilhYcwlS_xbsMktRgMEhJWah0RaPA&usqp=CAU"
                 quantity={0}
                 userId={currentUser.uid}
                 setLength = {setLength}
@@ -45,7 +45,7 @@ function Home() {
                 title="Kenwood kMix Stand Mixer for Baking, Stylish Kitchen Mixer with K-beater, Dough Hook and Whisk, 5 Litre Glass Bowl"
                 price={239.0}
                 rating={4}
-                image="https://images-na.ssl-images-amazon.com/images/I/81O%2BGNdkzKL._AC_SX450_.jpg"
+                image="https://allensolly.imgix.net/img/app/product/2/291710-1252219.jpg"
                 quantity={0}
                 userId={currentUser.uid}
                 setLength = {setLength}
@@ -58,7 +58,7 @@ function Home() {
                 title="Samsung LC49RG90SSUXEN 49' Curved LED Gaming Monitor"
                 price={199.99}
                 rating={3}
-                image="https://images-na.ssl-images-amazon.com/images/I/71Swqqe7XAL._AC_SX466_.jpg"
+                image="https://images-na.ssl-images-amazon.com/images/I/61SFGwq262L._UY550_.jpg"
                 quantity={0}
                 userId={currentUser.uid}
                 setLength = {setLength}
@@ -68,7 +68,7 @@ function Home() {
                 title="Amazon Echo (3rd generation) | Smart speaker with Alexa, Charcoal Fabric"
                 price={98.99}
                 rating={5}
-                image="https://media.very.co.uk/i/very/P6LTG_SQ1_0000000071_CHARCOAL_SLf?$300x400_retinamobilex2$"
+                image="https://n3.sdlcdn.com/imgs/j/i/r/CHKOKKO-Women-Active-Wear-Yoga-SDL158692533-1-59f69.jpeg"
                 quantity={0}
                 userId={currentUser.uid}
                 setLength = {setLength}
@@ -78,7 +78,7 @@ function Home() {
                 title="New Apple iPad Pro (12.9-inch, Wi-Fi, 128GB) - Silver (4th Generation)"
                 price={598.99}
                 rating={4}
-                image="https://images-na.ssl-images-amazon.com/images/I/816ctt5WV5L._AC_SX385_.jpg"
+                image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKtgCEq3fC9ikBrxoqE7ynHSbl33GAWUnKkw&usqp=CAU"
                 quantity={0}
                 userId={currentUser.uid}
                 setLength = {setLength}
@@ -91,7 +91,7 @@ function Home() {
                 title="Samsung LC49RG90SSUXEN 49' Curved LED Gaming Monitor - Super Ultra Wide Dual WQHD 5120 x 1440"
                 price={1094.98}
                 rating={4}
-                image="https://images-na.ssl-images-amazon.com/images/I/6125mFrzr6L._AC_SX355_.jpg"
+                image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzFGHrlJxvbThcm9ReqK98a3BQ5sOuz89kcw&usqp=CAU  "
                 quantity={0}
                 userId={currentUser.uid}
                 setLength = {setLength}
