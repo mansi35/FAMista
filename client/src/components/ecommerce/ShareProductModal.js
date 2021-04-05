@@ -1,13 +1,13 @@
 import '../../css/Modal.css';
 import ShareProductWithFriends from './ShareProductWithFriends';
 
-const ShareProductModal = ({ handleClose, show, image }) => {
+const ShareProductModal = ({ handleClose, show, image, id, title }) => {
   const showHideClassName = show ? "modal display-block" : "modal display-none";
 
   return (
     <div className={showHideClassName}>
       <section className="modal-main">
-        <ShareProductWithFriends itemImage={image} handleClose={handleClose} />
+        <ShareProductWithFriends itemImage={image} itemId={id} itemTitle={title} handleClose={handleClose} />
         <button type="button" onClick={handleClose}>
           Close
         </button>

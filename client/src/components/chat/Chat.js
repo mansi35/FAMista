@@ -112,7 +112,7 @@ function Chat() {
                         <Link to="/">
                             <img height="250" src={message.imageUrl} alt="" /><br />
                         </Link>
-                        <SurveyModal show={show} handleClose={hideModal} image={message.imageUrl}>
+                        <SurveyModal show={show} handleClose={hideModal} image={message.imageUrl} itemId={message.productId} itemName={message.productName}>
                             <p>Modal</p>
                         </SurveyModal>
                         <button onClick={showModal}>Fill Product Survey</button><br />

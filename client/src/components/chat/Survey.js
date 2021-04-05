@@ -1,7 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../../css/Survey.css'
 
-function Survey({handleClose, productImage}) {
+function Survey({handleClose, productImage, productId, productName}) {
+    const [quality, setQuality] = useState('');
+    const [fitting, setFitting] = useState('');
+    const [valMoney, setValMoney] = useState('');
+    const [material, setMaterial] = useState('');
+    const [feedback, setFeedback] = useState('');
+
     return (
             <div class="feedback">
             <img src={productImage} height="200" alt="product" />
@@ -14,7 +20,7 @@ function Survey({handleClose, productImage}) {
             <form method="post" action="#action-url">
             <label>1. Your overall experience with us ?</label><br />
               
-            <span class="star-rating">
+            <span onChange={(e) => setValMoney(e.target.value)} class="star-rating">
               <input type="radio" name="rating1" value="1" /><i></i>
               <input type="radio" name="rating1" value="2" /><i></i>
               <input type="radio" name="rating1" value="3" /><i></i>
@@ -25,7 +31,18 @@ function Survey({handleClose, productImage}) {
               <div class="clear"></div> 
               <hr class="survey-hr" />
             <label>2. Friendliness and courtesy shown to you while recieving your vehicle</label><br />
-            <span class="star-rating">
+            <span onChange={(e) => setFitting(e.target.value)} class="star-rating">
+              <input type="radio" name="rating2" value="1" /><i></i>
+              <input type="radio" name="rating2" value="2" /><i></i>
+              <input type="radio" name="rating2" value="3" /><i></i>
+              <input type="radio" name="rating2" value="4" /><i></i>
+              <input type="radio" name="rating2" value="5" /><i></i>
+            </span>
+
+            <div class="clear"></div> 
+              <hr class="survey-hr" />
+            <label>3. Friendliness and courtesy shown to you while recieving your vehicle</label><br />
+            <span onChange={(e) => setMaterial(e.target.value)} class="star-rating">
               <input type="radio" name="rating2" value="1" /><i></i>
               <input type="radio" name="rating2" value="2" /><i></i>
               <input type="radio" name="rating2" value="3" /><i></i>
@@ -46,7 +63,7 @@ function Survey({handleClose, productImage}) {
                 </span>
                 
               </div>
-            <span class="scale-rating">
+            <span onChange={(e) => setQuality(e.target.value)} class="scale-rating">
               <label value="1">
               <input type="radio" name="rating" />
               <label style="width:100%;"></label>
@@ -92,7 +109,7 @@ function Survey({handleClose, productImage}) {
               <div class="clear"></div> 
               <hr class="survey-hr" /> 
             <label for="m_3189847521540640526commentText">4. Any Other suggestions:</label><br/><br/>
-            <textarea cols="75" name="commentText" rows="5" style="100%"></textarea><br />
+            <textarea onChange={(e) => setFeedback(e.target.value)} cols="75" name="commentText" rows="5" style="100%"></textarea><br />
             <br />
               <div class="clear"></div> 
             <input style="background:#43a7d5;color:#fff;padding:12px;border:0" type="submit" value="Submit your review" /> 

@@ -111,7 +111,7 @@ function Product({id, title, image, price, rating, quantity, userId, setLength})
             alt="Lean Startup"
             src={image}
             />
-            <ShareProductModal show={show} handleClose={hideModal} image={image}>
+            <ShareProductModal show={show} handleClose={hideModal} image={image} id={id} title={title}>
                 <p>Modal</p>
             </ShareProductModal>
             <div>
