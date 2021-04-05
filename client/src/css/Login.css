@@ -9,6 +9,7 @@
     display: flex;
 }
 
+
 .login__images {
     margin-top: 8%;
     width: 63%;
@@ -20,7 +21,7 @@
     height: 65%;
     display :flex;
     padding: 10px;
-    background-color: rgba(150, 179, 195, 0.69);
+    background-color: rgba(191, 117, 221, 0.69);
     flex-direction: column;
     margin-top: 80px;
     margin-left: 15%;
@@ -54,12 +55,12 @@
 }
 
 .login__login {
-    background-color: #5e994b;
+    background-color: #440a67;;
     border: none;
     width: 196px;
     height: 38px;
     border-radius: 3px;
-    border: 1px sollid rgb(59, 110, 34);
+    border: 1px sollid #440a67;
     color: white;
     font-size: 17px;
     font-weight: 700;
@@ -84,8 +85,10 @@
     height: 43px;
     color: #ffffff;
     border-radius: 2px;
-    background-color: #5e994b;
+    background-color: #440a67;;
     border: none;
     margin-top: 10px;
     font-family: poppins-bold;
 }
+
+

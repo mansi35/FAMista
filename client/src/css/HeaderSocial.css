@@ -1,5 +1,5 @@
 h4 {
-    color: #585858;
+    color: white;
 }
 
 .header__social {
@@ -7,7 +7,7 @@ h4 {
     display: flex;
     justify-content: space-between;
     position: sticky;
-    background-color: #b4aee8;
+    background-color: #440a67;
     z-index: 100;
     top: 0;
     box-shadow: 0px 5px 8px -9px rgba(0, 0, 0, 0.75);
@@ -61,7 +61,7 @@ h4 {
 }
 
 .header__option--active > .MuiSvgIcon-root {
-    color: #440a67;
+    color: white;
 }
 
 .header__option--active {
