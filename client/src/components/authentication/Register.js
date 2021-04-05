@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container, Row, Col, Alert } from 'react-bootstrap';
 import '../../css/Register.css';
 import design from "../../resources/images.png";
@@ -18,6 +18,11 @@ function Register() {
     const [error, setError] = useState('');
     const { signup } = useAuth();
     const [loading, setLoading] = useState(false);
+    const [seed, setSeed] = useState('');    
+    
+    useEffect(() => {
+        setSeed(Math.floor(Math.random() * 5000)); 
+    }, [])
 
     async function register(event) {
         event.preventDefault();
@@ -32,13 +37,15 @@ function Register() {
             const auth = await signup(email, password);
             if (auth.user) {
                 auth.user.updateProfile({
-                    displayName: firstName + " " + lastName
+                    displayName: firstName + " " + lastName,
+                    photoURL: `https://avatars.dicebear.com/api/${gender}/${seed}.svg`
                 })
                 db.collection('users').doc(auth.user.uid).set({
                     name: firstName + " " + lastName,
                     emailAdd: email,
                     phoneNumber: phone,
                     gender: gender,
+                    profilePic: `https://avatars.dicebear.com/api/${gender}/${seed}.svg`,
                     subtotal: 0,
                     noItems: 0
                 })
@@ -88,12 +95,12 @@ function Register() {
                         <h5 className="register__gender">Gender</h5>
 
                         <div onChange={(e) => setGender(e.target.value)} className="register__radiocontainer">
-                            <input type="radio" name="gender" value="Male" />
-                            <label>Male</label>
-                            <input type="radio" name="gender" value="Female" />
-                            <label>Female</label>
-                            <input type="radio" name="gender" value="Other" />
-                            <label>Other</label>
+                            <input type="radio" name="gender" value="male" />
+                            <label>male</label>
+                            <input type="radio" name="gender" value="female" />
+                            <label>female</label>
+                            <input type="radio" name="gender" value="other" />
+                            <label>other</label>
                         </div>
                         <center>
                         <p className="register__policy">

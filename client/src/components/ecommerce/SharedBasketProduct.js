@@ -1,30 +1,36 @@
 import React from 'react'
 import '../../css/CheckoutProduct.css';
-// import db from '../../firebase';
-// import {useAuth} from '../../contexts/AuthContext';
+import db from '../../firebase';
+import {useAuth} from '../../contexts/AuthContext';
 
-function SharedBasketProduct({productId, title, price, image, rating, setLength, setTotal}) {
-    // const {currentUser} = useAuth();
+function SharedBasketProduct({productId, title, price, image, rating, setLength, setTotal, write, friendId}) {
+    const {currentUser} = useAuth();
 
-    // const removeFromBasket = () => {
-    //     db.collection("users").doc(currentUser.uid).collection("basketItems").doc(productId).delete().then(() => {
-    //         console.log("Item successfully deleted!");
-    //         db.collection("users").doc(currentUser.uid).get().then(docc => {
-    //             const data = docc.data()
-    //             db.collection("users").doc(currentUser.uid).update({
-    //                 subtotal: data.subtotal - price,
-    //                 noItems: data.noItems - 1
-    //             })
-    //             setLength(data.noItems - 1);
-    //             setTotal(data.subtotal - price);
-    //             if (data.noItems - 1 === 0) {
-    //                 setTotal(0);
-    //             }
-    //         })
-    //     }).catch((error) => {
-    //         console.error("Error removing item: ", error);
-    //     });
-    // };
+    const removeFromBasket = () => {
+        db.collection("users").doc(currentUser.uid).collection("friends").doc(friendId).collection('basketItems').doc(productId).delete().then(() => {
+            console.log("Item successfully deleted!");
+        }).catch((error) => {
+            console.error("Error removing item: ", error);
+        });
+
+        db.collection("users").doc(friendId).collection('basketItems').doc(productId).delete().then(() => {
+            db.collection("users").doc(friendId).get().then(docc => {
+                const data = docc.data()
+                db.collection("users").doc(friendId).update({
+                    subtotal: data.subtotal - price,
+                    noItems: data.noItems - 1
+                })
+                setLength(data.noItems - 1);
+                setTotal(data.subtotal - price);
+                if (data.noItems - 1 === 0) {
+                    setTotal(0);
+                }
+            })
+        }).catch((error) => {
+            console.error("Error removing item: ", error);
+        });
+
+    };
     return (
         <div className="checkoutProduct">
             <img alt="" className="checkoutProduct_image" src={image} />
@@ -43,7 +49,7 @@ function SharedBasketProduct({productId, title, price, image, rating, setLength,
                         <p className="star">⭐</p>
                     ))}
                 </div>
-                {/*<button onClick={removeFromBasket}>Remove from checkout</button>*/}
+                {write? <button onClick={removeFromBasket}>Remove from checkout</button>: <div></div>}
             </div>
         </div>
     )

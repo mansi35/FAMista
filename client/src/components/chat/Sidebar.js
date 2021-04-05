@@ -34,7 +34,7 @@ function Sidebar() {
     return (
         <div className="sidebar">
             <div className="sidebar__header">
-                <Avatar src="https://cdn.hashnode.com/res/hashnode/image/upload/v1610800167922/SFTAjmhl3.jpeg" />
+                <Avatar src={currentUser.photoURL} />
                 <div className="sidebar__headerRight">
                     <IconButton>
                         <DonutLargeIcon style={{color: '#eff2f5'}} />
@@ -56,7 +56,7 @@ function Sidebar() {
             <div className="sidebar__chats">
                 <SidebarChat addNewChat/>
                     {rooms.map(room=> (
-                        <SidebarChat key={room.id} id={room.id} name={room.data.friendName}/>
+                        <SidebarChat key={room.id} id={room.id} name={room.data.friendName} profilePic={room.data.friendProfilePic} />
                 ))}
             </div>
         </div>

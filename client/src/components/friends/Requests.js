@@ -32,6 +32,7 @@ function Requests() {
                 id = {requestId}
                 emailAdd = {request.requestEmail}
                 name = {request.requestName}
+                profilePic = {request.requestPic}
               />
           ))}
         </div>

@@ -6,7 +6,7 @@
 }
 
 .sidebarChat:hover {
-    background-color: #ebebeb;
+    background-color: #dab5da;
 }
 
 .sidebarChat__info > h2 {
@@ -18,7 +18,7 @@
     margin-left: 15px;
 }
 
-a {
+.chat__side a {
     text-decoration: none !important;
     color: black;
 }

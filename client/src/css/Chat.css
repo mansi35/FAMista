@@ -1,10 +1,12 @@
-p {
-    color: #fff !important;
-}
-
-a {
+.chat__boxmessage {
     color: #fff;
 }
+
+.chat__boxmessage a {
+    color: #fff;
+    text-decoration: none;
+}
+
 .chat {
     display: flex;
     flex-direction: column;
@@ -66,6 +68,7 @@ a {
     top: -15px;
     font-weight: 800;
     font-size: xx-small;
+    color: rgb(68, 10, 103) !important;
 }
 
 .chat__timestamp {
@@ -102,4 +105,10 @@ a {
     padding: 10px;
     color: white;
     margin-right: 10px;
+    color: gray;
+}
+
+.chat__headerRight a {
+    color: #440a67;
+    text-decoration: none !important;
 }
