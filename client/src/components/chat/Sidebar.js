@@ -12,29 +12,25 @@ import {useAuth} from '../../contexts/AuthContext';
 function Sidebar() {
     const [rooms, setRooms] = useState([]);
     const {currentUser} = useAuth();
+    var profilePhoto = "";
+    if (currentUser)
+        profilePhoto = currentUser.photoURL;
 
     useEffect(() => {
-        const unsubscribe = db.collection('users').doc(currentUser.uid).collection('friends').onSnapshot(snapshot => (
-            setRooms(snapshot.docs.map(doc => (
-                {
-                    id: doc.id,
-                    data: doc.data()
-                }
-            )
-
-            ))
-        ));
-
-        return () => {
-            unsubscribe();
-        }
+        db.collection("users").doc(currentUser.uid).collection("friends")
+        .onSnapshot((snapshot) => 
+            setRooms(snapshot.docs.map((doc) => ({
+                id: doc.id,
+                data: doc.data()
+            })))
+        );
     // eslint-disable-next-line
-    },[]); 
+    }, [])
 
     return (
         <div className="sidebar">
             <div className="sidebar__header">
-                <Avatar src={currentUser.photoURL} />
+                <Avatar src={profilePhoto} />
                 <div className="sidebar__headerRight">
                     <IconButton>
                         <DonutLargeIcon style={{color: '#eff2f5'}} />

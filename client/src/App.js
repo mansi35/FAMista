@@ -8,9 +8,6 @@ import Login from './components/authentication/Login.js';
 import PrivateRoute from './PrivateRoute.js';
 import ForgotPassword from './components/authentication/ForgotPassword.js';
 import UpdateProfile from './components/authentication/UpdateProfile.js';
-import Sidebar from './components/chat/Sidebar';
-import Chat from './components/chat/Chat';
-import ChatEmpty from './components/chat/ChatEmpty';
 import { AuthProvider } from './contexts/AuthContext.js';
 import Home from './components/ecommerce/Home.js';
 import Checkout from './components/ecommerce/Checkout.js';
@@ -21,9 +18,10 @@ import Requests from './components/friends/Requests';
 import Friends from './components/friends/Friends';
 import Room from './components/videocall/Room';
 import CreateRoom from './components/videocall/CreateRoom';
-import HeaderSocial from './components/social/Header.js';
 import SharedBaskets from "./components/ecommerce/SharedBaskets";
 import SharedFriendBasket from "./components/ecommerce/SharedFriendBasket";
+import MyChatEmpty from "./components/chat/MyChatEmpty";
+import MyChat from "./components/chat/MyChat";
 
 function App() {
   return (
@@ -51,28 +49,12 @@ function App() {
             <Header />
             <Checkout />
           </Route>
-          <PrivateRoute path="/chat/rooms/:roomId">
-          <HeaderSocial /> 
-            <div className="app">
-                <div className="app__body">
-                  <Sidebar />
-                  <Chat/>
-                </div>
-            </div>
-          </PrivateRoute>
-          <PrivateRoute path="/chat">
-            <HeaderSocial />
-            <div className="app">
-              <div className="app__body">
-                <Sidebar/>
-                <ChatEmpty />
-              </div>
-            </div>
-          </PrivateRoute>
-          <Route path="/call" exact component={CreateRoom} />
-          <Route path="/baskets" component={SharedBaskets} />
-          <Route path="/basket/:userId" component={SharedFriendBasket} />
-          <Route path="/room/:roomID" component={Room} />
+          <PrivateRoute path="/chat" component={MyChat} />
+          <PrivateRoute path="/chat" component={MyChatEmpty} />
+          <PrivateRoute path="/call" exact component={CreateRoom} />
+          <PrivateRoute path="/baskets" component={SharedBaskets} />
+          <PrivateRoute path="/basket/:userId" component={SharedFriendBasket} />
+          <PrivateRoute path="/room/:roomID" component={Room} />
           <PrivateRoute path="/social" component={MyFeed} />
         </Switch>
         </AuthProvider>
