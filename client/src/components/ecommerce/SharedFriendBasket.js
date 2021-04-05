@@ -5,6 +5,7 @@ import db from '../../firebase';
 import { useAuth } from '../../contexts/AuthContext';
 import Subtotal from "./Subtotal";
 import { useParams } from "react-router";
+import { Alert } from 'react-bootstrap';
 
 function SharedFriendBasket() {
     const {currentUser} = useAuth();
@@ -13,6 +14,7 @@ function SharedFriendBasket() {
     const [total, setTotal] = useState(0);
     const [name, setName] = useState('');
     const [writePermission, setWritePermission] = useState(false);
+    const [readPermission, setReadPermission] = useState(false);
     const {userId} = useParams();
 
     console.log(userId);
@@ -28,6 +30,7 @@ function SharedFriendBasket() {
             db.collection("users").doc(currentUser.uid).collection('friends').doc(userId).get().then(doc => {
               const data = doc.data();
               setWritePermission(data.write);
+              setReadPermission(data.read);
           })
         }
     })
@@ -44,6 +47,11 @@ function SharedFriendBasket() {
     // eslint-disable-next-line
     }, [])
 
+    if (!readPermission) {
+      return (
+        <div style={{margin: "40vh"}}><Alert variant="danger">You don't have suffecient permissions to view {name}'s basket!</Alert></div>
+      )
+    }
     return (
     <div className="checkout">
       <div className="checkout__left">

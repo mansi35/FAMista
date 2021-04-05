@@ -10,6 +10,7 @@ import "../../css/Chat.css";
 import firebase from "firebase";
 import {useAuth} from "../../contexts/AuthContext";
 import { v1 as uuid } from "uuid";
+import SurveyModal from './SurveyModal'
 
 function Chat() {
     var [input, setInput] = useState("");
@@ -20,6 +21,7 @@ function Chat() {
     const {currentUser} = useAuth();
     // eslint-disable-next-line
     var [id, setId] = useState('');
+    const [show, setShow] = useState(false);
 
     useEffect(() => {
         if (roomId) {
@@ -68,6 +70,15 @@ function Chat() {
         var clickEvent = new Event( 'click' );
         sendMessage(clickEvent, customInput);
     }
+
+    const showModal = () => {
+        setShow(true);
+    };
+    
+    const hideModal = () => {
+        setShow(false);
+    };
+
     if (currentUser)
     return (
         <div className="chat">
@@ -85,7 +96,7 @@ function Chat() {
                         </Link>
                     </IconButton>
                     <IconButton>
-                        <AttachFile  />
+                        <AttachFile />
                     </IconButton>
                     <IconButton>
                         <MoreVert  />
@@ -97,9 +108,15 @@ function Chat() {
                     <p className={`chat__message ${message.name === currentUser.displayName && "chat__receiver"}`}>
                         <span className="chat__name">{message.name}</span>
                         {!message.imageUrl? <span className="d-none"></span> : 
+                        <div>
                         <Link to="/">
                             <img height="250" src={message.imageUrl} alt="" /><br />
                         </Link>
+                        <SurveyModal show={show} handleClose={hideModal} image={message.imageUrl}>
+                            <p>Modal</p>
+                        </SurveyModal>
+                        <button onClick={showModal}>Fill Product Survey</button><br />
+                        </div>
                         }
                         {message.message.slice(0, message.message.length-36) === `${message.name} is inviting you to shop virtually! Please click on this message to join! http://localhost:3000/room/`? 
                             <span className="d-none">{id = message.message.slice(message.message.length-36)}</span> : 
