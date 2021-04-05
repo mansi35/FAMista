@@ -1,20 +1,18 @@
 import React from 'react'
 import '../../css/CheckoutProduct.css';
 import db from '../../firebase';
-import {useAuth} from '../../contexts/AuthContext';
 
-function CheckoutProduct({productId, title, price, image, rating, quantity, setLength, setTotal}) {
-    const {currentUser} = useAuth();
+function SharedBasketProduct({productId, title, price, image, rating, quantity, setLength, setTotal, write, friendId}) {
 
     const removeFromBasket = () => {
         if(quantity > 1) {
-            db.collection("users").doc(currentUser.uid).collection("basketItems").doc(productId).update({
+            db.collection("users").doc(friendId).collection("basketItems").doc(productId).update({
                 itemQuantity: quantity - 1
             }).then(() => {
                 console.log("Item successfully deleted!");
-                db.collection("users").doc(currentUser.uid).get().then(docc => {
+                db.collection("users").doc(friendId).get().then(docc => {
                     const data = docc.data()
-                    db.collection("users").doc(currentUser.uid).update({
+                    db.collection("users").doc(friendId).update({
                         subtotal: data.subtotal - price,
                         noItems: data.noItems - 1
                     })
@@ -29,11 +27,10 @@ function CheckoutProduct({productId, title, price, image, rating, quantity, setL
             });
         }
         else {
-            db.collection("users").doc(currentUser.uid).collection("basketItems").doc(productId).delete().then(() => {
-                console.log("Item successfully deleted!");
-                db.collection("users").doc(currentUser.uid).get().then(docc => {
+            db.collection("users").doc(friendId).collection('basketItems').doc(productId).delete().then(() => {
+                db.collection("users").doc(friendId).get().then(docc => {
                     const data = docc.data()
-                    db.collection("users").doc(currentUser.uid).update({
+                    db.collection("users").doc(friendId).update({
                         subtotal: data.subtotal - price,
                         noItems: data.noItems - 1
                     })
@@ -60,7 +57,8 @@ function CheckoutProduct({productId, title, price, image, rating, quantity, setL
                     <strong>{price}</strong>
                 </p>
                 <p>Quantity: &nbsp;
-                <strong>{quantity}</strong></p>
+                    <strong>{quantity}</strong>
+                </p>
                 <div className="checkoutProduct_rating">
                     {Array(rating)
                         .fill()
@@ -68,10 +66,10 @@ function CheckoutProduct({productId, title, price, image, rating, quantity, setL
                         <p className="star">⭐</p>
                     ))}
                 </div>
-                <button onClick={removeFromBasket}>Remove from checkout</button>
+                {write? <button onClick={removeFromBasket}>Remove from checkout</button>: <div></div>}
             </div>
         </div>
     )
 }
 
-export default CheckoutProduct
+export default SharedBasketProduct

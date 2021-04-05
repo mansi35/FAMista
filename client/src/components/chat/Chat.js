@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { Avatar, IconButton } from '@material-ui/core';
-import { AttachFile, MoreVert, SearchOutlined } from '@material-ui/icons';
+import { AttachFile, MoreVert } from '@material-ui/icons';
+import DuoIcon from '@material-ui/icons/Duo';
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
 import MicIcon from '@material-ui/icons/Mic';
 import { Link, useParams } from 'react-router-dom';
@@ -12,9 +13,9 @@ import { v1 as uuid } from "uuid";
 
 function Chat() {
     var [input, setInput] = useState("");
-    const [seed, setSeed] = useState("");
     const {roomId} = useParams();
     const [roomName, setRoomName] = useState("");
+    const [profilePic, setProfilePic] = useState("");
     const [messages, setMessages] = useState([]);
     const {currentUser} = useAuth();
     // eslint-disable-next-line
@@ -24,6 +25,7 @@ function Chat() {
         if (roomId) {
             db.collection('users').doc(currentUser.uid).collection('friends').doc(roomId).onSnapshot(snapshot => {
                 setRoomName(snapshot.data().friendName);
+                setProfilePic(snapshot.data().friendProfilePic)
             });
 
             db.collection('users').doc(currentUser.uid).collection('friends').doc(roomId).collection('messages').orderBy('timestamp', 'asc').onSnapshot(snapshot => (
@@ -32,10 +34,6 @@ function Chat() {
         }
     // eslint-disable-next-line
     },[roomId])
-
-    useEffect(() => {
-        setSeed(Math.floor(Math.random() * 5000));        
-    }, [roomId]);
 
     const sendMessage = (e, customInput) => {
         e.preventDefault();
@@ -70,11 +68,11 @@ function Chat() {
         var clickEvent = new Event( 'click' );
         sendMessage(clickEvent, customInput);
     }
-
+    if (currentUser)
     return (
         <div className="chat">
             <div className="chat__header">
-                <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`}/>
+                <Avatar src={profilePic}/>
                 <div className="chat__headerInfo">
                     <h3 style={{color: 'white'}}>{roomName}</h3>
                     <p style={{color: 'white'}}>Last Seen{" "}
@@ -83,7 +81,7 @@ function Chat() {
                 <div className="chat__headerRight">
                     <IconButton onClick={create}>
                         <Link to={`/room/${id}`} target="_blank">
-                            <SearchOutlined />
+                            <DuoIcon fontSize="large" />
                         </Link>
                     </IconButton>
                     <IconButton>
@@ -107,12 +105,15 @@ function Chat() {
                             <span className="d-none">{id = message.message.slice(message.message.length-36)}</span> : 
                             <span></span>
                         }
-                        {id !== '' ? 
+                        <span className="chat__boxmessage">{id !== '' ? 
+                            <div>
                             <Link to={`/room/${id}`} target="_blank">
                                 {message.message}
                             </Link> 
+                            {id=''}
+                            </div>
                             : <span>{message.message}</span>
-                        }
+                        }</span>
                         <span className="chat__timestamp">
                             {new Date(message.timestamp?.toDate()).toUTCString()}
                         </span>

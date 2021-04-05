@@ -1,33 +1,41 @@
 import React, { useEffect, useState } from "react";
 import "../../css/Checkout.css";
-import CheckoutProduct from './CheckoutProduct';
+import SharedBasketProduct from './SharedBasketProduct';
 import db from '../../firebase';
-import {useAuth} from '../../contexts/AuthContext';
+import { useAuth } from '../../contexts/AuthContext';
 import Subtotal from "./Subtotal";
-import { Button } from 'react-bootstrap'
-import ShareBasketModal from './ShareBasketModal'
+import { useParams } from "react-router";
 
-function Checkout() {
+function SharedFriendBasket() {
     const {currentUser} = useAuth();
     const [items, setItems] = useState([]);
     const [length, setLength] = useState(0);
     const [total, setTotal] = useState(0);
-    const [show, setShow] = useState(false);
+    const [name, setName] = useState('');
+    const [writePermission, setWritePermission] = useState(false);
+    const {userId} = useParams();
+
+    console.log(userId);
 
     useEffect(() => {
         if (currentUser) {
-            db.collection("users").doc(currentUser.uid).get().then(docc => {
+            db.collection("users").doc(userId).get().then(docc => {
                 const data = docc.data();
                 setTotal(data.subtotal);
                 setLength(data.noItems);
+                setName(data.name);
             })
+            db.collection("users").doc(currentUser.uid).collection('friends').doc(userId).get().then(doc => {
+              const data = doc.data();
+              setWritePermission(data.write);
+          })
         }
     })
     
 
     useEffect(() => {
-        db.collection("users").doc(currentUser.uid).collection("basketItems")
-            .onSnapshot((snapshot) => 
+        db.collection("users").doc(userId).collection("basketItems")
+          .onSnapshot((snapshot) => 
             setItems(snapshot.docs.map((doc) => ({
                 id: doc.id,
                 item: doc.data()
@@ -35,14 +43,6 @@ function Checkout() {
         );
     // eslint-disable-next-line
     }, [])
-
-    const showModal = () => {
-        setShow(true);
-    };
-  
-  	const hideModal = () => {
-      	setShow(false);
-  	};
 
     return (
     <div className="checkout">
@@ -54,35 +54,32 @@ function Checkout() {
         />
 
         <div>
-          <h2 className="checkout__title">Your shopping Basket</h2>
+          <h2 className="checkout__title">{name}'s shopping Basket</h2>
           {items.map(({ id, item }) => (
-              <CheckoutProduct 
+              <SharedBasketProduct 
                 key = {id}
                 productId = {id}
                 title = {item.itemName}
                 price = {item.itemPrice}
                 image = {item.itemImage}
-                rating = {item.itemRating} 
+                rating = {item.itemRating}
                 quantity = {item.itemQuantity}
                 setLength = {setLength}
                 setTotal = {setTotal}
+                write = {writePermission}
+                friendId = {userId}
               />
           ))}
         </div>
       </div>
-      <div className="checkout__right">
-			<Subtotal 
-				checkout
+     <div className="checkout__right">
+			<Subtotal
 				length = {length}
 				total = {total}
 			/>
-		  	<ShareBasketModal show={show} handleClose={hideModal}>
-                <p>Modal</p>
-            </ShareBasketModal>
-          <Button onClick={showModal}>Share Basket</Button>
-      </div>
+          </div>
     </div>
   );
 }
 
-export default Checkout;
+export default SharedFriendBasket;

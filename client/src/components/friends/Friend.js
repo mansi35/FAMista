@@ -1,10 +1,12 @@
+import { Avatar } from '@material-ui/core';
 import React from 'react'
 import '../../css/CheckoutProduct.css';
 
-function Friend({key, id, emailAdd, name}) {
+function Friend({key, id, emailAdd, name, profilePic}) {
     return (
         <div className="checkoutProduct">
             <div className="checkoutProduct_info">
+            <Avatar src={profilePic} />
                 <p className="checkoutProduct_title">
                     {name}
                 </p>

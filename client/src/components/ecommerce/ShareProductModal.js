@@ -7,7 +7,7 @@ const ShareProductModal = ({ handleClose, show, image }) => {
   return (
     <div className={showHideClassName}>
       <section className="modal-main">
-        <ShareProductWithFriends itemImage={image} />
+        <ShareProductWithFriends itemImage={image} handleClose={handleClose} />
         <button type="button" onClick={handleClose}>
           Close
         </button>

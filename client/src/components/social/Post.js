@@ -113,7 +113,7 @@ function Post({postId, profilePic, message, timestamp, username, image, userId, 
 
             <div className="post__likes">
             {/* eslint-disable-next-line */}
-                <img src={likeIcon} alt="like" style={{height:'16px'}, {width:'16px'}} />
+                <img src={likeIcon} alt="like" style={{height:16, width:16}} />
                 <p>{likes} likes</p>
             </div>
 

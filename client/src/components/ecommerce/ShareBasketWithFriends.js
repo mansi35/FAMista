@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "../../css/Checkout.css";
-import ShareProduct from './ShareProduct';
+import ShareBasket from './ShareBasket';
 import db from '../../firebase';
 import {useAuth} from '../../contexts/AuthContext';
 
 
-function ShareProductWithFriends({itemImage, handleClose}) {
+function ShareBasketWithFriends({handleClose}) {
     const [friends, setFriends] = useState([]);
     const { currentUser } = useAuth();
 
@@ -27,13 +27,12 @@ function ShareProductWithFriends({itemImage, handleClose}) {
         <div>
           <h2 className="checkout__title">Share with...</h2>
           {friends.map(({ friendId, friend }) => (
-              <ShareProduct 
+              <ShareBasket 
                 key = {friendId}
                 id = {friendId}
                 emailAdd = {friend.friendEmail}
                 name = {friend.friendName}
-                itemImage = {itemImage}
-                handleClose = {handleClose}
+                handleClose={handleClose}
               />
           ))}
         </div>
@@ -42,4 +41,4 @@ function ShareProductWithFriends({itemImage, handleClose}) {
   );
 }
 
-export default ShareProductWithFriends;
+export default ShareBasketWithFriends;
