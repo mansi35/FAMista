@@ -49,7 +49,7 @@ function App() {
             <Header />
             <Checkout />
           </Route>
-          <PrivateRoute path="/chat" component={MyChat} />
+          <PrivateRoute path="/chat/rooms/:roomId" component={MyChat} />
           <PrivateRoute path="/chat" component={MyChatEmpty} />
           <PrivateRoute path="/call" exact component={CreateRoom} />
           <PrivateRoute path="/baskets" component={SharedBaskets} />
