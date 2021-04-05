@@ -7,6 +7,7 @@
 
 .checkout__ad {
     width: 100%;
+    height: 15%;
     margin-bottom: 10px;
 }
   
@@ -14,4 +15,22 @@
     margin-right: 10px;
     padding: 10px;
     border-bottom: 1px solid lightgray;
+}
+
+.checkout__right > button {
+    background-color: #440a67;
+    border: none;
+    color: white;
+    padding: 7px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 20px;
+    opacity: 1;
+    margin-top: 10px;
+}
+.checkout__right > button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  opacity: 0.6;
 }

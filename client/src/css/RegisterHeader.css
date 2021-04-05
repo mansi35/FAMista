@@ -1,5 +1,5 @@
 body {
-    background-color: #dd96db;
+    background-color: #ad8bc4;
 }
 
 .register__header {
@@ -83,7 +83,7 @@ body {
     margin-top: 5%;
     padding: 7px;
     border-radius: 2px;
-    background-color: #42a32e;
+    background-color: #440a67;
     border: none;
     position: relative;
     margin-left: 400px;
@@ -91,7 +91,7 @@ body {
 }
 
 .header__button:hover {
-    background-color: #32971e;
+    background-color: #611e97;
     transition: 0.2s;
 }
 
