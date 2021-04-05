@@ -37,11 +37,11 @@ function Survey({handleClose, productImage}) {
               <div class="clear"></div> 
               <hr class="survey-hr" />
             <label>3. Friendliness and courtesy shown to you while delivery of your vehicle</label><br/><br/>
-              <div style={{color:"grey"}}>
+              <div style={{color:"gray"}}>
                 <span style={{float:"left"}}>
                  POOR
                 </span>
-                <span style="float:right">
+                <span style={{float:"right"}}>
                   BEST
                 </span>
                 
@@ -49,53 +49,53 @@ function Survey({handleClose, productImage}) {
             <span class="scale-rating">
               <label value="1">
               <input type="radio" name="rating" />
-              <label style="width:100%;"></label>
+              <label style={{width:"100%"}}></label>
               </label>
               <label value="2">
               <input type="radio" name="rating" />
-              <label style="width:100%;"></label>
+              <label style={{width:"100%"}}></label>
               </label>
               <label value="3">
               <input type="radio" name="rating" />
-              <label style="width:100%;"></label>
+              <label style={{width:"100%"}}></label>
               </label>
               <label value="4">
               <input type="radio" name="rating" />
-              <label style="width:100%;"></label>
+              <label style={{width:"100%"}}></label>
               </label>
               <label value="5">
               <input type="radio" name="rating" />
-              <label style="width:100%;"></label>
+              <label style={{width:"100%"}}></label>
               </label>
               <label value="6">
               <input type="radio" name="rating" />
-              <label style="width:100%;"></label>
+              <label style={{width:"100%"}}></label>
               </label>
               <label value="7">
               <input type="radio" name="rating" />
-              <label style="width:100%;"></label>
+              <label style={{width:"100%"}}></label>
               </label>
               <label value="8">
               <input type="radio" name="rating" />
-              <label style="width:100%;"></label>
+              <label style={{width:"100%"}}></label>
               </label>
               <label value="9">
               <input type="radio" name="rating" />
-              <label style="width:100%;"></label>
+              <label style={{width:"100%"}}></label>
               </label>
               <label value="10">
               <input type="radio" name="rating" value="10" />
-              <label style="width:100%;"></label>
+              <label style={{width:"100%"}}></label>
               </label>
             </span>
              
               <div class="clear"></div> 
               <hr class="survey-hr" /> 
             <label for="m_3189847521540640526commentText">4. Any Other suggestions:</label><br/><br/>
-            <textarea cols="75" name="commentText" rows="5" style="100%"></textarea><br />
+            <textarea cols="75" name="commentText" rows="5" style={{width:"100%"}}></textarea><br />
             <br />
               <div class="clear"></div> 
-            <input style="background:#43a7d5;color:#fff;padding:12px;border:0" type="submit" value="Submit your review" /> 
+            <input style={{background:"#43a7d5", color:"#fff", padding:"12px", border:0}} type="submit" value="Submit your review" /> 
             </form>
             </div>
     )
