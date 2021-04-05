@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container, Row, Col, Alert } from 'react-bootstrap';
 import '../../css/Register.css';
 import design from "../../resources/images.png";
@@ -18,11 +18,14 @@ function Register() {
     const [error, setError] = useState('');
     const { signup } = useAuth();
     const [loading, setLoading] = useState(false);
-    const [seed, setSeed] = useState('');       
+    const [seed, setSeed] = useState('');    
+    
+    useEffect(() => {
+        setSeed(Math.floor(Math.random() * 5000)); 
+    }, [])
 
     async function register(event) {
         event.preventDefault();
-        setSeed(Math.floor(Math.random() * 5000)); 
 
         if (password !== confirmPassword) {
             return setError('Passwords do not match');
@@ -93,11 +96,11 @@ function Register() {
 
                         <div onChange={(e) => setGender(e.target.value)} className="register__radiocontainer">
                             <input type="radio" name="gender" value="male" />
-                            <label>Male</label>
+                            <label>male</label>
                             <input type="radio" name="gender" value="female" />
-                            <label>Female</label>
+                            <label>female</label>
                             <input type="radio" name="gender" value="other" />
-                            <label>Other</label>
+                            <label>other</label>
                         </div>
                         <center>
                         <p className="register__policy">

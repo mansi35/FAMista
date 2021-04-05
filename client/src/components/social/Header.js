@@ -28,7 +28,7 @@ function Header() {
             alert("Failed to log out");
         }
     }
-
+    if (currentUser)
     return (
         <div className='header__social'>
             <div className="header__left">
