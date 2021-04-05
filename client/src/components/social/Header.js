@@ -13,6 +13,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { Avatar, IconButton } from '@material-ui/core';
 import {useAuth} from '../../contexts/AuthContext';
 import { useHistory } from 'react-router';
+import logo from '../../resources/FAMista.png'
 
 
 function Header() {
@@ -31,7 +32,7 @@ function Header() {
     return (
         <div className='header__social'>
             <div className="header__left">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="fb-logo"></img>
+                <img src={logo} alt="famista-logo"></img>
                 <div className="header__input">
                     <SearchIcon />
                     <input type="text" placeholder="Search FAMista" />

@@ -2,8 +2,9 @@ import React from 'react'
 import '../../css/CheckoutProduct.css';
 import db from '../../firebase';
 import {useAuth} from '../../contexts/AuthContext';
+import { Avatar } from '@material-ui/core';
 
-function Request({key, id, emailAdd, name}) {
+function Request({key, id, emailAdd, name, profilePic}) {
     const {currentUser} = useAuth();
 
     const acceptRequest = (event) => {
@@ -11,12 +12,14 @@ function Request({key, id, emailAdd, name}) {
 
         db.collection("users").doc(id).collection("friends").doc(currentUser.uid).set({
             friendEmail: currentUser.email,
-            friendName: currentUser.displayName
+            friendName: currentUser.displayName,
+            friendProfilePic: currentUser.photoURL
         });
 
         db.collection("users").doc(currentUser.uid).collection("friends").doc(id).set({
             friendEmail: emailAdd,
-            friendName: name
+            friendName: name,
+            friendProfilePic: profilePic
         }).then(() => {
             db.collection("users").doc(currentUser.uid).collection("friendRequests").doc(id).delete();
         });
@@ -36,6 +39,7 @@ function Request({key, id, emailAdd, name}) {
         <div className="checkoutProduct">
             <div className="checkoutProduct_info">
                 <p className="checkoutProduct_title">
+                <Avatar src={profilePic} />
                     Hello {name}
                 </p>
                 <p className="checkoutProduct_price">

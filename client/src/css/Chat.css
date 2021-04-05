@@ -105,3 +105,8 @@
     padding: 10px;
     color: gray;
 }
+
+.chat__headerRight a {
+    color: #440a67;
+    text-decoration: none !important;
+}

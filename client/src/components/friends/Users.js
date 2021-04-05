@@ -33,6 +33,7 @@ function Users() {
                 emailAdd = {user.emailAdd}
                 gender = {user.gender}
                 name = {user.name}
+                profilePic = {user.profilePic}
               />
           ))}
         </div>

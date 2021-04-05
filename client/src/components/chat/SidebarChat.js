@@ -5,8 +5,7 @@ import db from "../../firebase";
 import {Link} from "react-router-dom";
 import {useAuth} from '../../contexts/AuthContext';
 
-function SidebarChat({id, name, addNewChat}) {
-    const [seed, setSeed] = useState("");
+function SidebarChat({id, name, profilePic, addNewChat}) {
     const [messages, setMessages] = useState("");
     const {currentUser} = useAuth();
 
@@ -18,10 +17,6 @@ function SidebarChat({id, name, addNewChat}) {
         }
     // eslint-disable-next-line
     }, [id])
-
-    useEffect(() => {
-        setSeed(Math.floor(Math.random() * 5000));        
-    }, []);
 
     const createChat = () => {
         const roomName = prompt("Please Enter Name for Chat");
@@ -37,7 +32,7 @@ function SidebarChat({id, name, addNewChat}) {
         <div className="chat__side">
         <Link to={`/chat/rooms/${id}`} key={id}>
             <div className="sidebarChat">
-                <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`}/>
+                <Avatar src={profilePic}/>
                 <div className="sidebarChat__info">
                     <h2 style={{color: '#440a67'}}>{name}</h2>
                     <p>{messages[0]?.message}</p>

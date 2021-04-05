@@ -5,6 +5,7 @@ import "../../css/Checkout.css";
 import Friend from './Friend';
 import db from '../../firebase';
 import {useAuth} from '../../contexts/AuthContext';
+import { Avatar } from "@material-ui/core";
 
 
 function Friends() {
@@ -41,8 +42,9 @@ function Friends() {
         <Card.Body>
         <h2 className="text-center mb-4">Profile</h2>
         {error && <Alert variant="danger">{error}</Alert>}
-        <strong>Email:</strong> {currentUser.email} <br />
+        <Avatar src={currentUser.photoURL} />
         <strong>Name:</strong> {currentUser.displayName} <br />
+        <strong>Email:</strong> {currentUser.email} <br />
         <Link to="/update-profile" className="btn btn-primary w-100 mt-3">
             Update Profile
         </Link>
@@ -59,6 +61,7 @@ function Friends() {
                 id = {friendId}
                 emailAdd = {friend.friendEmail}
                 name = {friend.friendName}
+                profilePic = {friend.friendProfilePic}
               />
           ))}
         </div>

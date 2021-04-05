@@ -18,9 +18,11 @@ function Register() {
     const [error, setError] = useState('');
     const { signup } = useAuth();
     const [loading, setLoading] = useState(false);
+    const [seed, setSeed] = useState('');       
 
     async function register(event) {
         event.preventDefault();
+        setSeed(Math.floor(Math.random() * 5000)); 
 
         if (password !== confirmPassword) {
             return setError('Passwords do not match');
@@ -32,13 +34,15 @@ function Register() {
             const auth = await signup(email, password);
             if (auth.user) {
                 auth.user.updateProfile({
-                    displayName: firstName + " " + lastName
+                    displayName: firstName + " " + lastName,
+                    photoURL: `https://avatars.dicebear.com/api/${gender}/${seed}.svg`
                 })
                 db.collection('users').doc(auth.user.uid).set({
                     name: firstName + " " + lastName,
                     emailAdd: email,
                     phoneNumber: phone,
                     gender: gender,
+                    profilePic: `https://avatars.dicebear.com/api/${gender}/${seed}.svg`,
                     subtotal: 0,
                     noItems: 0
                 })
@@ -88,11 +92,11 @@ function Register() {
                         <h5 className="register__gender">Gender</h5>
 
                         <div onChange={(e) => setGender(e.target.value)} className="register__radiocontainer">
-                            <input type="radio" name="gender" value="Male" />
+                            <input type="radio" name="gender" value="male" />
                             <label>Male</label>
-                            <input type="radio" name="gender" value="Female" />
+                            <input type="radio" name="gender" value="female" />
                             <label>Female</label>
-                            <input type="radio" name="gender" value="Other" />
+                            <input type="radio" name="gender" value="other" />
                             <label>Other</label>
                         </div>
                         <center>
