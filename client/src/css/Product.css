@@ -23,18 +23,19 @@
   }
   
 
-  .product > button {
+.product__options > button {
     background-color: #440a67;
     border: none;
     color: white;
     padding: 7px 24px;
+    margin: 8px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
     font-size: 16px;
     border-radius: 20px;
     opacity: 1;
     margin-top: 10px;
+    justify-content: space-between;
 }
 .product > button:hover {
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
@@ -52,3 +53,9 @@
   .star{
     color: goldenrod;
 }
+
+/* .product__options{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+} */
