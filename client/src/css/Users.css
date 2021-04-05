@@ -1,4 +1,4 @@
-.row {
+.user__row {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -67,7 +67,7 @@
     }
 }
 
-button {
+.card-body > button {
     background-color: #440a67;
     border: none;
     color: white;
@@ -81,7 +81,7 @@ button {
     margin-top: 10px;
 }
 
-button:hover {
+.card-body > button:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     opacity: 1;
 }
