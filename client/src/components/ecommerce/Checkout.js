@@ -4,7 +4,7 @@ import CheckoutProduct from './CheckoutProduct';
 import db from '../../firebase';
 import {useAuth} from '../../contexts/AuthContext';
 import Subtotal from "./Subtotal";
-import { Button } from 'react-bootstrap'
+
 import ShareBasketModal from './ShareBasketModal'
 
 function Checkout() {
@@ -49,7 +49,7 @@ function Checkout() {
       <div className="checkout__left">
         <img
           className="checkout__ad"
-          src="https://images-na.ssl-images-amazon.com/images/G/02/UK_CCMP/TM/OCC_Amazon1._CB423492668_.jpg"
+          src="https://assets.myntassets.com/f_webp,w_980,c_limit,fl_progressive,dpr_2.0/assets/images/2021/4/3/aa5e9ecb-b4ba-4f27-82be-c27e5985e7231617445678068-Main_Banners_Desktop1.jpg"
           alt=""
         />
 
@@ -76,10 +76,10 @@ function Checkout() {
 				length = {length}
 				total = {total}
 			/>
-		  	<ShareBasketModal show={show} handleClose={hideModal}>
-                <p>Modal</p>
-            </ShareBasketModal>
-          <Button onClick={showModal}>Share Basket</Button>
+		  <ShareBasketModal show={show} handleClose={hideModal}>
+          <p>Modal</p>
+      </ShareBasketModal>
+      <button onClick={showModal}>Share Basket</button>
       </div>
     </div>
   );

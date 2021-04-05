@@ -1,11 +1,14 @@
 .feedback{
-    width: 100%;
     max-width: 780px;
-    background: #fff;
+    background: #ffe3fe;
+    height: 700px;
     margin: 0 auto;
     padding: 15px;
     box-shadow: 1px 1px 16px rgba(0, 0, 0, 0.3);
+    overflow: scroll;
+    color: #000;
 }
+
 
 .survey-hr{
     margin:10px 0;
@@ -129,7 +132,7 @@ span.scale-rating input[type=radio] {
     z-index:3;
   }
   span.scale-rating label:hover{
-  background:#fddf8d;
+  background:#440a67;
   }
   span.scale-rating input[type=radio]:last-child{
   border-right:0;
@@ -138,7 +141,7 @@ span.scale-rating input[type=radio] {
       -webkit-appearance: none;
    
       margin: 0;
-    background:#fddf8d;
+    background:#440a67;
   }
   span.scale-rating label:before
   {

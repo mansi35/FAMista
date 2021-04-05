@@ -9,8 +9,8 @@
   }
   
   .modal-main {
-    position:fixed;
-    background: white;
+    position: absolute;
+    background: transparent;
     width: 80%;
     height: auto;
     top:50%;

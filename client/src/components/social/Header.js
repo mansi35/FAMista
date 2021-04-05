@@ -28,6 +28,22 @@ function Header() {
             alert("Failed to log out");
         }
     }
+
+    const goToHome = () => {
+        let path = `/`;
+        history.push(path);
+    }
+
+    const goToSocial = () => {
+        let path = `/`;
+        history.push(path);
+    }
+
+    const goToUsers = () => {
+        let path = `/`;
+        history.push(path);
+    }
+
     if (currentUser)
     return (
         <div className='header__social'>
@@ -40,19 +56,19 @@ function Header() {
             </div>
             <div className="header__middle">
                 <div className="header__option header__option--active">
-                    <HomeIcon fontSize="large" />
+                    <HomeIcon fontSize="large" onClick={goToHome} />
                 </div>
                 <div className="header__option">
-                    <FlagIcon fontSize="large" />
+                    <FlagIcon fontSize="large" onClick={goToHome} />
                 </div>
                 <div className="header__option">
-                    <SubscriptionsOutlinedIcon fontSize="large" />
+                    <SubscriptionsOutlinedIcon fontSize="large" onClick={goToHome} />
                 </div>
                 <div className="header__option">
-                    <StorefrontOutlinedIcon fontSize="large" />
+                    <StorefrontOutlinedIcon fontSize="large" onClick={goToSocial} />
                 </div>
                 <div className="header__option">
-                    <SupervisedUserCircleIcon fontSize="large" />
+                    <SupervisedUserCircleIcon fontSize="large" onClick={goToUsers} />
                 </div>
             </div>
             <div className="header__right">
