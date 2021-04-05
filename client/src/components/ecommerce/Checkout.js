@@ -63,6 +63,7 @@ function Checkout() {
                 price = {item.itemPrice}
                 image = {item.itemImage}
                 rating = {item.itemRating} 
+                quantity = {item.itemQuantity}
                 setLength = {setLength}
                 setTotal = {setTotal}
               />

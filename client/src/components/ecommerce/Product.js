@@ -4,21 +4,38 @@ import '../../css/Product.css'
 import db from '../../firebase'
 import ShareProductModal from './ShareProductModal'
 
-function Product({id, title, image, price, rating, userId, setLength}) {
+function Product({id, title, image, price, rating, quantity, userId, setLength}) {
     const {currentUser} = useAuth();
     const [twinCount, setTwinCount]  = useState(0);
     const [twins, setTwins] = useState([]);
     const [show, setShow] = useState(false);
+
     const addToBasket = (event) => {
         event.preventDefault();
 
-        db.collection("users").doc(userId).collection("basketItems").doc(id).set({
-            itemId: id,
-            itemName: title,
-            itemImage: image,
-            itemPrice: price,
-            itemRating: rating,
-        });
+        db.collection("users").doc(userId).collection("basketItems").doc(id).get().then((doc) => {
+            if (doc.exists) {
+                quantity  = doc.data().itemQuantity;
+                db.collection("users").doc(userId).collection("basketItems").doc(id).update({
+                    itemId: id,
+                    itemName: title,
+                    itemImage: image,
+                    itemPrice: price,
+                    itemRating: rating,
+                    itemQuantity: quantity + 1,
+                });
+            }
+            else {
+                db.collection("users").doc(userId).collection("basketItems").doc(id).set({
+                    itemId: id,
+                    itemName: title,
+                    itemImage: image,
+                    itemPrice: price,
+                    itemRating: rating,
+                    itemQuantity: quantity + 1,
+                });
+            }
+        })
 
         db.collection("users").doc(userId).get().then(docc => {
             const data = docc.data()

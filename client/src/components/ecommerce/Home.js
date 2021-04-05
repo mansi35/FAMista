@@ -36,6 +36,7 @@ function Home() {
                 price={11.96}
                 rating={5}
                 image="https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._SX325_BO1,204,203,200_.jpg"
+                quantity={0}
                 userId={currentUser.uid}
                 setLength = {setLength}
             />
@@ -45,6 +46,7 @@ function Home() {
                 price={239.0}
                 rating={4}
                 image="https://images-na.ssl-images-amazon.com/images/I/81O%2BGNdkzKL._AC_SX450_.jpg"
+                quantity={0}
                 userId={currentUser.uid}
                 setLength = {setLength}
             />
@@ -57,6 +59,7 @@ function Home() {
                 price={199.99}
                 rating={3}
                 image="https://images-na.ssl-images-amazon.com/images/I/71Swqqe7XAL._AC_SX466_.jpg"
+                quantity={0}
                 userId={currentUser.uid}
                 setLength = {setLength}
             />
@@ -66,6 +69,7 @@ function Home() {
                 price={98.99}
                 rating={5}
                 image="https://media.very.co.uk/i/very/P6LTG_SQ1_0000000071_CHARCOAL_SLf?$300x400_retinamobilex2$"
+                quantity={0}
                 userId={currentUser.uid}
                 setLength = {setLength}
             />
@@ -75,6 +79,7 @@ function Home() {
                 price={598.99}
                 rating={4}
                 image="https://images-na.ssl-images-amazon.com/images/I/816ctt5WV5L._AC_SX385_.jpg"
+                quantity={0}
                 userId={currentUser.uid}
                 setLength = {setLength}
             />
@@ -87,6 +92,7 @@ function Home() {
                 price={1094.98}
                 rating={4}
                 image="https://images-na.ssl-images-amazon.com/images/I/6125mFrzr6L._AC_SX355_.jpg"
+                quantity={0}
                 userId={currentUser.uid}
                 setLength = {setLength}
             />
