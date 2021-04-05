@@ -4,6 +4,7 @@ import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import {Link, useHistory} from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import '../../css/Header.css';
+import logo from '../../resources/FAMista.png';
 
 function Header({length}) {
     const { currentUser, logout } = useAuth();
@@ -22,9 +23,9 @@ function Header({length}) {
         <div className="header">
             <Link to="/">
                 <img
-                alt="Amazon logo"
+                alt="FAMista logo"
                 className="header_logo"
-                src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
+                src={logo}
                 />
             </Link>
             

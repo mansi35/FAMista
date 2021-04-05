@@ -68,7 +68,7 @@ function Chat() {
         var clickEvent = new Event( 'click' );
         sendMessage(clickEvent, customInput);
     }
-
+    if (currentUser)
     return (
         <div className="chat">
             <div className="chat__header">
