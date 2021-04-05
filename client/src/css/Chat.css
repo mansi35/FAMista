@@ -29,13 +29,13 @@ a {
 }
 
 .chat__headerInfo > p {
-    color: gray;
+    color: white !important;
 }
 
 .chat__body {
     flex: 1;
     /* background-image: url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png"); */
-    background-color: #fff;
+    background-color: #ffe3fe;
     background-repeat: repeat;
     background-position: center;
     padding: 30px;
@@ -50,6 +50,10 @@ a {
     border-radius: 10px;
     background-color: #b4aee8;
     margin-bottom: 15px;
+}
+
+.chat__message > span {
+    color: white;
 }
 
 .chat__receiver {
@@ -67,6 +71,7 @@ a {
 .chat__timestamp {
     margin-left: 10px;
     font-size: xx-small;
+    color: #fff;
 }
 
 .chat__footer {
