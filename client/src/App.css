@@ -11,6 +11,7 @@
   place-items: center;
   height: 100vh;
   background-color: #f7dfef;
+  overflow: hidden;
 }
 
 .app__body {
