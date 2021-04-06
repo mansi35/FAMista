@@ -36,8 +36,8 @@ function Survey({handleClose, productImage, productId, productName, userId}) {
  
  
     return (
-            <div>
-            <img src={productImage} height="200" alt="product" />
+        <div className="survey-modal">
+            <img src={productImage} height="200" alt="product" style={{marginTop:100}}/>
             <br />
             <br />
             <p>Please rate the quality of this product: </p>
@@ -58,6 +58,8 @@ function Survey({handleClose, productImage, productId, productName, userId}) {
                     </label>
                 );
             })}
+
+            <hr/>
  
             <p>Please rate this product on the basis of it's comfortableness and fitting: </p>
             {[...Array(5)].map((star, i) => {
@@ -77,6 +79,8 @@ function Survey({handleClose, productImage, productId, productName, userId}) {
                     </label>
                 );
             })}
+
+            <hr/>
  
             <p>Is it a good value for money? </p>
             {[...Array(5)].map((star, i) => {
@@ -96,6 +100,8 @@ function Survey({handleClose, productImage, productId, productName, userId}) {
                     </label>
                 );
             })}
+
+            <hr/>
  
             <p>Is the material and color of this product good? </p>
             {[...Array(5)].map((star, i) => {
@@ -115,7 +121,7 @@ function Survey({handleClose, productImage, productId, productName, userId}) {
                     </label>
                 );
             })}
-            <br />
+            <hr/>
             <label>
                 What is you overall satisfaction with the product? <br />
                 <input onChange={(e) => setFeedback(e.target.value)} type="text" value={feedback} placeholder="Write feedback" />
@@ -123,7 +129,7 @@ function Survey({handleClose, productImage, productId, productName, userId}) {
             <br />
  
             <button onClick={submitFeedback} type="submit" className="register__register">Submit</button>
-            </div>
+        </div>
     )
 }
  

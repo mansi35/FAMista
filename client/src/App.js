@@ -11,7 +11,7 @@ import UpdateProfile from './components/authentication/UpdateProfile.js';
 import { AuthProvider } from './contexts/AuthContext.js';
 import Home from './components/ecommerce/Home.js';
 import Checkout from './components/ecommerce/Checkout.js';
-import Header from './components/ecommerce/Header';
+import Header from './components/social/Header';
 import MyFeed from './components/social/MyFeed';
 import Users from './components/friends/Users';
 import Requests from './components/friends/Requests';

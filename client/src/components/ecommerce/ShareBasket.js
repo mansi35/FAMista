@@ -69,17 +69,17 @@ function ShareProduct({key, id, emailAdd, name, handleClose}) {
                 </p>
                 {alreadyWritePermission? 
                     <div>
-                        <Button onClick={revokeEditAccess}>Revoke Edit Access</Button>
-                        <Button onClick={revokeAccess}>Revoke Complete Access</Button>
+                        <Button variant="flat" style={{margin:10}} onClick={revokeEditAccess}>Revoke Edit Access</Button> <br/>
+                        <Button variant="flat" style={{margin:10}} onClick={revokeAccess}>Revoke Complete Access</Button>
                     </div>: 
                     [(alreadyReadPermission? 
                         <div>
-                            <Button onClick={giveEditAccess}>Give Edit Access</Button>
-                            <Button onClick={revokeAccess}>Revoke Access</Button>
+                            <Button variant="flat" style={{margin:10}} onClick={giveEditAccess}>Give Edit Access</Button> <br/>
+                            <Button variant="flat" style={{margin:10}} onClick={revokeAccess}>Revoke Access</Button>
                         </div>:
                         <div>
-                            <input type="checkbox" onChange={handleCheck} defaultChecked={checked}/>&nbsp; Give edit access? <br />
-                            <Button onClick={share}>Share Your Basket</Button>
+                            <input type="checkbox" onChange={handleCheck} defaultChecked={checked}/>&nbsp; Give edit access <br />
+                            <Button variant="flat" style={{margin:10}} onClick={share}>Share Your Basket</Button>
                         </div> 
                     )]   
                 }
