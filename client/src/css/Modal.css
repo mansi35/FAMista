@@ -10,7 +10,7 @@
   
   .modal-main {
     position: absolute;
-    background: transparent;
+    background: #fff;
     width: 80%;
     height: auto;
     top:50%;
