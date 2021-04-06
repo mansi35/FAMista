@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import io from "socket.io-client";
 import Peer from "simple-peer";
 import styled from "styled-components";
+import '../../css/Room.css';
+import Header from '../social/Header.js'
 
 const Container = styled.div`
     padding: 20px;
@@ -136,15 +138,20 @@ const Room = (props) => {
 
     return (
         <div>
-        <Container>
-            <StyledVideo muted ref={userVideo} autoPlay playsInline />
-            {peers.map((peer, index) => {
-                return (
-                    <Video key={index} peer={peer} />
-                );
-            })}
-        </Container>
-        <button onClick={shareScreen}>Share screen</button>
+            <Header />
+            <h2 className="title">Shop together with your friends!<img src="https://img.icons8.com/fluent/50/000000/online-order.png" style={{marginLeft:10}}/>
+            <img src="https://img.icons8.com/color/48/000000/teams.png"/></h2>
+            <div className="room">
+                <StyledVideo muted ref={userVideo} autoPlay playsInline className="video"/>
+                {peers.map((peer, index) => {
+                    return (
+                        <Video key={index} peer={peer} />
+                    );
+                })}
+            </div>
+            <div style={{display:"flex", justifyContent:"center", marginTop:30}}>
+                    <button className="sharescreen-btn" onClick={shareScreen}>Share screen</button>
+            </div>
         </div>
     );
 };

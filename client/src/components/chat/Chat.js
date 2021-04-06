@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { Avatar, IconButton } from '@material-ui/core';
 import { AttachFile, MoreVert } from '@material-ui/icons';
-import DuoIcon from '@material-ui/icons/Duo';
+import VideoCallIcon from '@material-ui/icons/VideoCall';
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
 import MicIcon from '@material-ui/icons/Mic';
 import { Link, useParams } from 'react-router-dom';
@@ -92,7 +92,7 @@ function Chat() {
                 <div className="chat__headerRight">
                     <IconButton onClick={create}>
                         <Link to={`/room/${id}`} target="_blank">
-                            <DuoIcon fontSize="large" />
+                            <VideoCallIcon fontSize="large" />
                         </Link>
                     </IconButton>
                     <IconButton>
