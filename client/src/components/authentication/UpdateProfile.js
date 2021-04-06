@@ -2,6 +2,8 @@ import React, { useRef, useState } from "react"
 import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
+import Header from '../social/Header.js';
+import '../../css/UpdateProfile.css';
 
 export default function UpdateProfile() {
   const emailRef = useRef()
@@ -47,53 +49,60 @@ export default function UpdateProfile() {
 
   return (
     <div>
-      <Card>
-        <Card.Body>
-          <h2 className="text-center mb-4">Update Profile</h2>
-          {error && <Alert variant="danger">{error}</Alert>}
-          <Form onSubmit={handleSubmit}>
-          <Form.Group id="display-name">
-              <Form.Label>Display Name</Form.Label>
-              <Form.Control
-                type="name"
-                ref={nameRef}
-                required
-                defaultValue={currentUser.displayName}
-              />
-            </Form.Group>
-            <Form.Group id="email">
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                type="email"
-                ref={emailRef}
-                required
-                defaultValue={currentUser.email}
-              />
-            </Form.Group>
-            <Form.Group id="password">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="password"
-                ref={passwordRef}
-                placeholder="Leave blank to keep the same"
-              />
-            </Form.Group>
-            <Form.Group id="password-confirm">
-              <Form.Label>Password Confirmation</Form.Label>
-              <Form.Control
-                type="password"
-                ref={passwordConfirmRef}
-                placeholder="Leave blank to keep the same"
-              />
-            </Form.Group>
-            <Button disabled={loading} className="w-100" type="submit">
-              Update
-            </Button>
-          </Form>
-        </Card.Body>
-      </Card>
-      <div className="w-100 text-center mt-2">
+      <Header />
+      <div className="main-card">
+        {error && <Alert variant="danger">{error}</Alert>}
+        <Form onSubmit={handleSubmit} class="profile-form">
+          <h2 className="text-center mb-4 font-weight-bold" style={{color:"#fff"}}>Update Profile</h2>
+            <Form onSubmit={handleSubmit}>
+            <Form.Group id="display-name">
+                <Form.Label>Display Name</Form.Label>
+                <Form.Control
+                  type="name"
+                  ref={nameRef}
+                  required
+                  defaultValue={currentUser.displayName}
+                />
+              </Form.Group>
+              <Form.Group id="email">
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                  type="email"
+                  ref={emailRef}
+                  required
+                  defaultValue={currentUser.email}
+                />
+              </Form.Group>
+              <Form.Group id="password">
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  ref={passwordRef}
+                  placeholder="Leave blank to keep the same"
+                />
+              </Form.Group>
+              <Form.Group id="password-confirm">
+                <Form.Label>Password Confirmation</Form.Label>
+                <Form.Control
+                  type="password"
+                  ref={passwordConfirmRef}
+                  placeholder="Leave blank to keep the same"
+                />
+              </Form.Group>
+              <Button disabled={loading} className="w-100" variant="flat" type="submit">
+                Update
+              </Button>
+            </Form>
+        </Form>
+      </div>
+      {/* <div className="w-100 text-center mt-2">
+
         <Link to="/">Cancel</Link>
+      </div> */}
+      <div className="w-100 text-center mt-2">
+        <Button href="/" className="w-10" variant="outline-danger" style={{marginLeft:30}}>
+                  Cancel
+        </Button>
       </div>
     </div>
   )
