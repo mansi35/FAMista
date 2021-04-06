@@ -14,7 +14,7 @@ function SurveyProduct({key, id, productName, productImage}) {
 
     return (
         <div className="checkoutProduct">
-            <div className="checkoutProduct_info">
+            <div className="product">
                 <img src={productImage} alt="item" />
                 <p className="checkoutProduct_title">
                     {productName}
