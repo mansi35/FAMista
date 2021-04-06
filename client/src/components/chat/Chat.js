@@ -115,7 +115,7 @@ function Chat() {
                         <SurveyModal show={show} handleClose={hideModal} image={message.imageUrl} itemId={message.productId} itemName={message.productName} userId={message.userId}>
                             <p>Modal</p>
                         </SurveyModal>
-                        <button onClick={showModal}>Fill Product Survey</button><br />
+                        <button onClick={showModal} className="productSurvey__btn">Fill Product Survey</button><br />
                         </div>
                         }
                         {message.message.startsWith(`${message.name} is inviting you to shop virtually! Please click on this message to join!`) ? 
