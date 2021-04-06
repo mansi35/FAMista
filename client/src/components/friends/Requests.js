@@ -3,6 +3,7 @@ import "../../css/Checkout.css";
 import Request from './Request';
 import db from '../../firebase';
 import {useAuth} from '../../contexts/AuthContext';
+import Header from '../social/Header';
 
 
 function Requests() {
@@ -21,22 +22,20 @@ function Requests() {
     }, [])
 
     return (
-    <div className="checkout">
-      <div className="checkout__left">
-
-        <div>
-          <h2 className="checkout__title">Friend Requests</h2>
-          {friends.map(({ requestId, request }) => (
-              <Request 
-                key = {requestId}
-                id = {requestId}
-                emailAdd = {request.requestEmail}
-                name = {request.requestName}
-                profilePic = {request.requestPic}
-              />
-          ))}
-        </div>
-      </div>
+    <div>
+    <Header />
+    <h2 className="users-heading">Friend Requests</h2>
+    <div className="user__row">
+    {friends.map(({ requestId, request }) => (
+               <Request 
+                 key = {requestId}
+                 id = {requestId}
+                 emailAdd = {request.requestEmail}
+                 name = {request.requestName}
+                 profilePic = {request.requestPic}
+               />
+           ))}
+    </div>
     </div>
   );
 }

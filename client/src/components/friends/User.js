@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import '../../css/CheckoutProduct.css';
+import React, { useEffect, useState } from 'react';
 import '../../css/Users.css';
 import db from '../../firebase';
 import {useAuth} from '../../contexts/AuthContext';
