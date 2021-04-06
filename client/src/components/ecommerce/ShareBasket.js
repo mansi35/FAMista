@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../../css/CheckoutProduct.css';
 import db from '../../firebase';
 import {useAuth} from "../../contexts/AuthContext";
@@ -7,6 +7,38 @@ import {Button} from 'react-bootstrap';
 function ShareProduct({key, id, emailAdd, name, handleClose}) {
     const {currentUser} = useAuth();
     const [checked, setChecked] = useState(false);
+    const [alreadyReadPermission, setAlreadyReadPermission] = useState(false);
+    const [alreadyWritePermission, setAlreadyWritePermission] = useState(false);
+
+    useEffect(() => {
+        db.collection('users').doc(id).collection('friends').doc(currentUser.uid).get().then((doc) => {
+            if (doc.data().read === true && doc.data().write === true) {
+                setAlreadyWritePermission(true);
+            }
+            else if (doc.data().read === true) {
+                setAlreadyReadPermission(true);
+            }
+        })
+    }, [])
+
+    const revokeAccess = () => {
+        db.collection('users').doc(id).collection('friends').doc(currentUser.uid).update({
+            read: false,
+            write: false
+        })
+    }
+
+    const revokeEditAccess = () => {
+        db.collection('users').doc(id).collection('friends').doc(currentUser.uid).update({
+            write: false
+        })
+    }
+
+    const giveEditAccess = () => {
+        db.collection('users').doc(id).collection('friends').doc(currentUser.uid).update({
+            write: true
+        })
+    }
 
     const share = () => {
         db.collection('users').doc(id).collection('friends').doc(currentUser.uid).update({
@@ -35,8 +67,22 @@ function ShareProduct({key, id, emailAdd, name, handleClose}) {
                 <p className="checkoutProduct_price">
                     <strong>Email ID: {emailAdd}</strong>
                 </p>
-                <input type="checkbox" onChange={handleCheck} defaultChecked={checked}/>&nbsp; Give edit access? <br />
-                <Button onClick={share} >Share Your Basket</Button>
+                {alreadyWritePermission? 
+                    <div>
+                        <Button onClick={revokeEditAccess}>Revoke Edit Access</Button>
+                        <Button onClick={revokeAccess}>Revoke Complete Access</Button>
+                    </div>: 
+                    [(alreadyReadPermission? 
+                        <div>
+                            <Button onClick={giveEditAccess}>Give Edit Access</Button>
+                            <Button onClick={revokeAccess}>Revoke Access</Button>
+                        </div>:
+                        <div>
+                            <input type="checkbox" onChange={handleCheck} defaultChecked={checked}/>&nbsp; Give edit access? <br />
+                            <Button onClick={share}>Share Your Basket</Button>
+                        </div> 
+                    )]   
+                }
             </div>
         </div>
     )
