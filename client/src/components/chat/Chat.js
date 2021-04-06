@@ -65,7 +65,7 @@ function Chat() {
         a.appendChild(link);
         a.title = "Enter room";
         a.href = `/room/${id}`;
-        var customInput = `${currentUser.displayName} is inviting you to shop virtually! Please click on this message to join!`;
+        var customInput = `${currentUser.displayName} is inviting you to shop virtually! Please click on this message to join! ${id}`;
         console.log(customInput.slice(0, customInput.length-36))
         var clickEvent = new Event( 'click' );
         sendMessage(clickEvent, customInput);
@@ -125,7 +125,7 @@ function Chat() {
                         <span className="chat__boxmessage">{id !== '' ? 
                             <div>
                             <Link to={`/room/${id}`} target="_blank">
-                                {message.message}
+                                {message.message.slice(0, message.message.length-36)}
                             </Link> 
                             {id=''}
                             </div>
