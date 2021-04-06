@@ -1,99 +1,130 @@
 import React, { useState } from 'react'
 import '../../css/Survey.css'
-import Rating from '@material-ui/lab/Rating';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
 import db from '../../firebase';
 import {useAuth} from "../../contexts/AuthContext";
-
+import {FaStar} from "react-icons/fa"
+ 
 function Survey({handleClose, productImage, productId, productName, userId}) {
-	const {currentUser} = useAuth();
-    const [quality, setQuality] = useState(0);
-    const [fitting, setFitting] = useState(0);
-    const [valMoney, setValMoney] = useState(0);
-    const [material, setMaterial] = useState(0);
+    const {currentUser} = useAuth();
+    const [quality, setQuality] = useState(null);
+    const [hoverQuality, setHoverQuality] = useState(null)
+    const [fitting, setFitting] = useState(null);
+    const [hoverFitting, setHoverFitting] = useState(null)
+    const [valMoney, setValMoney] = useState(null);
+    const [hoverValMoney, setHoverValMoney] = useState(null)
+    const [material, setMaterial] = useState(null);
+    const [hoverMaterial, setHoverMaterial] = useState(null)
     const [feedback, setFeedback] = useState('');
-
+ 
     const submitFeedback = () => {
-		db.collection('users').doc(userId).collection('surveyResults').doc(productId).set({
-			productName: productName,
-			productImage: productImage,
-			productId: productId
-		})
-
-		db.collection('users').doc(userId).collection('surveyResults').doc(productId).collection('reviews').doc(currentUser.uid).set({
-			productQuality: quality,
-			productFitting: fitting,
-			productValMoney: valMoney,
-			productMaterial: material,
-			productFeedback: feedback
-		})
-		handleClose();
+        db.collection('users').doc(userId).collection('surveyResults').doc(productId).set({
+            itemName: productName,
+            itemImage: productImage,
+            itemId: productId
+        })
+ 
+        db.collection('users').doc(userId).collection('surveyResults').doc(productId).collection('reviews').doc(currentUser.uid).set({
+            reviewerName: currentUser.displayName,
+            productQuality: quality,
+            productFitting: fitting,
+            productValMoney: valMoney,
+            productMaterial: material,
+            productFeedback: feedback
+        })
+        handleClose();
     }
-
-
+ 
+ 
     return (
-            <div class="feedback">
+            <div>
             <img src={productImage} height="200" alt="product" />
             <br />
             <br />
-            <Box component="fieldset" mb={3} borderColor="transparent">
-				<Typography component="legend">Please rate the quality of this product: </Typography>
-				<Rating
-					name="simple-controlled"
-					value={quality}
-					onChange={(event, newValue) => {
-					console.log(newValue);
-					setQuality(newValue);
-					}}
-				/>
-            </Box>
-
-            <Box component="fieldset" mb={3} borderColor="transparent">
-				<Typography component="legend">Please rate this product on the basis of it's comfortableness and fitting: </Typography>
-				<Rating
-					name="simple-controlled"
-					value={fitting}
-					onChange={(event, newValue) => {
-					console.log(newValue);
-					setFitting(newValue);
-					}}
-				/>
-            </Box>
-
-            <Box component="fieldset" mb={3} borderColor="transparent">
-				<Typography component="legend">Is it a good value for money? </Typography>
-				<Rating
-					name="simple-controlled"
-					value={valMoney}
-					onChange={(event, newValue) => {
-					console.log(newValue);
-					setValMoney(newValue);
-					}}
-				/>
-            </Box>
-
-            <Box component="fieldset" mb={3} borderColor="transparent">
-				<Typography component="legend">Is the material and color of this product good? </Typography>
-				<Rating
-					name="simple-controlled"
-					value={material}
-					onChange={(event, newValue) => {
-					console.log(newValue);
-					setMaterial(newValue);
-					}}
-				/>
-            </Box>
-
+            <p>Please rate the quality of this product: </p>
+            {[...Array(5)].map((star, i) => {
+                const ratingValue = i + 1;
+ 
+                return (
+                    <label>
+                        <input type="radio" className="d-none" name="rating" value={ratingValue} 
+                            onClick={() => setQuality(ratingValue)} />
+                        <FaStar
+                            className="star"
+                            color={ratingValue <= (hoverQuality || quality) ? "#ffc107" : "#e4e5e9"}
+                            size={40}
+                            onMouseEnter={() => setHoverQuality(ratingValue)}
+                            onMouseLeave={() => setHoverQuality(null)}
+                        />
+                    </label>
+                );
+            })}
+ 
+            <p>Please rate this product on the basis of it's comfortableness and fitting: </p>
+            {[...Array(5)].map((star, i) => {
+                const ratingValue = i + 1;
+ 
+                return (
+                    <label>
+                        <input type="radio" className="d-none" name="rating" value={ratingValue} 
+                            onClick={() => setFitting(ratingValue)} />
+                        <FaStar
+                            className="star"
+                            color={ratingValue <= (hoverFitting || fitting) ? "#ffc107" : "#e4e5e9"}
+                            size={40}
+                            onMouseEnter={() => setHoverFitting(ratingValue)}
+                            onMouseLeave={() => setHoverFitting(null)}
+                        />
+                    </label>
+                );
+            })}
+ 
+            <p>Is it a good value for money? </p>
+            {[...Array(5)].map((star, i) => {
+                const ratingValue = i + 1;
+ 
+                return (
+                    <label>
+                        <input type="radio" className="d-none" name="rating" value={ratingValue} 
+                            onClick={() => setValMoney(ratingValue)} />
+                        <FaStar
+                            className="star"
+                            color={ratingValue <= (hoverValMoney || valMoney) ? "#ffc107" : "#e4e5e9"}
+                            size={40}
+                            onMouseEnter={() => setHoverValMoney(ratingValue)}
+                            onMouseLeave={() => setHoverValMoney(null)}
+                        />
+                    </label>
+                );
+            })}
+ 
+            <p>Is the material and color of this product good? </p>
+            {[...Array(5)].map((star, i) => {
+                const ratingValue = i + 1;
+ 
+                return (
+                    <label>
+                        <input type="radio" className="d-none" name="rating" value={ratingValue} 
+                            onClick={() => setMaterial(ratingValue)} />
+                        <FaStar
+                            className="star"
+                            color={ratingValue <= (hoverMaterial || material) ? "#ffc107" : "#e4e5e9"}
+                            size={40}
+                            onMouseEnter={() => setHoverMaterial(ratingValue)}
+                            onMouseLeave={() => setHoverMaterial(null)}
+                        />
+                    </label>
+                );
+            })}
+            <br />
             <label>
-				What is you overall satisfaction with the product? <br />
-				<input onChange={(e) => setFeedback(e.target.value)} type="text" value={feedback} placeholder="Write feedback" />
+                What is you overall satisfaction with the product? <br />
+                <input onChange={(e) => setFeedback(e.target.value)} type="text" value={feedback} placeholder="Write feedback" />
             </label>
             <br />
-
+ 
             <button onClick={submitFeedback} type="submit" className="register__register">Submit</button>
             </div>
     )
 }
-
+ 
 export default Survey
