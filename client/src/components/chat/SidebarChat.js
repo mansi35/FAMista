@@ -4,45 +4,69 @@ import {Avatar} from "@material-ui/core";
 import db from "../../firebase";
 import {Link} from "react-router-dom";
 import {useAuth} from '../../contexts/AuthContext';
+import AddGroupUsersModal from './AddGroupUsersModal';
 
-function SidebarChat({id, name, profilePic, addNewChat}) {
-    const [messages, setMessages] = useState("");
+function SidebarChat({id, name, profilePic, addNewChat, group}) {
     const {currentUser} = useAuth();
+    const [messages, setMessages] = useState("");
+    const [groupName, setGroupName] = useState("");
+    const [groupUsers, setGroupUsers] = useState([currentUser.uid]);
+    const [show, setShow] = useState(false);
 
     useEffect(() => {
-        if(id) {
+        if(id && !group) {
             db.collection('users').doc(currentUser.uid).collection('friends').doc(id).collection('messages').orderBy('timestamp', 'desc').onSnapshot(snapshot => (
+                setMessages(snapshot.docs.map((doc) => doc.data())))
+            );
+        }
+        else if (id && group) {
+            db.collection('rooms').doc(id).collection('messages').orderBy('timestamp', 'desc').onSnapshot(snapshot => (
                 setMessages(snapshot.docs.map((doc) => doc.data())))
             );
         }
     // eslint-disable-next-line
     }, [id])
 
-    const createChat = () => {
-        const roomName = prompt("Please Enter Name for Chat");
-
-        if(roomName){
-            db.collection("rooms").add({
-                name: roomName
-            })
-        }
+    const showModal = () => {
+        setShow(true);
+    };
+    
+    const hideModal = () => {
+        setShow(false);
     };
 
     return !addNewChat ? (
         <div className="chat__side">
-        <Link to={`/chat/rooms/${id}`} key={id}>
-            <div className="sidebarChat">
-                <Avatar src={profilePic}/>
-                <div className="sidebarChat__info">
-                    <h2 style={{color: '#440a67'}}>{name}</h2>
-                    <p>{messages[0]?.message}</p>
+        {group? 
+            <Link to={`/chat/rooms/${id}/${group}`} key={id}>
+                <div className="sidebarChat">
+                    <Avatar src={profilePic}/>
+                    <div className="sidebarChat__info">
+                        <h2 style={{color: '#440a67'}}>{name}</h2>
+                        {/*<p>{messages[0]?.message.startsWith(`${name} is inviting you to shop virtually! Please click on this message to join!`) ? messages[0]?.message.slice(0, messages[0]?.message.length-36): messages[0]?.message}</p>*/}
+                        <p>{messages[0]?.message.slice(0, messages[0]?.message.length-36)}</p>
+                    </div>
                 </div>
-            </div>
-        </Link>
+            </Link> :
+            <Link to={`/chat/rooms/${id}/${2}`} key={id}>
+                <div className="sidebarChat">
+                    <Avatar src={profilePic}/>
+                    <div className="sidebarChat__info">
+                        <h2 style={{color: '#440a67'}}>{name}</h2>
+                        <p>{messages[0]?.message}</p>
+                    </div>
+                </div>
+            </Link>
+        }
         </div>
     ) : (
-        <div onClick={createChat} className="sidebarChat">
+        <div>
+        <div onClick={showModal} className="sidebarChat">
             <h3 className="add-new-chat-title" style={{color: '#440a67'}}>Add New Chat</h3>
+        </div>
+        <AddGroupUsersModal show={show} handleClose={hideModal} setGroupName={setGroupName} setGroupUsers={setGroupUsers} groupUsers={groupUsers} groupName={groupName}>
+            <p>Modal</p>
+        </AddGroupUsersModal>
         </div>
     )
 }
