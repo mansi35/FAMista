@@ -5,7 +5,7 @@ import db from '../../firebase';
 import {useAuth} from '../../contexts/AuthContext';
 
 
-function ShareProductWithFriends({itemImage, itemId, itemTitle, handleClose}) {
+function ShareProductWithFriends({itemImage, itemId, itemTitle, userId, handleClose}) {
     const [friends, setFriends] = useState([]);
     const { currentUser } = useAuth();
 
@@ -35,6 +35,7 @@ function ShareProductWithFriends({itemImage, itemId, itemTitle, handleClose}) {
                 itemImage = {itemImage}
                 itemId = {itemId}
                 itemTitle = {itemTitle}
+                userId={userId}
                 handleClose = {handleClose}
               />
           ))}
