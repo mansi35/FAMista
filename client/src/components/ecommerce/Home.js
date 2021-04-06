@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../../css/Home.css";
 import Product from "./Product";
 import {useAuth} from '../../contexts/AuthContext';
-import Header from "./Header";
+import Header from "../social/Header.js";
 import db from '../../firebase';
 
 function Home() {
