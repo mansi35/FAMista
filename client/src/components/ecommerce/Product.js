@@ -127,9 +127,15 @@ function Product({id, title, image, price, rating, quantity, userId, setLength})
             </ShareProductModal>
             <div>
             <center  className="product__options">
+<<<<<<< HEAD
+            <button onClick={seeTwinCount}>Twin Count</button>
+            <button onClick={addToBasket}>Add to Basket</button>
+            <button onClick={showModal}>Share Product</button>
+=======
                 <button onClick={seeTwinCount}>Twin Count</button>
                 <button onClick={addToBasket}>Add to Basket</button>
                 <button onClick={showModal}>Share Product</button>
+>>>>>>> 5708c763276317b0d5e1363913135e0d99dc1f86
             </center>
             </div>
         </div>

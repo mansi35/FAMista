@@ -2,6 +2,8 @@ import React, { useState } from "react"
 import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../../contexts/AuthContext.js"
 import { Link } from "react-router-dom"
+import Header from "../social/Header";
+import '../../css/UpdateProfile.css';
 
 export default function ForgotPassword() {
     const [email, setEmail] = useState('');
@@ -28,28 +30,27 @@ export default function ForgotPassword() {
 
     return (
         <div>
-        <Card>
-            <Card.Body>
-            <h2 className="text-center mb-4">Password Reset</h2>
-            {error && <Alert variant="danger">{error}</Alert>}
-            {message && <Alert variant="success">{message}</Alert>}
-            <Form onSubmit={handleSubmit}>
-                <Form.Group id="email">
-                <Form.Label>Email</Form.Label>
-                <Form.Control type="email" onChange={(e) => setEmail(e.target.value)} required />
-                </Form.Group>
-                <Button disabled={loading} className="w-100" type="submit">
-                Reset Password
-                </Button>
-            </Form>
-            <div className="w-100 text-center mt-3">
-                <Link to="/login">Login</Link>
+            <Header />
+            <div className="main-card">
+                {error && <Alert variant="danger">{error}</Alert>}
+                {message && <Alert variant="success">{message}</Alert>}
+                    <Form onSubmit={handleSubmit} className="profile-form">
+                        <h2 className="text-center mb-4" style={{color:"#fff"}}>Password Reset</h2>
+                        <Form.Group id="email">
+                            <Form.Label>Email</Form.Label>
+                            <Form.Control type="email" onChange={(e) => setEmail(e.target.value)} required />
+                        </Form.Group>
+                        <Button disabled={loading} className="w-100" variant="flat" type="submit">
+                        Reset Password
+                        </Button>
+                    </Form>
             </div>
-            </Card.Body>
-        </Card>
-        <div className="w-100 text-center mt-2">
-            Need an account? <Link to="/register">Sign Up</Link>
-        </div>
+            <div className="w-100 text-center mt-3">
+                Already have an account? <Link to="/login">Login</Link>
+            </div>
+            <div className="w-100 text-center mt-2">
+                Need an account? <Link to="/register">Sign Up</Link>
+            </div>
         </div>
     )
 }
