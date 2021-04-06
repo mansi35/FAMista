@@ -79,7 +79,7 @@ function Checkout() {
 		  <ShareBasketModal show={show} handleClose={hideModal}>
           <p>Modal</p>
       </ShareBasketModal>
-      <button onClick={showModal}>Share Basket</button>
+      <button onClick={showModal} style={{margin:"20px 30px"}}>Share Basket</button>
       </div>
     </div>
   );
