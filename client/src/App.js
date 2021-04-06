@@ -22,6 +22,7 @@ import SharedBaskets from "./components/ecommerce/SharedBaskets";
 import SharedFriendBasket from "./components/ecommerce/SharedFriendBasket";
 import MyChatEmpty from "./components/chat/MyChatEmpty";
 import MyChat from "./components/chat/MyChat";
+import SurveyResults from "./components/chat/SurveyResults";
 
 function App() {
   return (
@@ -56,6 +57,7 @@ function App() {
           <PrivateRoute path="/basket/:userId" component={SharedFriendBasket} />
           <PrivateRoute path="/room/:roomID" component={Room} />
           <PrivateRoute path="/social" component={MyFeed} />
+          <PrivateRoute path="/surveyResults" component={SurveyResults} />
         </Switch>
         </AuthProvider>
       </Router>
