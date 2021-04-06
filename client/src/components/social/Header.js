@@ -2,10 +2,9 @@ import React from 'react'
 import '../../css/HeaderSocial.css'
 import SearchIcon from '@material-ui/icons/Search';
 import HomeIcon from '@material-ui/icons/Home';
-import FlagIcon from '@material-ui/icons/Flag';
 import StorefrontOutlinedIcon from '@material-ui/icons/StorefrontOutlined';
-import SubscriptionsOutlinedIcon from '@material-ui/icons/SubscriptionsOutlined';
 import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircle';
+import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import AddIcon from '@material-ui/icons/Add';
 import ForumIcon from '@material-ui/icons/Forum';
 import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
@@ -32,15 +31,40 @@ function Header() {
     const goToHome = () => {
         let path = `/`;
         history.push(path);
-    }
+    };
 
     const goToSocial = () => {
-        let path = `/`;
+        let path = `/social`;
         history.push(path);
     }
 
-    const goToUsers = () => {
-        let path = `/`;
+    const goToFriends = () => {
+        let path = `/dashboard`;
+        history.push(path);
+    }
+
+    const goToDashboard = () => {
+        let path = `/update-profile`;
+        history.push(path);
+    }
+
+    const goToSharedBaskets = () => {
+        let path = `/baskets`;
+        history.push(path);
+    }
+
+    const goToMyBasket = () => {
+        let path = `/checkout`;
+        history.push(path);
+    }
+
+    const goToChat = () => {
+        let path = `/chat`;
+        history.push(path);
+    }
+
+    const goToRequests = () => {
+        let path = `/requests`;
         history.push(path);
     }
 
@@ -59,22 +83,23 @@ function Header() {
                     <HomeIcon fontSize="large" onClick={goToHome} />
                 </div>
                 <div className="header__option">
-                    <FlagIcon fontSize="large" onClick={goToHome} />
-                </div>
-                <div className="header__option">
-                    <SubscriptionsOutlinedIcon fontSize="large" onClick={goToHome} />
+                    <ShoppingBasketIcon fontSize="large" onClick={goToMyBasket} />
                 </div>
                 <div className="header__option">
                     <StorefrontOutlinedIcon fontSize="large" onClick={goToSocial} />
                 </div>
                 <div className="header__option">
-                    <SupervisedUserCircleIcon fontSize="large" onClick={goToUsers} />
+                    <img src="https://img.icons8.com/material/80/000000/favorite-cart.png" onClick={goToSharedBaskets} 
+                        style={{height: 32, width: 32, filter: "brightness(0) invert(1)"}} alt="shared basket icon"/>
+                </div>
+                <div className="header__option">
+                    <SupervisedUserCircleIcon fontSize="large" onClick={goToFriends} />
                 </div>
             </div>
             <div className="header__right">
                 <div className="header__info">
                     <Avatar src={currentUser.photoURL} />
-                    <h4>{currentUser.displayName}</h4>
+                    <a onClick={goToDashboard} style={{color: "white", cursor:"pointer"}}>{currentUser.displayName}</a>
                 </div>
                 <IconButton>
                     <div className="header__option2">
@@ -83,12 +108,12 @@ function Header() {
                 </IconButton>
                 <IconButton>
                     <div className="header__option2">
-                        <ForumIcon />
+                        <ForumIcon onClick={goToChat} />
                     </div>
                 </IconButton>
                 <IconButton>
                     <div className="header__option2">
-                        <NotificationsActiveIcon />
+                        <NotificationsActiveIcon onClick={goToRequests}/>
                     </div>
                 </IconButton>
                 <IconButton onClick={handleSubmit}>
