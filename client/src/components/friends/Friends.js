@@ -6,24 +6,28 @@ import Friend from './Friend';
 import db from '../../firebase';
 import {useAuth} from '../../contexts/AuthContext';
 import { Avatar } from "@material-ui/core";
+import Header from "../social/Header";
+import '../../css/Users.css';
+// import likeIcon from '../../resources/like-16x16(1).png';
+import emailIcon from '../../resources/email.png';
 
 
 function Friends() {
     const [friends, setFriends] = useState([]);
-    const [error, setError] = useState("")
-    const { currentUser, logout } = useAuth();
-    const history = useHistory();
+    // const [error, setError] = useState("")
+    const { currentUser} = useAuth();
+    // const history = useHistory();
 
-    async function logOut() {
-        setError("");
+    // async function logOut() {
+    //     setError("");
 
-        try {
-            await logout();
-            history.push("/login");
-        } catch {
-            setError("Failed to log out");
-        }
-    }
+    //     try {
+    //         await logout();
+    //         history.push("/login");
+    //     } catch {
+    //         setError("Failed to log out");
+    //     }
+    // }
 
     useEffect(() => {
         db.collection("users").doc(currentUser.uid).collection("friends")
@@ -36,41 +40,37 @@ function Friends() {
     // eslint-disable-next-line
     }, [])
 
-    return (
-      <div>
-      <Card>
-        <Card.Body>
-        <h2 className="text-center mb-4">Profile</h2>
-        {error && <Alert variant="danger">{error}</Alert>}
-        <Avatar src={currentUser.photoURL} />
-        <strong>Name:</strong> {currentUser.displayName} <br />
-        <strong>Email:</strong> {currentUser.email} <br />
-        <Link to="/update-profile" className="btn btn-primary w-100 mt-3">
-            Update Profile
-        </Link>
-        </Card.Body>
-      </Card>
-      <div className="checkout">
-      <div className="checkout__left">
+  return (
+    // <div>
+    //   <Header />
+    //   <h2 className="text-center mb-4" style={{color:"white", marginTop:20}}>My Profile</h2>
+    //   <div className="main-card" style={{maxWidth:"50%"}}>
+    //     {friends.map(({ friendId, friend }) => (
+    //         <Friend 
+    //           key = {friendId}
+    //           id = {friendId}
+    //           emailAdd = {friend.friendEmail}
+    //           name = {friend.friendName}
+    //           profilePic = {friend.friendProfilePic}
+    //         />
+    //     ))}
+    //   </div>
+    // </div> 
 
-        <div>
-          <h2 className="checkout__title">My Shopping Buddies</h2>
-          {friends.map(({ friendId, friend }) => (
-              <Friend 
-                key = {friendId}
-                id = {friendId}
-                emailAdd = {friend.friendEmail}
-                name = {friend.friendName}
-                profilePic = {friend.friendProfilePic}
-              />
-          ))}
-        </div>
-      </div>
-    </div>
-      <div className="w-100 text-center mt-2">
-        <Button variant="link" onClick={logOut}>
-        Log Out
-        </Button>
+    <div>
+      <Header />
+      <h2 className="users-heading">Your Shopping Buddies <span><img src="https://img.icons8.com/emoji/48/000000/purple-heart.png" alt="emoji" />
+        <img src="https://img.icons8.com/color/48/000000/friends-hanging-out.png" alt="emoji" /></span></h2>
+      <div className="user__row">
+      {friends.map(({ friendId, friend }) => (
+             <Friend 
+              key = {friendId}
+              id = {friendId}
+              emailAdd = {friend.friendEmail}
+              name = {friend.friendName}
+              profilePic = {friend.friendProfilePic}
+            />
+         ))}
       </div>
     </div>
   );
