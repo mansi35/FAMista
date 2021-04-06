@@ -23,7 +23,7 @@ function ProductReviews({productId}) {
             <div className="checkout__left">
     
             <div>
-                <h2 className="checkout__title">Friend Requests</h2>
+                <h2 className="checkout__title">Product Reviews</h2>
                 {reviews.map(({ reviewId, review }) => (
                     <ProductReview 
                         key = {reviewId}
