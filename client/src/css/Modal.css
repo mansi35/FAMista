@@ -17,6 +17,21 @@
     left:50%;
     transform: translate(-50%,-50%);
   }
+
+  .modal-main > button {
+    background-color: #fff;
+    border: solid 2px rgb(191, 0, 0);
+    color: rgb(191, 0, 0);
+    padding: 7px 24px;
+    margin: 20px 40px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 20px;
+    opacity: 1;
+    margin-top: 10px;
+    justify-content: space-between;
+  }
   
   .display-block {
     display: block;

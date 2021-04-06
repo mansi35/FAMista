@@ -2,7 +2,10 @@ import React, { useState } from 'react'
 import { useAuth } from '../../contexts/AuthContext';
 import '../../css/Product.css'
 import db from '../../firebase'
-import ShareProductModal from './ShareProductModal'
+import ShareProductModal from './ShareProductModal';
+import ShareIcon from '@material-ui/icons/Share';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+import GroupAddIcon from '@material-ui/icons/GroupAdd';
 
 function Product({id, title, image, price, rating, quantity, userId, setLength}) {
     const {currentUser} = useAuth();
@@ -102,6 +105,14 @@ function Product({id, title, image, price, rating, quantity, userId, setLength})
                         <p className="star">⭐</p>
                     ))}
                 </div>
+                <div className="product__options">
+                    {/* <button onClick={seeTwinCount}>Twin Count</button> */}
+                    <GroupAddIcon fontSize="large" onClick={seeTwinCount} style={{color:"#440a67", cursor:"pointer", pointerEvents:"auto", marginBottom:10, marginTop:10}}/> <br />
+                    {/* <button onClick={addToBasket}>Add to Basket</button> */}
+                    <AddShoppingCartIcon fontSize="large" onClick={addToBasket} style={{color:"#440a67", cursor:"pointer", marginBottom:10}}/> <br/>
+                    <ShareIcon fontSize="large" onClick={showModal} style={{color:"#440a67", cursor:"pointer", marginBottom:10}}/><br/>
+                    {/* <button onClick={showModal}>Share Product</button> */}
+                </div>
                 <div>{twins.map( e =>
                     <div>{ e }</div>
                   )}
@@ -115,11 +126,6 @@ function Product({id, title, image, price, rating, quantity, userId, setLength})
                 <p>Modal</p>
             </ShareProductModal>
             <div>
-            <center  className="product__options">
-            <button onClick={seeTwinCount}>Twin Count</button>
-            <button onClick={addToBasket}>Add to Basket</button>
-            <button onClick={showModal}>Share Product</button>
-            </center>
             </div>
         </div>
     )
