@@ -24,6 +24,7 @@ function Survey({handleClose, productImage, productId, productName, userId}) {
         })
  
         db.collection('users').doc(userId).collection('surveyResults').doc(productId).collection('reviews').doc(currentUser.uid).set({
+            reviewerName: currentUser.displayName,
             productQuality: quality,
             productFitting: fitting,
             productValMoney: valMoney,

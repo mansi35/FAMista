@@ -22,7 +22,7 @@ function SurveyResults() {
         <div className="checkout__left">
   
           <div>
-            <h2 className="checkout__title">Friend Requests</h2>
+            <h2 className="checkout__title">Survey Results</h2>
             {products.map(({ productId, product }) => (
                 <SurveyProduct 
                   key = {productId}

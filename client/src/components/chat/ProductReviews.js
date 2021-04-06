@@ -33,6 +33,7 @@ function ProductReviews({productId}) {
                         material = {review.productMaterial}
                         quality = {review.productQuality}
                         valMoney = {review.productValMoney}
+                        reviewer = {review.reviewerName}
                     />
                 ))}
             </div>
