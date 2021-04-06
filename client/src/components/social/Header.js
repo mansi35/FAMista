@@ -15,7 +15,7 @@ import { useHistory } from 'react-router';
 import logo from '../../resources/FAMista.png'
 
 
-function Header() {
+function Header({length}) {
     const { currentUser, logout } = useAuth();
     const history = useHistory();
 
@@ -84,6 +84,7 @@ function Header() {
                 </div>
                 <div className="header__option">
                     <ShoppingBasketIcon fontSize="large" onClick={goToMyBasket} />
+                    <span className="header_optionLineTwo header_basketCount">{length}</span>
                 </div>
                 <div className="header__option">
                     <StorefrontOutlinedIcon fontSize="large" onClick={goToSocial} />
