@@ -60,3 +60,14 @@
 .star{
     color: goldenrod;
 }
+
+.btn-flat {
+    background-color: #580d87;
+    color: white;
+    border-radius: 20px;
+}
+
+.btn-flat:hover {
+    background-color: #440a67;
+    color: #fff;
+}
