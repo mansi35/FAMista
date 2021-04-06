@@ -10,6 +10,7 @@
 .card-inline {
     display: flex;
     flex-direction: row;
+    justify-content: center;
 }
 
 .users-heading {
@@ -20,7 +21,7 @@
 }
 
 .card {
-    width: 24%;
+    width: 23%;
     background: #fff;
     margin-bottom: 50px;
     transition: 0.3s;

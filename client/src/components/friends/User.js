@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../../css/CheckoutProduct.css';
 import '../../css/Users.css';
 import db from '../../firebase';
@@ -9,6 +9,15 @@ import  { Avatar } from '@material-ui/core';
 
 function User({key, id, emailAdd, gender, name, profilePic}) {
     const {currentUser} = useAuth();
+    const [alreadyFriend, setAlreadyFriend] = useState(false);
+
+    useEffect(() => {
+        db.collection('users').doc(currentUser.uid).collection("friends").doc(id).get().then((doc) => {
+            if (doc.exists) {
+                setAlreadyFriend(true);
+            }
+        })
+    }, [])
 
     const sendRequest = (event) => {
         event.preventDefault();
@@ -40,7 +49,7 @@ function User({key, id, emailAdd, gender, name, profilePic}) {
                 </div>
                 <p><span><img src={likeIcon} alt="like" style={{height:16, width:16, marginRight:10}} /></span>{gender}</p>
                 <p><span><img src={emailIcon} alt="like" style={{height:22, width:22, marginRight:5}} /></span>{emailAdd}</p>
-                <button onClick={sendRequest}>Add Buddy</button>
+                {alreadyFriend? <p><br />👩🏻‍🤝‍🧑🏻 Friends</p>: <button onClick={sendRequest}>Add Buddy</button>}
             </div>
         </div>
     )
