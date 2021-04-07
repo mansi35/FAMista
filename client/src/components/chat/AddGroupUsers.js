@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useAuth } from '../../contexts/AuthContext';
 import db from '../../firebase';
 import AddGroupUser from './AddGroupUser';
+import '../../css/SidebarChat.css';
 
 function AddGroupUsers({handleClose, setGroupName, setGroupUsers, groupUsers, groupName}) {
     const [users, setUsers] = useState([]);
@@ -47,16 +48,18 @@ function AddGroupUsers({handleClose, setGroupName, setGroupUsers, groupUsers, gr
 
     return (
         <div>
-            <label>
-                Enter Group Name <br />
-                <input 
-                    onChange={(e) => {
-                        setGroupName(e.target.value)
-                        console.log(groupName)
-                    }} 
-                    type="text" value={groupName} 
-                    placeholder="Group Name" />
-            </label>
+            <div className="groupModal__header">
+                <label>
+                    Enter Group Name <br />
+                    <input 
+                        onChange={(e) => {
+                            setGroupName(e.target.value)
+                            console.log(groupName)
+                        }} 
+                        type="text" value={groupName} 
+                        placeholder="Group Name" className="groupModal__search"/>
+                </label>
+            </div>
             <div className="sidebar__chats">
             {users.map(({ userId, user }) => (
                 <AddGroupUser 
@@ -69,8 +72,10 @@ function AddGroupUsers({handleClose, setGroupName, setGroupUsers, groupUsers, gr
                 />
             ))}
             </div>
-            {error && <Alert variant="danger">{error}</Alert>}
-            <button onClick={createGroup} type="submit" className="register__register">Create Group</button>
+            <div className="groupModal__header">
+                {error && <Alert variant="danger">{error}</Alert>}
+                <button onClick={createGroup} type="submit" className="register__register">Create Group</button>
+            </div>
         </div>
     )
 }
