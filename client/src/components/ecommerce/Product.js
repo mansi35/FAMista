@@ -2,10 +2,24 @@ import React, { useState } from 'react'
 import { useAuth } from '../../contexts/AuthContext';
 import '../../css/Product.css'
 import db from '../../firebase'
+import { Button } from 'react-bootstrap';
 import ShareProductModal from './ShareProductModal';
 import ShareIcon from '@material-ui/icons/Share';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import GroupAddIcon from '@material-ui/icons/GroupAdd';
+// import Button from '@material-ui/core/Button';
+// import { makeStyles } from '@material-ui/core/styles';
+import DeleteIcon from '@material-ui/icons/Delete';
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import KeyboardVoiceIcon from '@material-ui/icons/KeyboardVoice';
+import Icon from '@material-ui/core/Icon';
+import SaveIcon from '@material-ui/icons/Save';
+
+// const useStyles = makeStyles((theme) => ({
+//   button: {
+//     margin: theme.spacing(1),
+//   },
+// }));
 
 function Product({id, title, image, price, rating, quantity, userId, setLength}) {
     const {currentUser} = useAuth();
@@ -106,12 +120,7 @@ function Product({id, title, image, price, rating, quantity, userId, setLength})
                     ))}
                 </div>
                 <div className="product__options">
-                    {/* <button onClick={seeTwinCount}>Twin Count</button> */}
-                    <GroupAddIcon fontSize="large" onClick={seeTwinCount} style={{color:"#440a67", cursor:"pointer", pointerEvents:"auto", marginBottom:10, marginTop:10}}/> <br />
-                    {/* <button onClick={addToBasket}>Add to Basket</button> */}
-                    <AddShoppingCartIcon fontSize="large" onClick={addToBasket} style={{color:"#440a67", cursor:"pointer", marginBottom:10}}/> <br/>
-                    <ShareIcon fontSize="large" onClick={showModal} style={{color:"#440a67", cursor:"pointer", marginBottom:10}}/><br/>
-                    {/* <button onClick={showModal}>Share Product</button> */}
+                    
                 </div>
                 <div>{twins.map( e =>
                     <div>{ e }</div>
@@ -125,15 +134,22 @@ function Product({id, title, image, price, rating, quantity, userId, setLength})
             <ShareProductModal show={show} handleClose={hideModal} image={image} id={id} title={title} userid={currentUser.uid}>
                 <p>Modal</p>
             </ShareProductModal>
-            <div>
-            <center  className="product__options">
-            <button onClick={seeTwinCount}>Twin Count</button>
-            <button onClick={addToBasket}>Add to Basket</button>
-            <button onClick={showModal}>Share Product</button>
-            </center>
+            
+            <div className="product__options">
+                <GroupAddIcon fontSize="large" onClick={seeTwinCount} style={{color:"#440a67", cursor:"pointer", pointerEvents:"auto", marginBottom:10, marginTop:10, marginRight:20}}/> <br />
+                <AddShoppingCartIcon fontSize="large" onClick={addToBasket} style={{color:"#440a67", cursor:"pointer", marginBottom:10, marginRight:20}}/> <br/>
+                <ShareIcon fontSize="large" onClick={showModal} style={{color:"#440a67", cursor:"pointer", marginBottom:10, marginRight:20}}/><br/>
             </div>
         </div>
     )
 }
 
 export default Product
+
+
+// {/* <button onClick={seeTwinCount}>Twin Count</button> */}
+// <GroupAddIcon fontSize="large" onClick={seeTwinCount} style={{color:"#440a67", cursor:"pointer", pointerEvents:"auto", marginBottom:10, marginTop:10}}/> <br />
+// {/* <button onClick={addToBasket}>Add to Basket</button> */}
+// <AddShoppingCartIcon fontSize="large" onClick={addToBasket} style={{color:"#440a67", cursor:"pointer", marginBottom:10}}/> <br/>
+// <ShareIcon fontSize="large" onClick={showModal} style={{color:"#440a67", cursor:"pointer", marginBottom:10}}/><br/>
+// {/* <button onClick={showModal}>Share Product</button> */}
