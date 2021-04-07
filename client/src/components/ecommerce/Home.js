@@ -32,8 +32,8 @@ function Home() {
             <div className="home_row">
             <Product
                 id="12321341"
-                title="Women Extra Stretch Black Panther Sports Wear, sweat-proof, high durability and low maintanence"
-                price={11.96}
+                title="H&M Summer Long Dress, Easy to maintain"
+                price={1999}
                 rating={5}
                 image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxaXnUdilhYcwlS_xbsMktRgMEhJWah0RaPA&usqp=CAU"
                 quantity={0}
@@ -42,31 +42,62 @@ function Home() {
             />
             <Product
                 id="49538094"
-                title="Kenwood kMix Stand Mixer for Baking, Stylish Kitchen Mixer with K-beater, Dough Hook and Whisk, 5 Litre Glass Bowl"
-                price={239.0}
+                title="Tokyo Talkies Green Solid A line Dress, perfect for nightout"
+                price={1299}
                 rating={4}
                 image="https://allensolly.imgix.net/img/app/product/2/291710-1252219.jpg"
                 quantity={0}
                 userId={currentUser.uid}
                 setLength = {setLength}
             />
-            </div>
-
-            <div className="home_row">
             <Product
                 id="4903850"
-                title="Samsung LC49RG90SSUXEN 49' Curved LED Gaming Monitor"
-                price={199.99}
+                title="Libas White Kurta set, embroidered kurta with comforatable matchin trouser"
+                price={999}
                 rating={3}
                 image="https://images-na.ssl-images-amazon.com/images/I/61SFGwq262L._UY550_.jpg"
                 quantity={0}
                 userId={currentUser.uid}
                 setLength = {setLength}
             />
+            </div>
+            <div className="home_row">
+            <Product
+                id="123213411"
+                title="Maniac Men's Full sleeve Round Neck Printed Navy Cotton T shirt"
+                price={1499}
+                rating={5}
+                image="https://guysworld.in/wp-content/uploads/2019/03/910wbkVL4vL._UL1500_.jpg"
+                quantity={0}
+                userId={currentUser.uid}
+                setLength = {setLength}
+            />
+            <Product
+                id="495380941"
+                title="Classic Dotted Pattern Cotton Leisure Mens Shirt, Blue Coloured"
+                price={899}
+                rating={4}
+                image="https://lh3.googleusercontent.com/proxy/hJRdGRhb-9tYzstPQ_jBDsSJHdNLb295eukYReKveZ75uF635aTGaw9dsZB53FQNcPBl30hReVOtyBGEyZlwh44_u_8smN1F9ivN"
+                quantity={0}
+                userId={currentUser.uid}
+                setLength = {setLength}
+            />
+            <Product
+                id="49038501"
+                title="Monte Carlo Yellow Full Sleeved T-Shirt Perfect for Casual Wear"
+                price={799}
+                rating={3}
+                image="https://cdn.shopify.com/s/files/1/0274/0086/3853/products/GSFSTSHT2456YELLBLKWHT_2_1024x1024.jpg?v=1576064237"
+                quantity={0}
+                userId={currentUser.uid}
+                setLength = {setLength}
+            />
+            </div>
+            <div className="home_row">
             <Product
                 id="23445930"
-                title="Amazon Echo (3rd generation) | Smart speaker with Alexa, Charcoal Fabric"
-                price={98.99}
+                title="Women Extra Stretch Black Panther Sports Wear, sweat-proof, high durability and low maintanence"
+                price={1999}
                 rating={5}
                 image="https://n3.sdlcdn.com/imgs/j/i/r/CHKOKKO-Women-Active-Wear-Yoga-SDL158692533-1-59f69.jpeg"
                 quantity={0}
@@ -75,21 +106,18 @@ function Home() {
             />
             <Product
                 id="3254354345"
-                title="New Apple iPad Pro (12.9-inch, Wi-Fi, 128GB) - Silver (4th Generation)"
-                price={598.99}
+                title="Women Flared Jeans by levis, Awesome fit and great comfort"
+                price={999}
                 rating={4}
                 image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKtgCEq3fC9ikBrxoqE7ynHSbl33GAWUnKkw&usqp=CAU"
                 quantity={0}
                 userId={currentUser.uid}
                 setLength = {setLength}
             />
-            </div>
-
-            <div className="home_row">
             <Product
                 id="90829332"
-                title="Samsung LC49RG90SSUXEN 49' Curved LED Gaming Monitor - Super Ultra Wide Dual WQHD 5120 x 1440"
-                price={1094.98}
+                title="Raymond Formal Dress, Fine Stitch and supreme quality"
+                price={2499}
                 rating={4}
                 image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzFGHrlJxvbThcm9ReqK98a3BQ5sOuz89kcw&usqp=CAU  "
                 quantity={0}
@@ -97,6 +125,39 @@ function Home() {
                 setLength = {setLength}
             />
             </div>
+            <div className="home_row">
+            <Product
+                id="234459301"
+                title="Premium Quality Leather Navy Blue Four Pocket Jacket, Lightweight"
+                price={2599}
+                rating={5}
+                image="https://thumbs.dreamstime.com/b/fashion-clothes-short-sleeve-shirt-jacket-jeans-mens-photos-made-white-background-fashion-clothes-short-sleeve-shirt-jacket-148909681.jpg"
+                quantity={0}
+                userId={currentUser.uid}
+                setLength = {setLength}
+            />
+            <Product
+                id="32543543451"
+                title="Deca Dev Mens Long Sleeve Autumn Winter Casual Sweatshirt"
+                price={1099}
+                rating={4}
+                image="https://lh3.googleusercontent.com/proxy/XfpuDsZUKlClrSxTYqgcOItzetY3MCfXviPYLZw_srh2Py88MmYAC5K48TKdnUpXw8ubThmg0rVoQlOlTMWnUPM5XbvH3WcvSPPc"
+                quantity={0}
+                userId={currentUser.uid}
+                setLength = {setLength}
+            />
+            <Product
+                id="908293321"
+                title="Peter England Formal Set for Meeting, Formal dinners and Important events"
+                price={2199}
+                rating={4}
+                image="https://static.toiimg.com/photo/msid-80789269,resizemode-4/80789269.cms"
+                quantity={0}
+                userId={currentUser.uid}
+                setLength = {setLength}
+            />
+            </div>
+            
         </div>
         </div>
         </div>
