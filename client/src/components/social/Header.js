@@ -138,7 +138,7 @@ function Header({length}) {
                 </div>
                 
                 <div className="header__option">
-                    <SupervisedUserCircleIcon fontSize="large" id="users" onClick={goToFriends} />
+                    <SupervisedUserCircleIcon fontSize="large" id="users" onClick={goToDashboard} />
                     <Tooltip placement="bottom" isOpen={tooltipOpenUsers} target="users" toggle={toggleUsers}>
                         Users
                     </Tooltip>
@@ -155,7 +155,7 @@ function Header({length}) {
             <div className="header__right">
                 <div className="header__info">
                     <Avatar src={currentUser.photoURL} />
-                    <a onClick={goToDashboard} style={{color: "white", cursor:"pointer"}}>{currentUser.displayName}</a>
+                    <a onClick={goToFriends} style={{color: "white", cursor:"pointer"}}>{currentUser.displayName}</a>
                 </div>
                 <IconButton>
                     <div className="header__option2">
