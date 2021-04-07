@@ -106,7 +106,7 @@ function Home() {
             />
             <Product
                 id="3254354345"
-                title="Women Flared Jeans by levis, Awesome fit and great comfort"
+                title="Raymond Formal Dress, Fine Stitch and supreme quality"
                 price={999}
                 rating={4}
                 image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKtgCEq3fC9ikBrxoqE7ynHSbl33GAWUnKkw&usqp=CAU"
@@ -116,7 +116,7 @@ function Home() {
             />
             <Product
                 id="90829332"
-                title="Raymond Formal Dress, Fine Stitch and supreme quality"
+                title="Women Flared Jeans by levis, Awesome fit and great comfort" 
                 price={2499}
                 rating={4}
                 image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzFGHrlJxvbThcm9ReqK98a3BQ5sOuz89kcw&usqp=CAU  "

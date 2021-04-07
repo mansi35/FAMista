@@ -98,9 +98,6 @@ function Header({length}) {
         <div className='header__social'>
             <div className="header__left">
             <img src={logo_Famista} alt="famista-logo" onClick = {goToHome}></img>
-                {/* <Link to = "\" >
-                
-                </Link> */}
                 
                 <div className="header__input">
                     <SearchIcon />
