@@ -20,11 +20,7 @@ function EmptySharedFriendBasket() {
     return (
         <div>
             <Header length = {length}/> 
-            <div className="app">
-                <div className="app__body">
-                    <SharedFriendBasket />
-                </div>
-            </div>
+            <SharedFriendBasket />
         </div>
     )
 }

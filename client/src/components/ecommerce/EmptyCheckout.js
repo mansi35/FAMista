@@ -20,11 +20,7 @@ function EmptyCheckout() {
     return (
         <div>
             <Header length = {length}/> 
-            <div className="app">
-                <div className="app__body">
-                    <Checkout />
-                </div>
-            </div>
+            <Checkout />
         </div>
     )
 }

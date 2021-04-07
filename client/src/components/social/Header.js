@@ -12,7 +12,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { Avatar, IconButton } from '@material-ui/core';
 import {useAuth} from '../../contexts/AuthContext';
 import { useHistory } from 'react-router';
-import logo from '../../resources/FAMista.png'
+import logo_Famista from '../../resources/logo_Famista.png'
 
 function Header({length}) {
     const { currentUser, logout } = useAuth();
@@ -71,7 +71,7 @@ function Header({length}) {
     return (
         <div className='header__social'>
             <div className="header__left">
-                <img src={logo} alt="famista-logo"></img>
+                <img src={logo_Famista} alt="famista-logo"></img>
                 <div className="header__input">
                     <SearchIcon />
                     <input type="text" placeholder="Search FAMista" />
