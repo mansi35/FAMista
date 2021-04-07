@@ -18,6 +18,7 @@
     justify-content: center;
     margin-top: 30px;
     color: #440a67;
+
 }
 
 .card {
@@ -26,6 +27,8 @@
     margin-bottom: 50px;
     transition: 0.3s;
     height: 400px;
+    width: 300px;
+    margin: 30px;
 }
 
 .card-header {
@@ -33,12 +36,14 @@
     padding: 50px 10px;
     background: linear-gradient(to right, #440a67, #b4aee8);
     color: #fff;
+    width: 280px;
 }
 
 .card-body {
     padding: 30px 20px;
     text-align: center;
     font-size: 18px;
+    width: 260px;
 }
 
 .card-body .btn {
@@ -58,13 +63,13 @@
 
 @media screen and (max-width: 1000px) {
     .card {
-        width: 40%;
+        width: 40% !important;
     }
 }
 
 @media screen and (max-width: 620px) {
     .card {
-        width: 80%;
+        width: 80% !important;
     }
 }
 

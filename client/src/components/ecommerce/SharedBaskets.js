@@ -32,10 +32,12 @@ function SharedBaskets() {
                     <div>
                     {data.read === true? 
                         <div>
-                        <Friend key={id} userId={id} name={data.friendName} emailAdd={data.friendEmail} />
+                        <Friend key={id} userId={id} name={data.friendName} emailAdd={data.friendEmail} profilePic={data.friendProfilePic} />
+                        <div className='shareBasket__button'>
                         <Link to={`/basket/${id}`}>
-                            <Button variant="flat">See Shared Basket</Button>
+                            <Button variant="flat" style={{justifyContent: "center"}}>See Shared Basket</Button>
                         </Link>
+                        </div>
                         </div>
                         : <div></div>
                     }
