@@ -46,6 +46,10 @@
     margin-left: 8px;
 }
 
+.options-div > img {
+    height: 30px;
+}
+
 .options-div {
     border-radius: 50%;
     height: 50px;

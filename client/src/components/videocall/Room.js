@@ -6,9 +6,14 @@ import '../../css/Room.css';
 import Header from '../social/Header.js'
 import {useAuth} from '../../contexts/AuthContext';
 import db from '../../firebase';
-import MicIcon from '@material-ui/icons/Mic';
+// import MicIcon from '@material-ui/icons/Mic';
 import ScreenShareIcon from '@material-ui/icons/ScreenShare';
-import VideocamIcon from '@material-ui/icons/Videocam';
+// import VideocamIcon from '@material-ui/icons/Videocam';
+import camera from '../../resources/camera.svg'
+import camerastop from '../../resources/camera-stop.svg'
+import microphone from '../../resources/microphone.svg'
+import microphonestop from '../../resources/microphone-stop.svg'
+import hangup from '../../resources/hang-up.svg'
 
 const Container = styled.div`
     padding: 20px;
@@ -48,6 +53,8 @@ const videoConstraints = {
 const Room = (props) => {
     const [peers, setPeers] = useState([]);
     const [stream, setStream] = useState();
+    const [audioMuted, setAudioMuted] = useState(false)
+    const [videoMuted, setVideoMuted] = useState(false)
     const socketRef = useRef();
     const userVideo = useRef();
     const peersRef = useRef([]);
@@ -78,7 +85,10 @@ const Room = (props) => {
                         peerID: userID,
                         peer,
                     })
-                    peers.push(peer);
+                    peers.push({
+                        peerID: userID,
+                        peer,
+                    });
                 })
                 setPeers(peers);
             })
@@ -90,13 +100,28 @@ const Room = (props) => {
                     peer,
                 })
 
-                setPeers(users => [...users, peer]);
+                const peerObj = {
+                    peer,
+                    peerID : payload.callerID
+                }
+
+                setPeers(users => [...users, peerObj]);
             });
 
             socketRef.current.on("receiving returned signal", payload => {
                 const item = peersRef.current.find(p => p.peerID === payload.id);
                 item.peer.signal(payload.signal);
             });
+
+            socketRef.current.on('user left', id => {
+                const peerObj = peersRef.current.find(p => p.peerID === id);
+                if (peerObj) {
+                    peerObj.peer.destroy();
+                }
+                const peers = peersRef.current.filter(p => p.peerID !== id);
+                peersRef.current = peers;
+                setPeers(peers);
+            })
         })
     // eslint-disable-next-line
     }, []);
@@ -136,14 +161,14 @@ const Room = (props) => {
         .then(screenStream => {
             // eslint-disable-next-line
             peers.map(peer => {
-                myPeer.current = peer;
+                myPeer.current = peer.peer;
                 myPeer.current.replaceTrack(stream.getVideoTracks()[0], screenStream.getVideoTracks()[0], stream);
                 userVideo.current.srcObject = screenStream;
             })
             screenStream.getTracks()[0].onended = () => {
                 // eslint-disable-next-line
                 peers.map(peer => {
-                    myPeer.current = peer;
+                    myPeer.current = peer.peer;
                     myPeer.current.replaceTrack(screenStream.getVideoTracks()[0], stream.getVideoTracks()[0], stream);
                     userVideo.current.srcObject = stream;
                 })
@@ -151,9 +176,49 @@ const Room = (props) => {
         })
     }
 
-    // function changeMic {
-    //     document.getElementByClassName("options-div-1").
-    // }
+    function endCall() {
+        window.close();
+    }
+
+    function toggleMuteAudio(){
+        if(stream) {
+            setAudioMuted(!audioMuted)
+            stream.getAudioTracks()[0].enabled = audioMuted
+        }
+    }
+    
+    function toggleMuteVideo(){
+        if(stream) {
+            setVideoMuted(!videoMuted)
+            stream.getVideoTracks()[0].enabled = videoMuted
+        }
+    }
+
+    let hangUp=<span className="options-div" onClick={()=>endCall()}>
+        <img className="video-options" src={hangup} alt="End call"/>
+    </span>
+
+    let audioControl;
+    if(audioMuted){
+        audioControl=<div className="options-div" onClick={()=>toggleMuteAudio()}>
+            <img className="video-options" src={microphonestop} alt="Unmute audio"/>
+        </div>
+    } else {
+        audioControl=<div className="options-div" onClick={()=>toggleMuteAudio()}>
+            <img className="video-options" src={microphone} alt="Mute audio"/>
+        </div>
+    }
+
+    let videoControl;
+    if(videoMuted){
+        videoControl=<div className="options-div" onClick={()=>toggleMuteVideo()}>
+            <img className="video-options" src={camerastop} alt="Resume video"/>
+        </div>
+    } else {
+        videoControl=<div className="options-div" onClick={()=>toggleMuteVideo()}>
+            <img className="video-options" src={camera} alt="Stop audio"/>
+        </div>
+    }
 
     return (
         <div>
@@ -163,25 +228,21 @@ const Room = (props) => {
             <div className="room">
                 {/* <div className="room-video"> */}
                     <StyledVideo muted ref={userVideo} autoPlay playsInline className="video"/>
-                    {peers.map((peer, index) => {
+                    {peers.map((peer) => {
                         return (
-                            <Video key={index} peer={peer} />
+                            <Video key={peer.peerID} peer={peer.peer} />
                         );
                     })}
                 {/* </div> */}
             </div>
             <div style={{display:"flex", justifyContent:"center", marginTop:30}}>
-                    <div className="options-div">
-                        <MicIcon fontSize="large" className="video-options"></MicIcon>
-                    </div>
+                    {audioControl}
+                    {videoControl}
 
                     <div className="options-div">
-                        <VideocamIcon fontSize="large" className="video-options" onClick={shareScreen}></VideocamIcon>
+                        <ScreenShareIcon fontSize="large" className="video-options" onClick={shareScreen}></ScreenShareIcon>
                     </div>
-
-                    <div className="options-div">
-                        <ScreenShareIcon fontSize="large" className="video-options"></ScreenShareIcon>
-                    </div>
+                    {hangUp}
 
                         {/* <button className="sharescreen-btn" onClick={shareScreen}>Share screen</button> */}
                     
