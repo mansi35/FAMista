@@ -14,15 +14,18 @@ function SurveyProduct({key, id, productName, productImage}) {
     };
 
     if (show) {
-        document.getElementById(`review-card${id}`).classList.remove('card');
-        document.getElementById(`review-card${id}`).classList.add('review');
+        if (document.getElementById(`review-card${id}`)) {
+            document.getElementById(`review-card${id}`).classList.remove('card');
+            document.getElementById(`review-card${id}`).classList.add('review');
+        }
     }
 
     if (!show) {
-        document.getElementById(`review-card${id}`).classList.remove('review');
-        document.getElementById(`review-card${id}`).classList.add('card');
+        if (document.getElementById(`review-card${id}`)) {
+            document.getElementById(`review-card${id}`).classList.remove('review');
+            document.getElementById(`review-card${id}`).classList.add('card');
+        }
     }
-
     return (
         <div id={`review-card${id}`} class="card" style={{height:"fit-content", marginTop: -20}}>
         <div class="card-header" style={{background:"white"}}>
@@ -32,7 +35,7 @@ function SurveyProduct({key, id, productName, productImage}) {
         <div class="card-body" style={{background:"#DAB5DA"}}>
             <h5>{productName}</h5>
             <ProductReviewModal show={show} productId={id} handleClose={hideModal}>
-                        <p>Modal</p>
+                    <p>Modal</p>
             </ProductReviewModal>
             <button onClick={showModal}>View Review</button>
         </div>
