@@ -2,7 +2,7 @@ import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../../css/RegisterHeader.css';
-import logo from '../../resources/logo.png';
+import logo from '../../resources/logo_Famista.png';
 import bg from '../../resources/RegisterBackground.png';
 
 function LoginHeader() {

@@ -10,7 +10,7 @@
 }
 
 .register__images {
-    margin-top: 8%;
+    margin-top: 2%;
     width: 63%;
     object-fit: contain;
 }
@@ -20,9 +20,9 @@
     height: 85%;
     display :flex;
     padding: 10px;
-    background-color: rgba(150, 179, 195, 0.69);
+    background-color: rgba(255, 227, 254, 0.38);
     flex-direction: column;
-    margin-top: 10%;
+    margin-top: 1%;
     border-radius: 20px;
 }
 
@@ -59,15 +59,21 @@
 }
 
 .register__register {
-    background-color: #5e994b;
+    background-color: #440a67;
     border: none;
-    width: 196px;
-    height: 38px;
-    border-radius: 3px;
-    border: 1px sollid rgb(59, 110, 34);
     color: white;
-    font-size: 17px;
-    font-weight: 700;
+    padding: 7px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 20px;
+    opacity: 1;
+    margin-top: 10px;
+}
+.register__register:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  opacity: 0.6;
 }
 
 .register__name {

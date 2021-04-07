@@ -11,7 +11,7 @@
 
 
 .login__images {
-    margin-top: 8%;
+    margin-top: 4%;
     width: 63%;
     object-fit: contain;
 }
@@ -21,7 +21,7 @@
     height: 65%;
     display :flex;
     padding: 10px;
-    background-color: rgba(191, 117, 221, 0.69);
+    background-color: rgba(255, 227, 254, 0.38);
     flex-direction: column;
     margin-top: 80px;
     margin-left: 15%;
