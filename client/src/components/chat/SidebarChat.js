@@ -62,7 +62,7 @@ function SidebarChat({id, name, profilePic, addNewChat, group}) {
     ) : (
         <div>
         <div onClick={showModal} className="sidebarChat">
-            <h3 className="add-new-chat-title" style={{color: '#440a67'}}>Add New Chat</h3>
+            <h3 className="add-new-chat-title" style={{color: '#440a67'}}>Create Group</h3>
         </div>
         <AddGroupUsersModal show={show} handleClose={hideModal} setGroupName={setGroupName} setGroupUsers={setGroupUsers} groupUsers={groupUsers} groupName={groupName}>
             <p>Modal</p>

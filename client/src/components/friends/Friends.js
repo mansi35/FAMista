@@ -11,11 +11,20 @@ import '../../css/Users.css';
 // import likeIcon from '../../resources/like-16x16(1).png';
 import emailIcon from '../../resources/email.png';
 
-
 function Friends() {
     const [friends, setFriends] = useState([]);
     // const [error, setError] = useState("")
     const { currentUser} = useAuth();
+    const [length, setLength] = useState(0);
+
+    useEffect(() => {
+        if (currentUser) {
+            db.collection("users").doc(currentUser.uid).get().then(docc => {
+                const data = docc.data();
+                setLength(data.noItems);
+            })
+        }
+    })
     // const history = useHistory();
 
     // async function logOut() {
@@ -58,7 +67,7 @@ function Friends() {
     // </div> 
 
     <div>
-      <Header />
+      <Header length = {length}/>
       <h2 className="users-heading">Your Shopping Buddies <span><img src="https://img.icons8.com/emoji/48/000000/purple-heart.png" alt="emoji" />
         <img src="https://img.icons8.com/color/48/000000/friends-hanging-out.png" alt="emoji" /></span></h2>
       <div className="user__row">

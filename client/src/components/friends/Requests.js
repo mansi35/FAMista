@@ -9,7 +9,16 @@ import Header from '../social/Header';
 function Requests() {
     const {currentUser} = useAuth();
     const [friends, setFriends] = useState([]);
+    const [length, setLength] = useState(0);
 
+    useEffect(() => {
+        if (currentUser) {
+            db.collection("users").doc(currentUser.uid).get().then(docc => {
+                const data = docc.data();
+                setLength(data.noItems);
+            })
+        }
+    })
     useEffect(() => {
         db.collection("users").doc(currentUser.uid).collection("friendRequests")
         .onSnapshot((snapshot) => 
@@ -23,7 +32,7 @@ function Requests() {
 
     return (
     <div>
-    <Header />
+    <Header length = {length}/>
     <h2 className="users-heading">Friend Requests</h2>
     <div className="user__row">
     {friends.map(({ requestId, request }) => (

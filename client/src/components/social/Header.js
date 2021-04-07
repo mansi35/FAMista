@@ -14,7 +14,6 @@ import {useAuth} from '../../contexts/AuthContext';
 import { useHistory } from 'react-router';
 import logo from '../../resources/FAMista.png'
 
-
 function Header({length}) {
     const { currentUser, logout } = useAuth();
     const history = useHistory();
