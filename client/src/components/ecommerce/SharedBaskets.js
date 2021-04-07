@@ -1,4 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import '../../css/Checkout.css';
+import '../../css/CheckoutProduct.css';
+import Header from '../social/Header';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
@@ -21,21 +24,24 @@ function SharedBaskets() {
 
     return (
         <div>
-        <h2 className="checkout__title">Shared Baskets</h2>
-        {friends.map(({id, data}) => {
-            return(
-                <div>
-                {data.read === true? 
+        <Header />
+        <h2 className="checkout__title">Shared Baskets <img src="https://img.icons8.com/fluent/48/000000/favorite-cart.png"/></h2>
+        <div class="baskets-container">
+            {friends.map(({id, data}) => {
+                return(
                     <div>
-                    <Friend key={id} userId={id} name={data.friendName} emailAdd={data.friendEmail} />
-                    <Link to={`/basket/${id}`}>
-                        <Button>See Shared Basket</Button>
-                    </Link>
+                    {data.read === true? 
+                        <div>
+                        <Friend key={id} userId={id} name={data.friendName} emailAdd={data.friendEmail} />
+                        <Link to={`/basket/${id}`}>
+                            <Button variant="flat">See Shared Basket</Button>
+                        </Link>
+                        </div>
+                        : <div></div>
+                    }
                     </div>
-                    : <div></div>
-                }
-                </div>
-        )})}
+            )})}
+        </div>
         </div>
     )
 }
