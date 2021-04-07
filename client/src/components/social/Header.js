@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../../css/HeaderSocial.css'
 import SearchIcon from '@material-ui/icons/Search';
 import HomeIcon from '@material-ui/icons/Home';
@@ -14,10 +14,30 @@ import {useAuth} from '../../contexts/AuthContext';
 import { useHistory } from 'react-router';
 import logo_Famista from '../../resources/logo_Famista.png'
 import AssignmentIcon from '@material-ui/icons/Assignment';
+import { Tooltip } from 'reactstrap';
+
 
 function Header({length}) {
     const { currentUser, logout } = useAuth();
     const history = useHistory();
+    const [tooltipOpenHome, setTooltipOpenHome] = useState(false);
+    const [tooltipOpenSocial, setTooltipOpenSocial] = useState(false);
+    const [tooltipOpenUsers, setTooltipOpenUsers] = useState(false);
+    const [tooltipOpenSharedBasket, setTooltipOpenSharedBasket] = useState(false);
+    const [tooltipOpenBasket, setTooltipOpenBasket] = useState(false);
+    const [tooltipOpenSurveyResults, setTooltipOpenSurveyResults] = useState(false);
+
+    const toggleHome = () => setTooltipOpenHome(!tooltipOpenHome);
+    
+    const toggleSocial = () => setTooltipOpenSocial(!tooltipOpenSocial);
+    
+    const toggleUsers = () => setTooltipOpenUsers(!tooltipOpenUsers);
+    
+    const toggleSharedBasket = () => setTooltipOpenSharedBasket(!tooltipOpenSharedBasket);
+    
+    const toggleBasket = () => setTooltipOpenBasket(!tooltipOpenBasket);
+    
+    const toggleSurveyResults = () => setTooltipOpenSurveyResults(!tooltipOpenSurveyResults);
 
     async function handleSubmit() {
         try {
@@ -89,25 +109,49 @@ function Header({length}) {
             </div>
             <div className="header__middle">
                 <div className="header__option header__option--active">
-                    <HomeIcon fontSize="large" onClick={goToHome} />
+                    <HomeIcon fontSize="large" id = "home" onClick={goToHome} />
+                    <Tooltip placement="bottom" isOpen={tooltipOpenHome} target="home" toggle={toggleHome}>
+                        Home
+                    </Tooltip>
                 </div>
+                
                 <div className="header__option">
-                    <StorefrontOutlinedIcon fontSize="large" onClick={goToSocial} />
+                    <StorefrontOutlinedIcon fontSize="large" id = "social" onClick={goToSocial} />
+                    <Tooltip placement="bottom" isOpen={tooltipOpenSocial} target="social" toggle={toggleSocial}>
+                        Social
+                    </Tooltip>
                 </div>
+                
                 <div className="header__option">
-                    <ShoppingBasketIcon fontSize="large" onClick={goToMyBasket} />
+                    <ShoppingBasketIcon fontSize="large" id = "basket" onClick={goToMyBasket} />
                     <span className="header_optionLineTwo header_basketCount">{length}</span>
+                    <Tooltip placement="bottom" isOpen={tooltipOpenBasket} target="basket" toggle={toggleBasket}>
+                    Your Basket
+                    </Tooltip>
                 </div>
+                
                 <div className="header__option">
-                    <img src="https://img.icons8.com/material/80/000000/favorite-cart.png" onClick={goToSharedBaskets} 
+                    <img src="https://img.icons8.com/material/80/000000/favorite-cart.png" id = "sharedBasket" onClick={goToSharedBaskets} 
                         style={{height: 32, width: 32, filter: "brightness(0) invert(1)"}} alt="shared basket icon"/>
+                        <Tooltip placement="bottom" isOpen={tooltipOpenSharedBasket} target="sharedBasket" toggle={toggleSharedBasket}>
+                            Shared Basket
+                        </Tooltip>
                 </div>
+                
                 <div className="header__option">
-                    <SupervisedUserCircleIcon fontSize="large" onClick={goToFriends} />
+                    <SupervisedUserCircleIcon fontSize="large" id="users" onClick={goToFriends} />
+                    <Tooltip placement="bottom" isOpen={tooltipOpenUsers} target="users" toggle={toggleUsers}>
+                        Users
+                    </Tooltip>
                 </div>
+                
                 <div className="header__option header__option--active">
-                    <AssignmentIcon fontSize="large" onClick={goToSurveyResults} />
+                    <AssignmentIcon fontSize="large" id = "surveyResult"onClick={goToSurveyResults} />
+                    <Tooltip placement="bottom" isOpen={tooltipOpenSurveyResults} target="surveyResult" toggle={toggleSurveyResults}>
+                        Survey Results
+                    </Tooltip>
                 </div>
+                
             </div>
             <div className="header__right">
                 <div className="header__info">
