@@ -24,7 +24,6 @@ function Users() {
 
   return (
     <div>
-      <Header />
       <h2 className="users-heading">Find your shopping buddy! <span><img src="https://img.icons8.com/emoji/48/000000/purple-heart.png" alt="emoji" />
         <img src="https://img.icons8.com/color/48/000000/friends-hanging-out.png" alt="emoji" /></span></h2>
       <div className="user__row">

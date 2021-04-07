@@ -34,7 +34,7 @@ function SidebarChat({id, name, profilePic, addNewChat, group}) {
     
     const hideModal = () => {
         setShow(false);
-        
+        setGroupUsers([currentUser.uid]);
     };
 
     return !addNewChat ? (

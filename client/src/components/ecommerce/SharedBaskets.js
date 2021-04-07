@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import '../../css/Checkout.css';
 import '../../css/CheckoutProduct.css';
+<<<<<<< HEAD
 import '../../css/Users.css';
 import Header from '../social/Header';
+=======
+>>>>>>> b1e581da33be85c2de43b10e32bb342571dbccbc
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
