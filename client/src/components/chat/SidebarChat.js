@@ -29,10 +29,12 @@ function SidebarChat({id, name, profilePic, addNewChat, group}) {
 
     const showModal = () => {
         setShow(true);
+        // document.getElementsByClassName("sidebarChat").style.backgroundColor = "#DAB5DA";
     };
     
     const hideModal = () => {
         setShow(false);
+        
     };
 
     return !addNewChat ? (
