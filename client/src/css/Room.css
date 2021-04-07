@@ -3,13 +3,15 @@
     justify-content: center;
     align-items: center;
     height: 80%;
-    margin-top: 80px;
+    margin: 80px 50px 40px 50px;
 }
 
 .video {
     border: 20px solid #D8D3FF;
     border-radius: 12px;
     box-shadow: 15px 20px #5d4c67;
+    width: 40% !important;
+    margin: 0 50px;
 }
 
 .title {
@@ -37,4 +39,22 @@
 .sharescreen-btn:hover {
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
   opacity: 0.6;
+}
+
+.video-options {
+    margin-top: 10px;
+    margin-left: 8px;
+}
+
+.options-div {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    margin: 0 10px;
+    background-color: aliceblue;
+}
+
+.options-div:hover {
+    color: #D8D3FF;
+    background-color: #440a67;
 }

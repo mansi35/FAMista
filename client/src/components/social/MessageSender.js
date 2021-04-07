@@ -93,16 +93,16 @@ function MessageSender() {
             <div className="messageSender__bottom">
                 <div className="messageSender__option">
                     <VideocamIcon style={{ color: "red" }} />
-                    <h4>Live Video</h4>
+                    <h4 style={{color:"black"}}>Live Video</h4>
                 </div>
                 <div className="messageSender__option" onClick={uploadFileWithClick}>
                     <PhotoLibraryIcon style={{ color: "green" }} />
                     <input type="file" className="messageSender__imageFile" onChange={handleChange} />
-                    <h4>Photo/Video</h4>
+                    <h4 style={{color:"black"}}>Photo/Video</h4>
                 </div>
                 <div className="messageSender__option">
                     <InsertEmoticonIcon style={{ color: "orange" }} />
-                    <h4>Feeling/Activity</h4>
+                    <h4 style={{color:"black"}}>Feeling/Activity</h4>
                 </div>
             </div>
         </div>

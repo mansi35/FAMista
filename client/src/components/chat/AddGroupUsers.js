@@ -36,6 +36,7 @@ function AddGroupUsers({handleClose, setGroupName, setGroupUsers, groupUsers, gr
             setError('Please input group name!');
             setGroupUsers([currentUser.uid]);
         }
+        // document.getElementsByClassName("sidebarChat").style.backgroundColor = "#DAB5DA";
     }
 
     useEffect(() => {

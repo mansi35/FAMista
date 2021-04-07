@@ -38,7 +38,7 @@ function Request({key, id, emailAdd, name, profilePic}) {
     }
 
     return (
-        <div class="card">
+        <div class="card" style={{height: 380}}>
             <div class="card-header">
                 <h1>Image</h1>
                 
@@ -49,7 +49,7 @@ function Request({key, id, emailAdd, name, profilePic}) {
                 </div>
                 {/* <p><span><img src={likeIcon} alt="like" style={{height:16, width:16, marginRight:10}} /></span>{gender}</p> */}
                 <p><span><img src={emailIcon} alt="like" style={{height:22, width:22, marginRight:5}} /></span>{emailAdd}</p>
-                <button onClick={acceptRequest} style={{marginBottom:20}}>Accept</button> <br/>
+                <button onClick={acceptRequest} style={{marginRight:20}}>Accept</button>
                 <button onClick={declineRequest}>Decline</button>
             </div>
         </div>

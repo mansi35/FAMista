@@ -6,6 +6,9 @@ import '../../css/Room.css';
 import Header from '../social/Header.js'
 import {useAuth} from '../../contexts/AuthContext';
 import db from '../../firebase';
+import MicIcon from '@material-ui/icons/Mic';
+import ScreenShareIcon from '@material-ui/icons/ScreenShare';
+import VideocamIcon from '@material-ui/icons/Videocam';
 
 const Container = styled.div`
     padding: 20px;
@@ -32,7 +35,7 @@ const Video = (props) => {
     }, []);
 
     return (
-        <StyledVideo playsInline autoPlay ref={ref} />
+        <StyledVideo playsInline autoPlay ref={ref} className="video"/>
     );
 }
 
@@ -148,21 +151,40 @@ const Room = (props) => {
         })
     }
 
+    // function changeMic {
+    //     document.getElementByClassName("options-div-1").
+    // }
+
     return (
         <div>
             <Header length = {length}/>
             <h2 className="title">Shop together with your friends!<img alt = "" src="https://img.icons8.com/fluent/50/000000/online-order.png" style={{marginLeft:10}}/>
             <img src="https://img.icons8.com/color/48/000000/teams.png" alt = ""/></h2>
             <div className="room">
-                <StyledVideo muted ref={userVideo} autoPlay playsInline className="video"/>
-                {peers.map((peer, index) => {
-                    return (
-                        <Video key={index} peer={peer} />
-                    );
-                })}
+                {/* <div className="room-video"> */}
+                    <StyledVideo muted ref={userVideo} autoPlay playsInline className="video"/>
+                    {peers.map((peer, index) => {
+                        return (
+                            <Video key={index} peer={peer} />
+                        );
+                    })}
+                {/* </div> */}
             </div>
             <div style={{display:"flex", justifyContent:"center", marginTop:30}}>
-                    <button className="sharescreen-btn" onClick={shareScreen}>Share screen</button>
+                    <div className="options-div">
+                        <MicIcon fontSize="large" className="video-options"></MicIcon>
+                    </div>
+
+                    <div className="options-div">
+                        <VideocamIcon fontSize="large" className="video-options" onClick={shareScreen}></VideocamIcon>
+                    </div>
+
+                    <div className="options-div">
+                        <ScreenShareIcon fontSize="large" className="video-options"></ScreenShareIcon>
+                    </div>
+
+                        {/* <button className="sharescreen-btn" onClick={shareScreen}>Share screen</button> */}
+                    
             </div>
         </div>
     );
