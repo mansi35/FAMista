@@ -13,6 +13,7 @@ import { Avatar, IconButton } from '@material-ui/core';
 import {useAuth} from '../../contexts/AuthContext';
 import { useHistory } from 'react-router';
 import logo_Famista from '../../resources/logo_Famista.png'
+// import Link from 'react-router-dom';
 
 function Header({length}) {
     const { currentUser, logout } = useAuth();
@@ -71,7 +72,11 @@ function Header({length}) {
     return (
         <div className='header__social'>
             <div className="header__left">
-                <img src={logo_Famista} alt="famista-logo"></img>
+            <img src={logo_Famista} alt="famista-logo" onClick = {goToHome}></img>
+                {/* <Link to = "\" >
+                
+                </Link> */}
+                
                 <div className="header__input">
                     <SearchIcon />
                     <input type="text" placeholder="Search FAMista" />

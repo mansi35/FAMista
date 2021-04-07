@@ -13,7 +13,7 @@ import Home from './components/ecommerce/Home.js';
 import Checkout from './components/ecommerce/Checkout.js';
 import Header from './components/social/Header';
 import MyFeed from './components/social/MyFeed';
-import Users from './components/friends/Users';
+import EmptyUsers from './components/friends/EmptyUsers';
 import Requests from './components/friends/Requests';
 import Friends from './components/friends/Friends';
 import Room from './components/videocall/Room';
@@ -33,7 +33,7 @@ function App() {
         <Switch>
           <PrivateRoute exact path="/" component= {Home} />
           <PrivateRoute path="/dashboard" component={Friends} />
-          <PrivateRoute path="/users" component={Users} />
+          <PrivateRoute path="/users" component={EmptyUsers} />
           <PrivateRoute path="/update-profile" component={UpdateProfile} />
           <PrivateRoute path="/requests" component={Requests} />
           <Route path="/login">
