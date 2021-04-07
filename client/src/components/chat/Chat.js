@@ -14,7 +14,7 @@ import SurveyModal from './SurveyModal'
 
 function Chat() {
     var [input, setInput] = useState("");
-    const {roomId} = useParams();
+    const {roomId, roomType} = useParams();
     const [roomName, setRoomName] = useState("");
     const [profilePic, setProfilePic] = useState("");
     const [messages, setMessages] = useState([]);
@@ -24,7 +24,18 @@ function Chat() {
     const [show, setShow] = useState(false);
 
     useEffect(() => {
-        if (roomId) {
+        console.log(roomId, roomType)
+        if (roomId && roomType === "1") {
+            db.collection('rooms').doc(roomId).onSnapshot(snapshot => {
+                setRoomName(snapshot.data().name);
+            });
+
+            db.collection('rooms').doc(roomId).collection('messages').orderBy('timestamp', 'asc').onSnapshot(snapshot => (
+                setMessages(snapshot.docs.map(doc => doc.data()))
+            ))
+        }
+
+        else if (roomId) {
             db.collection('users').doc(currentUser.uid).collection('friends').doc(roomId).onSnapshot(snapshot => {
                 setRoomName(snapshot.data().friendName);
                 setProfilePic(snapshot.data().friendProfilePic)
@@ -43,29 +54,34 @@ function Chat() {
             input = customInput;
         }
         console.log("You typed >>>> ", input);
-        db.collection('users').doc(currentUser.uid).collection('friends').doc(roomId).collection('messages').add({
-            message: input,
-            name: currentUser.displayName,
-            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-        })
-
-        db.collection('users').doc(roomId).collection('friends').doc(currentUser.uid).collection('messages').add({
-            message: input,
-            name: currentUser.displayName,
-            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-        })
+        if (roomType == 1){
+            db.collection('rooms').doc(roomId).collection('messages').add({
+                message: input,
+                name: currentUser.displayName,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+            })
+        }
+        else {
+            db.collection('users').doc(currentUser.uid).collection('friends').doc(roomId).collection('messages').add({
+                message: input,
+                name: currentUser.displayName,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+            })
+    
+            db.collection('users').doc(roomId).collection('friends').doc(currentUser.uid).collection('messages').add({
+                message: input,
+                name: currentUser.displayName,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+            })
+        }
 
         setInput("");
     }
 
     function create() {
-        const id = uuid();
-        var a = document.createElement('a');
-        var link = document.createTextNode("this link");
-        a.appendChild(link);
-        a.title = "Enter room";
-        a.href = `/room/${id}`;
-        var customInput = `${currentUser.displayName} is inviting you to shop virtually! Please click on this message to join! ${id}`;
+        var uid = uuid();
+        setId(uid);
+        var customInput = `${currentUser.displayName} is inviting you to shop virtually! Please click on this message to join! ${uid}`;
         console.log(customInput.slice(0, customInput.length-36))
         var clickEvent = new Event( 'click' );
         sendMessage(clickEvent, customInput);

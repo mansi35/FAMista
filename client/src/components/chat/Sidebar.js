@@ -11,6 +11,7 @@ import {useAuth} from '../../contexts/AuthContext';
 
 function Sidebar() {
     const [rooms, setRooms] = useState([]);
+    const [groups, setGroups] = useState([]);
     const {currentUser} = useAuth();
     var profilePhoto = "";
     if (currentUser)
@@ -24,6 +25,20 @@ function Sidebar() {
                 data: doc.data()
             })))
         );
+
+        db.collection('rooms').where("users", "array-contains", currentUser.uid)
+        .get()
+        .then(function(snapshot) {
+            setGroups(snapshot.docs.map(doc => (
+            {
+                groupId: doc.id,
+                groupData: doc.data()
+            })))
+        })
+        .catch(function(error) {
+            console.log("Error getting documents: ", error);
+        });
+
     // eslint-disable-next-line
     }, [])
 
@@ -51,9 +66,14 @@ function Sidebar() {
             </div>
             <div className="sidebar__chats">
                 <SidebarChat addNewChat/>
-                    {rooms.map(room=> (
-                        <SidebarChat key={room.id} id={room.id} name={room.data.friendName} profilePic={room.data.friendProfilePic} />
+                {rooms.map(room=> (
+                    <SidebarChat key={room.id} id={room.id} name={room.data.friendName} profilePic={room.data.friendProfilePic} />
                 ))}
+
+                {groups.map(({groupId, groupData})=> (
+                    <SidebarChat key={groupId} id={groupId} name={groupData.name} group={1} />
+                ))}
+
             </div>
         </div>
     )
