@@ -36,9 +36,14 @@
   .product_info {
     height: 100px;
     margin-bottom: 15px;
+    z-index: 2;
   }
   .star{
     color: goldenrod;
+}
+
+.invisible {
+  display: none;
 }
 
 /* .product__options{

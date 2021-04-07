@@ -102,7 +102,7 @@ function Product({id, title, image, price, rating, quantity, userId, setLength})
 
     return (
         <div className="product">
-            <div className="product_info">
+            <div className="product_info" style={{zIndex:"2"}}>
                 <p>{title}</p>
                 <p className="product_price">
                     <small>$</small>
@@ -119,13 +119,11 @@ function Product({id, title, image, price, rating, quantity, userId, setLength})
                         <p className="star">⭐</p>
                     ))}
                 </div>
-                <div className="product__options">
-                    
+                <div style={{zIndex:2, backgroundColor:"#440A67", color:"white", width:"fit-content", padding:10, marginTop:10, borderRadius:12}}>
+                    {twins.map( e =>
+                        <div>{ e }</div>
+                    )}
                 </div>
-                <div>{twins.map( e =>
-                    <div>{ e }</div>
-                  )}
-                  </div>
             </div>
             <img
             alt="Lean Startup"
@@ -136,7 +134,7 @@ function Product({id, title, image, price, rating, quantity, userId, setLength})
             </ShareProductModal>
             
             <div className="product__options">
-                <GroupAddIcon fontSize="large" onClick={seeTwinCount} style={{color:"#440a67", cursor:"pointer", pointerEvents:"auto", marginBottom:10, marginTop:10, marginRight:20}}/> <br />
+                <GroupAddIcon fontSize="large" onClick={seeTwinCount}  style={{color:"#440a67", cursor:"pointer", pointerEvents:"auto", marginBottom:10, marginTop:10, marginRight:20}}/> <br />
                 <AddShoppingCartIcon fontSize="large" onClick={addToBasket} style={{color:"#440a67", cursor:"pointer", marginBottom:10, marginRight:20}}/> <br/>
                 <ShareIcon fontSize="large" onClick={showModal} style={{color:"#440a67", cursor:"pointer", marginBottom:10, marginRight:20}}/><br/>
             </div>

@@ -3,7 +3,7 @@ import '../../css/Users.css';
 import db from '../../firebase';
 import {useAuth} from '../../contexts/AuthContext';
 import { Avatar } from '@material-ui/core';
-import likeIcon from '../../resources/like-16x16(1).png';
+// import likeIcon from '../../resources/like-16x16(1).png';
 import emailIcon from '../../resources/email.png';
 
 function Request({key, id, emailAdd, name, profilePic}) {
