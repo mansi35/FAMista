@@ -35,7 +35,7 @@ function AddGroupUsers({handleClose, setGroupName, setGroupUsers, groupUsers, gr
     }
 
     useEffect(() => {
-        db.collection("users")
+        db.collection("users").doc(currentUser.uid).collection("friends")
         .onSnapshot((snapshot) => 
             setUsers(snapshot.docs.map((doc) => ({
                 userId: doc.id,
@@ -62,8 +62,8 @@ function AddGroupUsers({handleClose, setGroupName, setGroupUsers, groupUsers, gr
                 <AddGroupUser 
                   key = {userId}
                   id = {userId}
-                  name = {user.name}
-                  profilePic = {user.profilePic}
+                  name = {user.friendName}
+                  profilePic = {user.friendProfilePic}
                   setGroupUsers = {setGroupUsers}
                   groupUsers = {groupUsers}
                 />
