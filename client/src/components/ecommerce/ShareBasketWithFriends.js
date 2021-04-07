@@ -22,7 +22,7 @@ function ShareBasketWithFriends({handleClose}) {
 
     return (
       <div className="checkout">
-      <div className="checkout__left">
+      <div className="sidebar__chats">
 
         <div>
           <h2 className="checkout__title">Share with...</h2>
@@ -32,6 +32,7 @@ function ShareBasketWithFriends({handleClose}) {
                 id = {friendId}
                 emailAdd = {friend.friendEmail}
                 name = {friend.friendName}
+                profilePic = {friend.friendProfilePic}
                 handleClose={handleClose}
               />
           ))}

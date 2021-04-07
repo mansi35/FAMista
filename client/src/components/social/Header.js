@@ -39,12 +39,12 @@ function Header({length}) {
     }
 
     const goToFriends = () => {
-        let path = `/dashboard`;
+        let path = `/users`;
         history.push(path);
     }
 
     const goToDashboard = () => {
-        let path = `/update-profile`;
+        let path = `/dashboard`;
         history.push(path);
     }
 

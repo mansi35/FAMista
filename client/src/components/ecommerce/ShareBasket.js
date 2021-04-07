@@ -3,8 +3,9 @@ import '../../css/CheckoutProduct.css';
 import db from '../../firebase';
 import {useAuth} from "../../contexts/AuthContext";
 import {Button} from 'react-bootstrap';
+import { Avatar } from '@material-ui/core';
 
-function ShareProduct({key, id, emailAdd, name, handleClose}) {
+function ShareProduct({key, id, emailAdd, name, profilePic, handleClose}) {
     const {currentUser} = useAuth();
     const [checked, setChecked] = useState(false);
     const [alreadyReadPermission, setAlreadyReadPermission] = useState(false);
@@ -59,14 +60,18 @@ function ShareProduct({key, id, emailAdd, name, handleClose}) {
     }
 
     return (
-        <div className="checkoutProduct">
-            <div className="checkoutProduct_info">
-                <p className="checkoutProduct_title">
-                    {name}
-                </p>
-                <p className="checkoutProduct_price">
-                    <strong>Email ID: {emailAdd}</strong>
-                </p>
+            <div className="sidebarChat__info">
+                <div style={{display: "flex", flexDirection: "row"}}>
+                <Avatar src={profilePic}/>&nbsp;&nbsp;
+                    <div>
+                        <p className="checkoutProduct_title">
+                            {name}
+                        </p>
+                        <p className="checkoutProduct_price">
+                            <strong>{emailAdd}</strong>
+                        </p>
+                    </div>
+                </div>
                 {alreadyWritePermission? 
                     <div>
                         <Button variant="flat" style={{margin:10}} onClick={revokeEditAccess}>Revoke Edit Access</Button> <br/>
@@ -84,7 +89,6 @@ function ShareProduct({key, id, emailAdd, name, handleClose}) {
                     )]   
                 }
             </div>
-        </div>
     )
 }
 

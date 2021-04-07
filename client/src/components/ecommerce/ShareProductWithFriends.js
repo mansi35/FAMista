@@ -22,7 +22,7 @@ function ShareProductWithFriends({itemImage, itemId, itemTitle, userId, handleCl
 
     return (
       <div className="checkout">
-      <div className="checkout__left">
+      <div className="sidebar__chats">
 
         <div>
           <h2 className="checkout__title">Share with...</h2>
@@ -32,6 +32,7 @@ function ShareProductWithFriends({itemImage, itemId, itemTitle, userId, handleCl
                 id = {friendId}
                 emailAdd = {friend.friendEmail}
                 name = {friend.friendName}
+                profilePic = {friend.friendProfilePic}
                 itemImage = {itemImage}
                 itemId = {itemId}
                 itemTitle = {itemTitle}

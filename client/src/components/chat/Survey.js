@@ -37,7 +37,6 @@ function Survey({handleClose, productImage, productId, productName, userId}) {
  
     return (
         <div className="survey-modal">
-            <img src={productImage} height="200" alt="product" style={{marginTop:100}}/>
             <br />
             <br />
             <p>Please rate the quality of this product: </p>

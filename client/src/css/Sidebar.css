@@ -55,4 +55,5 @@
     flex: 1;
     background-color: #e6bde6;
     overflow: scroll;
+    overflow-x: hidden;
 }

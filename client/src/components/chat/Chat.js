@@ -22,6 +22,7 @@ function Chat() {
     // eslint-disable-next-line
     var [id, setId] = useState('');
     const [show, setShow] = useState(false);
+    var [itemImage, setItemImage] = useState('');
 
     useEffect(() => {
         console.log(roomId, roomType)
@@ -131,7 +132,7 @@ function Chat() {
                         <SurveyModal show={show} handleClose={hideModal} image={message.imageUrl} itemId={message.productId} itemName={message.productName} userId={message.userId}>
                             <p>Modal</p>
                         </SurveyModal>
-                        <button onClick={showModal} className="productSurvey__btn">Fill Product Survey</button><br />
+                        {message.name === currentUser.displayName? <div></div>: <div><button onClick={showModal} className="productSurvey__btn">Fill Product Survey</button><br /></div>}
                         </div>
                         }
                         {message.message.startsWith(`${message.name} is inviting you to shop virtually! Please click on this message to join!`) ? 
