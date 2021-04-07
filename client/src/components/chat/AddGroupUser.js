@@ -7,7 +7,7 @@ function AddGroupUser({key, id, name, profilePic, setGroupUsers, groupUsers}) {
     const addUser = () => {
         console.log("here")
         setGroupUsers([...groupUsers, id]);
-        document.getElementById(`user${id}`).style.color = "#93329E";
+        document.getElementById(`user${id}`).style.backgroundColor = "#93329E";
     }
 
     if (currentUser.uid === id) {

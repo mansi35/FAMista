@@ -43,3 +43,8 @@
     width: auto;
     margin: 40px;
 }
+
+.shareBasket__button {
+    display: flex;
+    justify-content: center;
+}
