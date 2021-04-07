@@ -2,8 +2,7 @@ import React from 'react'
 
 function ProductReview({key, id, feedback, fitting, material, quality, valMoney, reviewer}) {
     return (
-        <div className="checkoutProduct">
-            <div className="checkoutProduct_info">
+            <div className="sidebarChat__info">
                 <p className="checkoutProduct_title">
                     Reviewed by: {reviewer}
                 </p>
@@ -23,7 +22,6 @@ function ProductReview({key, id, feedback, fitting, material, quality, valMoney,
                     Feedback: {feedback}
                 </p>
             </div>
-        </div>
     )
 }
 

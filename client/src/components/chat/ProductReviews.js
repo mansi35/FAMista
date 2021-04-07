@@ -20,7 +20,7 @@ function ProductReviews({productId}) {
 
     return (
         <div className="checkout">
-            <div className="checkout__left">
+            <div className="sidebar__chats">
     
             <div>
                 <h2 className="checkout__title">Product Reviews</h2>
