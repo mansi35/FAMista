@@ -4,6 +4,8 @@ import Peer from "simple-peer";
 import styled from "styled-components";
 import '../../css/Room.css';
 import Header from '../social/Header.js'
+import {useAuth} from '../../contexts/AuthContext';
+import db from '../../firebase';
 
 const Container = styled.div`
     padding: 20px;
@@ -48,7 +50,17 @@ const Room = (props) => {
     const peersRef = useRef([]);
     const myPeer = useRef();
     const roomID = props.match.params.roomID;
+    const {currentUser} = useAuth();
+    const [length, setLength] = useState(0);
 
+    useEffect(() => {
+        if (currentUser) {
+            db.collection("users").doc(currentUser.uid).get().then(docc => {
+                const data = docc.data();
+                setLength(data.noItems);
+            })
+        }
+    })
     useEffect(() => {
         socketRef.current = io.connect("/");
         navigator.mediaDevices.getUserMedia({ video: videoConstraints, audio: true }).then(stream => {
@@ -138,9 +150,9 @@ const Room = (props) => {
 
     return (
         <div>
-            <Header />
-            <h2 className="title">Shop together with your friends!<img src="https://img.icons8.com/fluent/50/000000/online-order.png" style={{marginLeft:10}}/>
-            <img src="https://img.icons8.com/color/48/000000/teams.png"/></h2>
+            <Header length = {length}/>
+            <h2 className="title">Shop together with your friends!<img alt = "" src="https://img.icons8.com/fluent/50/000000/online-order.png" style={{marginLeft:10}}/>
+            <img src="https://img.icons8.com/color/48/000000/teams.png" alt = ""/></h2>
             <div className="room">
                 <StyledVideo muted ref={userVideo} autoPlay playsInline className="video"/>
                 {peers.map((peer, index) => {
