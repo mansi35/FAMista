@@ -25,21 +25,18 @@ function Sidebar() {
                 data: doc.data()
             })))
         );
+    // eslint-disable-next-line
+    }, [])
 
+    useEffect(() => {
         db.collection('rooms').where("users", "array-contains", currentUser.uid)
-        .get()
-        .then(function(snapshot) {
+        .onSnapshot((snapshot) =>
             setGroups(snapshot.docs.map(doc => (
             {
                 groupId: doc.id,
                 groupData: doc.data()
             })))
-        })
-        .catch(function(error) {
-            console.log("Error getting documents: ", error);
-        });
-
-    // eslint-disable-next-line
+        )
     }, [])
 
     return (

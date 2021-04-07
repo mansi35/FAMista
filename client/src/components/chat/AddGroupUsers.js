@@ -9,11 +9,12 @@ function AddGroupUsers({handleClose, setGroupName, setGroupUsers, groupUsers, gr
     const [users, setUsers] = useState([]);
     const [error, setError] = useState('');
     const {currentUser} = useAuth();
+    const reload=()=>window.location.reload();
 
-    const createGroup = () => {
+    async function createGroup() {
         if(groupName){
             console.log("hello")
-            db.collection("rooms").add({
+            await db.collection("rooms").add({
                 name: groupName,
                 users: groupUsers
             })
@@ -29,12 +30,12 @@ function AddGroupUsers({handleClose, setGroupName, setGroupUsers, groupUsers, gr
             setGroupUsers([currentUser.uid]);
             setGroupName('');
             handleClose();
+            reload();
         }
         else {
             setError('Please input group name!');
             setGroupUsers([currentUser.uid]);
         }
-        document.getElementsByClassName("sidebarChat").style.backgroundColor = "#DAB5DA";
     }
 
     useEffect(() => {
