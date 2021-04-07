@@ -107,7 +107,7 @@ function Product({id, title, image, price, rating, quantity, userId, setLength})
             <div className="product_info" style={{zIndex:"2"}}>
                 <p>{title}</p>
                 <p className="product_price">
-                    <small>$</small>
+                    <small>₹</small>
                     <strong>{price}</strong>    
                 </p>
                 <p className="product_price">
