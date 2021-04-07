@@ -14,18 +14,20 @@ import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import KeyboardVoiceIcon from '@material-ui/icons/KeyboardVoice';
 import Icon from '@material-ui/core/Icon';
 import SaveIcon from '@material-ui/icons/Save';
+import { Tooltip } from 'reactstrap';
 
-// const useStyles = makeStyles((theme) => ({
-//   button: {
-//     margin: theme.spacing(1),
-//   },
-// }));
 
 function Product({id, title, image, price, rating, quantity, userId, setLength}) {
     const {currentUser} = useAuth();
     const [twinCount, setTwinCount]  = useState(0);
     const [twins, setTwins] = useState([]);
     const [show, setShow] = useState(false);
+    const [tooltipOpenTwinCount, setTooltipOpenTwinCount] = useState(false);
+    const [tooltipOpenAddToCart, setTooltipOpenAddToCart] = useState(false);
+    const [tooltipOpenProductReview, setTooltipOpenProductReview] = useState(false);
+    const toggleTwinCount = () => setTooltipOpenTwinCount(!tooltipOpenTwinCount);
+    const toggleAddToCart = () => setTooltipOpenAddToCart(!tooltipOpenAddToCart);
+    const toggleProdutcReview = () => setTooltipOpenProductReview(!tooltipOpenProductReview);
 
     const addToBasket = (event) => {
         event.preventDefault();
@@ -134,9 +136,21 @@ function Product({id, title, image, price, rating, quantity, userId, setLength})
             </ShareProductModal>
             
             <div className="product__options">
-                <GroupAddIcon fontSize="large" onClick={seeTwinCount}  style={{color:"#440a67", cursor:"pointer", pointerEvents:"auto", marginBottom:10, marginTop:10, marginRight:20}}/> <br />
-                <AddShoppingCartIcon fontSize="large" onClick={addToBasket} style={{color:"#440a67", cursor:"pointer", marginBottom:10, marginRight:20}}/> <br/>
-                <ShareIcon fontSize="large" onClick={showModal} style={{color:"#440a67", cursor:"pointer", marginBottom:10, marginRight:20}}/><br/>
+                <GroupAddIcon fontSize="large" onClick={seeTwinCount} id="twincount" style={{color:"#440a67", cursor:"pointer", pointerEvents:"auto", marginBottom:10, marginTop:10, marginRight:20}}/> 
+                <br />
+                <Tooltip placement="bottom" isOpen={tooltipOpenTwinCount} target="twincount" toggle={toggleTwinCount}>
+                    See Twin Count
+                </Tooltip>
+                <AddShoppingCartIcon fontSize="large" onClick={addToBasket} id="addtocart" style={{color:"#440a67", cursor:"pointer", marginBottom:10, marginRight:20}}/> 
+                <br/>
+                <Tooltip placement="bottom" isOpen={tooltipOpenAddToCart} target="addtocart" toggle={toggleAddToCart}>
+                    Add to basket
+                </Tooltip>
+                <ShareIcon fontSize="large" onClick={showModal} id="productreview" style={{color:"#440a67", cursor:"pointer", marginBottom:10, marginRight:20}}/>
+                <br/>
+                <Tooltip placement="bottom" isOpen={tooltipOpenProductReview} target="productreview" toggle={toggleProdutcReview}>
+                    Ask for Product Review
+                </Tooltip>
             </div>
         </div>
     )
