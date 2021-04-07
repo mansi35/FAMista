@@ -91,15 +91,12 @@ function Header({length}) {
                 <div className="header__option header__option--active">
                     <HomeIcon fontSize="large" onClick={goToHome} />
                 </div>
-                <div className="header__option header__option--active">
-                    <AssignmentIcon fontSize="large" onClick={goToSurveyResults} />
+                <div className="header__option">
+                    <StorefrontOutlinedIcon fontSize="large" onClick={goToSocial} />
                 </div>
                 <div className="header__option">
                     <ShoppingBasketIcon fontSize="large" onClick={goToMyBasket} />
                     <span className="header_optionLineTwo header_basketCount">{length}</span>
-                </div>
-                <div className="header__option">
-                    <StorefrontOutlinedIcon fontSize="large" onClick={goToSocial} />
                 </div>
                 <div className="header__option">
                     <img src="https://img.icons8.com/material/80/000000/favorite-cart.png" onClick={goToSharedBaskets} 
@@ -107,6 +104,9 @@ function Header({length}) {
                 </div>
                 <div className="header__option">
                     <SupervisedUserCircleIcon fontSize="large" onClick={goToFriends} />
+                </div>
+                <div className="header__option header__option--active">
+                    <AssignmentIcon fontSize="large" onClick={goToSurveyResults} />
                 </div>
             </div>
             <div className="header__right">
