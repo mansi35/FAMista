@@ -3,6 +3,7 @@
     margin-bottom: 20px;
     height: auto;
     width: auto;
+    display: flex;
 }
 .checkoutProduct_info {
     padding-left: 20px;
