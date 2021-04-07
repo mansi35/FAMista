@@ -33,6 +33,11 @@ function Header({length}) {
         history.push(path);
     };
 
+    const goToSurveyResults = () => {
+        let path = `/surveyResults`;
+        history.push(path);
+    };
+
     const goToSocial = () => {
         let path = `/social`;
         history.push(path);
@@ -85,6 +90,9 @@ function Header({length}) {
             <div className="header__middle">
                 <div className="header__option header__option--active">
                     <HomeIcon fontSize="large" onClick={goToHome} />
+                </div>
+                <div className="header__option header__option--active">
+                    <HomeIcon fontSize="large" onClick={goToSurveyResults} />
                 </div>
                 <div className="header__option">
                     <ShoppingBasketIcon fontSize="large" onClick={goToMyBasket} />

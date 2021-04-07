@@ -40,7 +40,7 @@ const Video = (props) => {
     }, []);
 
     return (
-        <StyledVideo playsInline autoPlay ref={ref} className="video"/>
+        <video playsInline autoPlay ref={ref} className="video__card"/>
     );
 }
 
@@ -225,9 +225,9 @@ const Room = (props) => {
             <Header length = {length}/>
             <h2 className="title">Shop together with your friends!<img alt = "" src="https://img.icons8.com/fluent/50/000000/online-order.png" style={{marginLeft:10}}/>
             <img src="https://img.icons8.com/color/48/000000/teams.png" alt = ""/></h2>
-            <div className="room">
+            <div className="video__row">
                 {/* <div className="room-video"> */}
-                    <StyledVideo muted ref={userVideo} autoPlay playsInline className="video"/>
+                    <video muted ref={userVideo} autoPlay playsInline className="video__card"/>
                     {peers.map((peer) => {
                         return (
                             <Video key={peer.peerID} peer={peer.peer} />

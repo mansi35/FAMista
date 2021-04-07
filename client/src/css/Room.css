@@ -6,6 +6,19 @@
     margin: 80px 50px 40px 50px;
 }
 
+.video__row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-flow: wrap;
+    align-items: center;
+}
+
+.video__card {
+    height: 400px;
+    width: 600px;
+}
+
 .video {
     border: 20px solid #D8D3FF;
     border-radius: 12px;

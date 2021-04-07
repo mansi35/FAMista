@@ -8,6 +8,16 @@ import '../../css/Users.css'
 function SurveyResults() {
     const {currentUser} = useAuth();
     const [products, setProducts] = useState([]);
+    const [length, setLength] = useState(0);
+
+    useEffect(() => {
+        if (currentUser) {
+            db.collection("users").doc(currentUser.uid).get().then(docc => {
+                const data = docc.data();
+                setLength(data.noItems);
+            })
+        }
+    })
 
     useEffect(() => {
         db.collection('users').doc(currentUser.uid).collection('surveyResults')
@@ -21,9 +31,9 @@ function SurveyResults() {
 
     return (
       <div>
-        <Header />
-      <h2 className="users-heading">Survey Results <span><img src="https://img.icons8.com/color/64/000000/report-card.png"/></span></h2>
-      <div className="user__row">
+        <Header length={length} />
+		<h2 className="users-heading">Survey Results <span><img src="https://img.icons8.com/color/64/000000/report-card.png"/></span></h2>
+		<div className="user__row">
         {products.map(({ productId, product }) => (
                  <SurveyProduct 
                    key = {productId}

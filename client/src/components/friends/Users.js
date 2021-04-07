@@ -4,11 +4,8 @@ import User from './User';
 import db from '../../firebase';
 import Header from '../social/Header.js';
 import "../../css/Users.css";
-// import {useAuth} from '../../contexts/AuthContext';
-
 
 function Users() {
-  // const {currentUser} = useAuth();
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
