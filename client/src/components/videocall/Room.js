@@ -223,7 +223,7 @@ const Room = (props) => {
     return (
         <div>
             <Header length = {length}/>
-            <h2 className="title">Shop together with your friends!<img alt = "" src="https://img.icons8.com/fluent/50/000000/online-order.png" style={{marginLeft:10}}/>
+            <h2 className="title d-none">Shop together with your friends!<img alt = "" src="https://img.icons8.com/fluent/50/000000/online-order.png" style={{marginLeft:10}}/>
             <img src="https://img.icons8.com/color/48/000000/teams.png" alt = ""/></h2>
             <div className="video__row">
                 {/* <div className="room-video"> */}
@@ -235,7 +235,7 @@ const Room = (props) => {
                     })}
                 {/* </div> */}
             </div>
-            <div style={{display:"flex", justifyContent:"center", marginTop:30}}>
+            <div style={{display:"flex", justifyContent:"center", position: "sticky", bottom: "30px"}}>
                     {audioControl}
                     {videoControl}
 

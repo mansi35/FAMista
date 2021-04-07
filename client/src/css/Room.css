@@ -1,30 +1,15 @@
-.room {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80%;
-    margin: 80px 50px 40px 50px;
-}
-
 .video__row {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     flex-flow: wrap;
     align-items: center;
+    margin-top: 20px;
 }
 
 .video__card {
-    height: 400px;
     width: 600px;
-}
-
-.video {
-    border: 20px solid #D8D3FF;
-    border-radius: 12px;
-    box-shadow: 15px 20px #5d4c67;
-    width: 40% !important;
-    margin: 0 50px;
+    margin: 12px;
 }
 
 .title {
