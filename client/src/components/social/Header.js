@@ -13,7 +13,7 @@ import { Avatar, IconButton } from '@material-ui/core';
 import {useAuth} from '../../contexts/AuthContext';
 import { useHistory } from 'react-router';
 import logo_Famista from '../../resources/logo_Famista.png'
-// import Link from 'react-router-dom';
+import AssignmentIcon from '@material-ui/icons/Assignment';
 
 function Header({length}) {
     const { currentUser, logout } = useAuth();
@@ -92,7 +92,7 @@ function Header({length}) {
                     <HomeIcon fontSize="large" onClick={goToHome} />
                 </div>
                 <div className="header__option header__option--active">
-                    <HomeIcon fontSize="large" onClick={goToSurveyResults} />
+                    <AssignmentIcon fontSize="large" onClick={goToSurveyResults} />
                 </div>
                 <div className="header__option">
                     <ShoppingBasketIcon fontSize="large" onClick={goToMyBasket} />
