@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../../css/Post.css';
 import  { Avatar } from '@material-ui/core';
-import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 import NearMeIcon from '@material-ui/icons/NearMe';
 import { useAuth } from '../../contexts/AuthContext'
@@ -119,7 +119,7 @@ function Post({postId, profilePic, message, timestamp, username, image, userId, 
 
             <div className="post__options">
                 <div className="post__option post__notLiked" onClick={likeHandle}>
-                    <ThumbUpIcon className={show}/>
+                    <FavoriteIcon className={show}/>
                     <p className={show2}>Like</p>
                 </div>
                 <div className="post__option post__comment">
