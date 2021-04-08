@@ -10,18 +10,32 @@ import Header from "../social/Header";
 import '../../css/Users.css';
 // import likeIcon from '../../resources/like-16x16(1).png';
 import emailIcon from '../../resources/email.png';
+import likeIcon from '../../resources/like-16x16(1).png';
 
-function Friends() {
+function Friends({id, emailAdd, gender, name, profilePic}) {
+    const history = useHistory();
     const [friends, setFriends] = useState([]);
     // const [error, setError] = useState("")
     const { currentUser} = useAuth();
     const [length, setLength] = useState(0);
+
+    const [Gender, setGender] = useState('')
+    const [phoneNumber, setPhoneNumber] = useState('')
+    // useEffect(() => {
+    //     db.collection("users").doc(currentUser.uid).get().then(docc => {
+    //         const data = docc.data();
+    //         setPhoneNumber(data.phoneNumber);
+    //         setGender(data.gender)
+    //     })
+    // }, [])
 
     useEffect(() => {
         if (currentUser) {
             db.collection("users").doc(currentUser.uid).get().then(docc => {
                 const data = docc.data();
                 setLength(data.noItems);
+                setPhoneNumber(data.phoneNumber);
+                setGender(data.gender)
             })
         }
     })
@@ -49,6 +63,11 @@ function Friends() {
     // eslint-disable-next-line
     }, [])
 
+    const goToUpdateProfile = () => {
+      let path = `/update-profile`;
+      history.push(path);
+    }
+
   return (
     // <div>
     //   <Header />
@@ -68,6 +87,25 @@ function Friends() {
 
     <div>
       <Header length = {length}/>
+      <h2 className="users-heading">Your Profile</h2>
+      <div style={{display:"flex", justifyContent:"center"}}>
+      <div class="card" style={{width:500}}>
+            <div class="card-header" style={{width:480}}>
+                <h1>Image</h1>
+                
+            </div>
+            <div class="card-body" style={{width:500, paddingRight:20}}>
+                <div className='card-inline'><Avatar src={currentUser.photoURL} />&nbsp;&nbsp;
+                    <h3>{currentUser.displayName}</h3>
+                </div>
+                <p><span><img src={likeIcon} alt="like" style={{height:16, width:16, marginRight:10}} /></span>{Gender}</p>
+                <p><span><img src={emailIcon} alt="like" style={{height:22, width:22, marginRight:5, marginTop:5}} /></span>{currentUser.email}</p>
+                <p><span><img src="https://img.icons8.com/ultraviolet/40/000000/phone.png" style={{height:22, width:22, marginRight:5, marginTop:5}}/></span>{phoneNumber}</p>
+                <button onClick={goToUpdateProfile} style={{marginTop:20}}>Update Profile</button>
+            </div>
+      </div>
+      </div>
+
       <h2 className="users-heading">Your Shopping Buddies <span><img src="https://img.icons8.com/emoji/48/000000/purple-heart.png" alt="emoji" />
         <img src="https://img.icons8.com/color/48/000000/friends-hanging-out.png" alt="emoji" /></span></h2>
       <div className="user__row">

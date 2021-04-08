@@ -56,7 +56,7 @@ function CheckoutProduct({productId, title, price, image, rating, quantity, setL
                     {title}
                 </p>
                 <p className="checkoutProduct_price">
-                    <small>$</small>
+                    <small>₹</small>
                     <strong>{price}</strong>
                 </p>
                 <p>Quantity: &nbsp;

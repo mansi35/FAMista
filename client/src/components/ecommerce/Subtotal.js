@@ -20,7 +20,7 @@ function Subtotal({length, total, checkout}) {
             value={total} 
             displayType={"text"}
             thousandSeparator={true}
-            prefix={"$"}
+            prefix={"₹"}
         />
         {checkout? <button>Proceed to Checkout</button>: <div></div>}
         

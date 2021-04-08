@@ -97,12 +97,23 @@ function Header({length}) {
     return (
         <div className='header__social'>
             <div className="header__left">
+<<<<<<< HEAD
             <img src={logo_Famista} alt="famista-logo" onClick = {goToHome}></img>
                 
                 <div className="header__input">
                     <SearchIcon />
                     <input type="text" placeholder="Search FAMista" />
                 </div>
+=======
+            <img src={logo_Famista} style={{cursor: "pointer"}} alt="famista-logo" onClick={goToHome} />
+                {/* <Link to = "\" >
+                
+                </Link> */}
+            <div className="header__input">
+                <SearchIcon />
+                <input type="text" placeholder="Search FAMista" />
+            </div>
+>>>>>>> 6be43b7623d3c854ec2c3b2c45bd000ca7102f37
             </div>
             <div className="header__middle">
                 <div className="header__option header__option--active">
@@ -136,7 +147,7 @@ function Header({length}) {
                 </div>
                 
                 <div className="header__option">
-                    <SupervisedUserCircleIcon fontSize="large" id="users" onClick={goToFriends} />
+                    <SupervisedUserCircleIcon fontSize="large" id="users" onClick={goToDashboard} />
                     <Tooltip placement="bottom" isOpen={tooltipOpenUsers} target="users" toggle={toggleUsers}>
                         Users
                     </Tooltip>
@@ -153,7 +164,7 @@ function Header({length}) {
             <div className="header__right">
                 <div className="header__info">
                     <Avatar src={currentUser.photoURL} />
-                    <a onClick={goToDashboard} style={{color: "white", cursor:"pointer"}}>{currentUser.displayName}</a>
+                    <a onClick={goToFriends} style={{color: "white", cursor:"pointer"}}>{currentUser.displayName}</a>
                 </div>
                 <IconButton>
                     <div className="header__option2">
