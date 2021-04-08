@@ -3,7 +3,6 @@
     flex-direction: row;
     justify-content: space-around;
     flex-flow: wrap;
-    margin: 50px;
     align-items: center;
 }
 
@@ -95,6 +94,12 @@
     border-radius: 20px;
     opacity: 1;
     margin-top: 10px;
+}
+
+.user__dashboard {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .card-body > button:hover {

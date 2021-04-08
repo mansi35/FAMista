@@ -18,17 +18,16 @@ function Friend({key, id, emailAdd, name, profilePic}) {
         //     </div>
         // </div>
 
-    <div class="card" style={{height: 300}}>
-        <div class="card-header">
-            <h1>Image</h1>
+    <div class="card" style={{height: "fit-content"}}>
+        <div class="card-header" style={{width: "297px"}}>
         </div>
-        <div class="card-body">
+        <div class="card-body" style={{width: "100%"}}>
             <div className='card-inline'><Avatar src={profilePic} />&nbsp;&nbsp;
                 <h3>{name}</h3>
             </div>
             {/* <p><span><img src={likeIcon} alt="like" style={{height:16, width:16, marginRight:10}} /></span>{gender}</p> */}
             <br/>
-            <p style={{marginLeft:-30}}><span><img src={emailIcon} alt="like" style={{height:22, width:22, marginRight:5}} /></span>{emailAdd}</p>
+            <p style={{marginLeft:-20, width: "100%"}}><span><img src={emailIcon} alt="like" style={{height:22, width:22, marginRight:5}} /></span>{emailAdd}</p>
         </div>
     </div>
     )

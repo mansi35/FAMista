@@ -21,13 +21,6 @@ function Friends({id, emailAdd, gender, name, profilePic}) {
 
     const [Gender, setGender] = useState('')
     const [phoneNumber, setPhoneNumber] = useState('')
-    // useEffect(() => {
-    //     db.collection("users").doc(currentUser.uid).get().then(docc => {
-    //         const data = docc.data();
-    //         setPhoneNumber(data.phoneNumber);
-    //         setGender(data.gender)
-    //     })
-    // }, [])
 
     useEffect(() => {
         if (currentUser) {
@@ -39,18 +32,6 @@ function Friends({id, emailAdd, gender, name, profilePic}) {
             })
         }
     })
-    // const history = useHistory();
-
-    // async function logOut() {
-    //     setError("");
-
-    //     try {
-    //         await logout();
-    //         history.push("/login");
-    //     } catch {
-    //         setError("Failed to log out");
-    //     }
-    // }
 
     useEffect(() => {
         db.collection("users").doc(currentUser.uid).collection("friends")
@@ -69,32 +50,17 @@ function Friends({id, emailAdd, gender, name, profilePic}) {
     }
 
   return (
-    // <div>
-    //   <Header />
-    //   <h2 className="text-center mb-4" style={{color:"white", marginTop:20}}>My Profile</h2>
-    //   <div className="main-card" style={{maxWidth:"50%"}}>
-    //     {friends.map(({ friendId, friend }) => (
-    //         <Friend 
-    //           key = {friendId}
-    //           id = {friendId}
-    //           emailAdd = {friend.friendEmail}
-    //           name = {friend.friendName}
-    //           profilePic = {friend.friendProfilePic}
-    //         />
-    //     ))}
-    //   </div>
-    // </div> 
-
     <div>
-      <Header length = {length}/>
+    <Header length = {length}/>
+    <div className="row" style={{width: "99%"}}>
+      <div className="col-md-6" style={{alignItems: "center"}}>
       <h2 className="users-heading">Your Profile</h2>
-      <div style={{display:"flex", justifyContent:"center"}}>
-      <div class="card" style={{width:500}}>
-            <div class="card-header" style={{width:480}}>
+      <div class="card" style={{width:"68.7%", marginLeft: "15%"}}>
+            <div class="card-header" style={{width:"100%"}}>
                 <h1>Image</h1>
                 
             </div>
-            <div class="card-body" style={{width:500, paddingRight:20}}>
+            <div class="card-body" style={{width:"100%", paddingRight:20}}>
                 <div className='card-inline'><Avatar src={currentUser.photoURL} />&nbsp;&nbsp;
                     <h3>{currentUser.displayName}</h3>
                 </div>
@@ -105,7 +71,7 @@ function Friends({id, emailAdd, gender, name, profilePic}) {
             </div>
       </div>
       </div>
-
+      <div className="col-md-6">
       <h2 className="users-heading">Your Shopping Buddies <span><img src="https://img.icons8.com/emoji/48/000000/purple-heart.png" alt="emoji" />
         <img src="https://img.icons8.com/color/48/000000/friends-hanging-out.png" alt="emoji" /></span></h2>
       <div className="user__row">
@@ -119,6 +85,8 @@ function Friends({id, emailAdd, gender, name, profilePic}) {
             />
          ))}
       </div>
+      </div>
+    </div>
     </div>
   );
 }

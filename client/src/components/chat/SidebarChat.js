@@ -46,7 +46,7 @@ function SidebarChat({id, name, profilePic, addNewChat, group}) {
                     <div className="sidebarChat__info">
                         <h2 style={{color: '#440a67'}}>{name}</h2>
                         {/*<p>{messages[0]?.message.startsWith(`${name} is inviting you to shop virtually! Please click on this message to join!`) ? messages[0]?.message.slice(0, messages[0]?.message.length-36): messages[0]?.message}</p>*/}
-                        <p>{messages[0]?.message.slice(0, messages[0]?.message.length-36)}</p>
+                        <p>{messages[0]?.message}</p>
                     </div>
                 </div>
             </Link> :

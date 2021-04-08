@@ -37,9 +37,8 @@ function User({key, id, emailAdd, gender, name, profilePic}) {
     }
 
     return (
-        <div class="card">
+        <div class="card"  style={{height: "fit-content"}}>
             <div class="card-header">
-                <h1>Image</h1>
                 
             </div>
             <div class="card-body">
