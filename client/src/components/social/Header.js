@@ -97,7 +97,7 @@ function Header({length}) {
     return (
         <div className='header__social'>
             <div className="header__left">
-            <img src={logo_Famista} alt="famista-logo" onClick = {goToHome}></img>
+            <img src={logo_Famista} alt="famista-logo" style={{cursor: "pointer"}} onClick = {goToHome}></img>
                 
                 <div className="header__input">
                     <SearchIcon />
