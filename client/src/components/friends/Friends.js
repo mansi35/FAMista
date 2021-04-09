@@ -11,6 +11,7 @@ import '../../css/Users.css';
 // import likeIcon from '../../resources/like-16x16(1).png';
 import emailIcon from '../../resources/email.png';
 import likeIcon from '../../resources/like-16x16(1).png';
+import Post from "../social/Post";
 
 function Friends({id, emailAdd, gender, name, profilePic}) {
     const history = useHistory();
@@ -18,7 +19,7 @@ function Friends({id, emailAdd, gender, name, profilePic}) {
     // const [error, setError] = useState("")
     const { currentUser} = useAuth();
     const [length, setLength] = useState(0);
-
+    const [posts, setPosts] = useState([]);
     const [Gender, setGender] = useState('')
     const [phoneNumber, setPhoneNumber] = useState('')
 
@@ -44,6 +45,23 @@ function Friends({id, emailAdd, gender, name, profilePic}) {
     // eslint-disable-next-line
     }, [])
 
+    useEffect(() => {
+      db.collection('posts')
+      .orderBy("timestamp", "desc")
+      .get().then((querySnapshot) => {
+        querySnapshot.forEach(doc => {
+          if (doc.data().userId === currentUser.uid) {
+            const postObj = {
+              id: doc.id,
+              post : doc.data()
+            }
+            if (!posts.find(obj => obj.id === postObj.id))
+              setPosts(posts => [...posts, postObj]);
+          }
+        })
+      })
+    }, [])
+
     const goToUpdateProfile = () => {
       let path = `/update-profile`;
       history.push(path);
@@ -53,11 +71,10 @@ function Friends({id, emailAdd, gender, name, profilePic}) {
     <div>
     <Header length = {length}/>
     <div className="row" style={{width: "99%"}}>
-      <div className="col-md-6" style={{alignItems: "center"}}>
+      <div className="col-md-8" style={{alignItems: "center"}}>
       <h2 className="users-heading">Your Profile</h2>
       <div class="card" style={{width:"68.7%", marginLeft: "15%"}}>
-            <div class="card-header" style={{width:"100%"}}>
-                <h1>Image</h1>
+            <div class="card-header" style={{width:"100%", height: "150px"}}>
                 
             </div>
             <div class="card-body" style={{width:"100%", paddingRight:20}}>
@@ -70,8 +87,23 @@ function Friends({id, emailAdd, gender, name, profilePic}) {
                 <button onClick={goToUpdateProfile} style={{marginTop:20}}>Update Profile</button>
             </div>
       </div>
+      <div className="feed">
+      {posts.map(({ id, post }) => (
+          <Post
+              key={id}
+              postId={id}
+              profilePic={post.profilePic}
+              message={post.message}
+              timestamp={post.timestamp}
+              username={post.username}
+              image={post.image}
+              userId={currentUser.uid}
+              likes={post.likes}
+          />
+      ))}
       </div>
-      <div className="col-md-6">
+      </div>
+      <div className="col-md-4">
       <h2 className="users-heading">Your Shopping Buddies <span><img src="https://img.icons8.com/emoji/48/000000/purple-heart.png" alt="emoji" />
         <img src="https://img.icons8.com/color/48/000000/friends-hanging-out.png" alt="emoji" /></span></h2>
       <div className="user__row">

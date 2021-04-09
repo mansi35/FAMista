@@ -30,7 +30,7 @@ function Request({key, id, emailAdd, name, profilePic}) {
     const declineRequest = (event) => {
         event.preventDefault();
 
-        db.collection("users").doc(id).collection("friendRequests").doc(currentUser.uid).delete().then(() => {
+        db.collection("users").doc(currentUser.uid).collection("friendRequests").doc(currentUser.uid).delete().then(() => {
             console.log("Item successfully deleted!");
         }).catch((error) => {
             console.error("Error removing item: ", error);

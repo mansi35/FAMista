@@ -38,10 +38,10 @@ function User({key, id, emailAdd, gender, name, profilePic}) {
 
     return (
         <div class="card"  style={{height: "fit-content"}}>
-            <div class="card-header">
+            <div class="card-header" style={{width: "93.5%"}}>
                 
             </div>
-            <div class="card-body">
+            <div class="card-body" style={{width: "93.5%"}}>
                 <div className='card-inline'><Avatar src={profilePic} />&nbsp;&nbsp;
                     <h3>{name}</h3>
                 </div>

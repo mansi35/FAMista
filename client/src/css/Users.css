@@ -35,14 +35,12 @@
     padding: 50px 10px;
     background: linear-gradient(to right, #440a67, #b4aee8);
     color: #fff;
-    width: 280px;
 }
 
 .card-body {
     padding: 30px 20px;
     text-align: center;
     font-size: 18px;
-    width: 260px;
 }
 
 .card-body .btn {

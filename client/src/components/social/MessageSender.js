@@ -31,6 +31,7 @@ function MessageSender() {
                 username: currentUser.displayName,
                 image: image,
                 likes: 0,
+                userId: currentUser.uid
             })
         } else {
             const uploadTask = storage.ref(`images/${image.name}`).put(image);
@@ -59,6 +60,7 @@ function MessageSender() {
                                 username: currentUser.displayName,
                                 image: url,
                                 likes: 0,
+                                userId: currentUser.uid
                             });
                             setProgress(0);
                             setImage(null);

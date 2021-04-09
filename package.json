@@ -16,6 +16,6 @@
   },
   "scripts": {
     "start": "PROD=true node server.js",
-    "postinstall": "cd ./client"
+    "postinstall": "cd ./client && npm i"
   }
 }
