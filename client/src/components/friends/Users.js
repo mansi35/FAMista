@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "../../css/Checkout.css";
 import User from './User';
 import db from '../../firebase';
-import Header from '../social/Header.js';
 import "../../css/Users.css";
 
 function Users() {

@@ -16,6 +16,7 @@ function User({key, id, emailAdd, gender, name, profilePic}) {
                 setAlreadyFriend(true);
             }
         })
+    // eslint-disable-next-line
     }, [])
 
     const sendRequest = (event) => {

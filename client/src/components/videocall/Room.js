@@ -1,33 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import io from "socket.io-client";
 import Peer from "simple-peer";
-import styled from "styled-components";
 import '../../css/Room.css';
 import Header from '../social/Header.js'
 import {useAuth} from '../../contexts/AuthContext';
 import db from '../../firebase';
-// import MicIcon from '@material-ui/icons/Mic';
 import ScreenShareIcon from '@material-ui/icons/ScreenShare';
-// import VideocamIcon from '@material-ui/icons/Videocam';
 import camera from '../../resources/camera.svg'
 import camerastop from '../../resources/camera-stop.svg'
 import microphone from '../../resources/microphone.svg'
 import microphonestop from '../../resources/microphone-stop.svg'
 import hangup from '../../resources/hang-up.svg'
-
-const Container = styled.div`
-    padding: 20px;
-    display: flex;
-    height: 100vh;
-    width: 90%;
-    margin: auto;
-    flex-wrap: wrap;
-`;
-
-const StyledVideo = styled.video`
-    height: 40%;
-    width: 50%;
-`;
 
 const Video = (props) => {
     const ref = useRef();

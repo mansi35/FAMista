@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import AddGroupUsers from './AddGroupUsers';
 
 function AddGroupUsersModal({show, handleClose, setGroupName, setGroupUsers, groupUsers, groupName}) {

@@ -22,7 +22,6 @@ function Chat() {
     // eslint-disable-next-line
     var [id, setId] = useState('');
     const [show, setShow] = useState(false);
-    var [itemImage, setItemImage] = useState('');
 
     useEffect(() => {
         console.log(roomId, roomType)
@@ -55,7 +54,7 @@ function Chat() {
             input = customInput;
         }
         console.log("You typed >>>> ", input);
-        if (roomType == 1){
+        if (roomType === '1'){
             db.collection('rooms').doc(roomId).collection('messages').add({
                 message: input,
                 name: currentUser.displayName,

@@ -16,6 +16,7 @@ function ProductReviews({productId}) {
                 review: doc.data()
             })))
         );
+    // eslint-disable-next-line
     }, [])
 
     return (

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import '../../css/Checkout.css';
 import '../../css/CheckoutProduct.css';
 import '../../css/Users.css';
-import Header from '../social/Header';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
@@ -25,7 +24,7 @@ function SharedBaskets() {
 
     return (
         <div>
-        <h2 className="users-heading">Shared Baskets <img src="https://img.icons8.com/fluent/48/000000/favorite-cart.png"/></h2>
+        <h2 className="users-heading">Shared Baskets <img src="https://img.icons8.com/fluent/48/000000/favorite-cart.png" alt="" /></h2>
         <div class="baskets-container">
             {friends.map(({id, data}) => {
                 return(

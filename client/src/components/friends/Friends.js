@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card, Button, Alert } from 'react-bootstrap';
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "../../css/Checkout.css";
 import Friend from './Friend';
 import db from '../../firebase';
@@ -8,7 +7,6 @@ import {useAuth} from '../../contexts/AuthContext';
 import { Avatar } from "@material-ui/core";
 import Header from "../social/Header";
 import '../../css/Users.css';
-// import likeIcon from '../../resources/like-16x16(1).png';
 import emailIcon from '../../resources/email.png';
 import likeIcon from '../../resources/like-16x16(1).png';
 import Post from "../social/Post";
@@ -60,6 +58,7 @@ function Friends({id, emailAdd, gender, name, profilePic}) {
           }
         })
       })
+    // eslint-disable-next-line
     }, [])
 
     const goToUpdateProfile = () => {
@@ -83,7 +82,7 @@ function Friends({id, emailAdd, gender, name, profilePic}) {
                 </div>
                 <p><span><img src={likeIcon} alt="like" style={{height:16, width:16, marginRight:10}} /></span>{Gender}</p>
                 <p><span><img src={emailIcon} alt="like" style={{height:22, width:22, marginRight:5, marginTop:5}} /></span>{currentUser.email}</p>
-                <p><span><img src="https://img.icons8.com/ultraviolet/40/000000/phone.png" style={{height:22, width:22, marginRight:5, marginTop:5}}/></span>{phoneNumber}</p>
+                <p><span><img src="https://img.icons8.com/ultraviolet/40/000000/phone.png" style={{height:22, width:22, marginRight:5, marginTop:5}} alt="" /></span>{phoneNumber}</p>
                 <button onClick={goToUpdateProfile} style={{marginTop:20}}>Update Profile</button>
             </div>
       </div>
