@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import RegisterHeader from './components/authentication/RegisterHeader.js';
@@ -10,8 +10,6 @@ import ForgotPassword from './components/authentication/ForgotPassword.js';
 import UpdateProfile from './components/authentication/UpdateProfile.js';
 import { AuthProvider } from './contexts/AuthContext.js';
 import Home from './components/ecommerce/Home.js';
-import Checkout from './components/ecommerce/Checkout.js';
-import Header from './components/social/Header';
 import MyFeed from './components/social/MyFeed';
 import EmptyUsers from './components/friends/EmptyUsers';
 import Requests from './components/friends/Requests';

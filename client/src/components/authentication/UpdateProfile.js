@@ -1,9 +1,10 @@
-import React, { useRef, useState } from "react"
-import { Form, Button, Card, Alert } from "react-bootstrap"
+import React, { useEffect, useRef, useState } from "react"
+import { Form, Button, Alert } from "react-bootstrap"
 import { useAuth } from "../../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import Header from '../social/Header.js';
 import '../../css/UpdateProfile.css';
+import db from "../../firebase";
 
 export default function UpdateProfile() {
   const emailRef = useRef()
@@ -13,7 +14,17 @@ export default function UpdateProfile() {
   const { currentUser, updatePassword, updateEmail, updateDisplayName } = useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
+  const [length, setLength] = useState(0);
   const history = useHistory()
+
+  useEffect(() => {
+    if (currentUser) {
+        db.collection("users").doc(currentUser.uid).get().then(docc => {
+            const data = docc.data();
+            setLength(data.noItems);
+        })
+    }
+})
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -37,7 +48,7 @@ export default function UpdateProfile() {
 
     Promise.all(promises)
       .then(() => {
-        history.push("/")
+        history.push("/dashboard")
       })
       .catch(() => {
         setError("Failed to update account")
@@ -49,7 +60,7 @@ export default function UpdateProfile() {
 
   return (
     <div>
-      <Header />
+      <Header length={length} />
       <div className="main-card">
         {error && <Alert variant="danger">{error}</Alert>}
         <Form onSubmit={handleSubmit} class="profile-form">
@@ -89,7 +100,7 @@ export default function UpdateProfile() {
                   placeholder="Leave blank to keep the same"
                 />
               </Form.Group>
-              <Button disabled={loading} className="w-100" variant="flat" type="submit">
+              <Button disabled={loading} onClick={handleSubmit} className="w-100" variant="flat" type="submit">
                 Update
               </Button>
             </Form>
@@ -100,9 +111,11 @@ export default function UpdateProfile() {
         <Link to="/">Cancel</Link>
       </div> */}
       <div className="w-100 text-center mt-2">
-        <Button href="/" className="w-10" variant="outline-danger" style={{marginLeft:30}}>
+      <Link to="/dashboard">
+        <Button className="w-10" variant="outline-danger" style={{marginLeft:30}}>
                   Cancel
         </Button>
+      </Link>
       </div>
     </div>
   )

@@ -27,13 +27,14 @@ function SurveyResults() {
             product: doc.data()
         })))
     );
+    // eslint-disable-next-line
     }, [])
 
     return (
       <div>
         <Header length={length} />
-		<h2 className="users-heading">Survey Results <span><img src="https://img.icons8.com/color/64/000000/report-card.png"/></span></h2>
-		<div className="user__row">
+		<h2 className="users-heading">Survey Results <span><img src="https://img.icons8.com/color/64/000000/report-card.png" alt="" /></span></h2>
+		<div className="user__row" style={{marginTop: "40px"}}>
         {products.map(({ productId, product }) => (
                  <SurveyProduct 
                    key = {productId}

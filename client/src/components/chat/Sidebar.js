@@ -37,6 +37,7 @@ function Sidebar() {
                 groupData: doc.data()
             })))
         )
+    // eslint-disable-next-line
     }, [])
 
     return (

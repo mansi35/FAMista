@@ -2,18 +2,10 @@ import React, { useState } from 'react'
 import { useAuth } from '../../contexts/AuthContext';
 import '../../css/Product.css'
 import db from '../../firebase'
-import { Button } from 'react-bootstrap';
 import ShareProductModal from './ShareProductModal';
 import ShareIcon from '@material-ui/icons/Share';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import GroupAddIcon from '@material-ui/icons/GroupAdd';
-// import Button from '@material-ui/core/Button';
-// import { makeStyles } from '@material-ui/core/styles';
-import DeleteIcon from '@material-ui/icons/Delete';
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
-import KeyboardVoiceIcon from '@material-ui/icons/KeyboardVoice';
-import Icon from '@material-ui/core/Icon';
-import SaveIcon from '@material-ui/icons/Save';
 import { Tooltip } from 'reactstrap';
 
 
@@ -103,7 +95,7 @@ function Product({id, title, image, price, rating, quantity, userId, setLength})
     };
 
     return (
-        <div className="product">
+        <div className="product col-md-4 col-xs-12">
             <div className="product_info" style={{zIndex:"2"}}>
                 <p>{title}</p>
                 <p className="product_price">

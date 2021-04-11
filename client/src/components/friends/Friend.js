@@ -1,7 +1,6 @@
 import { Avatar } from '@material-ui/core';
 import React from 'react'
 import '../../css/Users.css';
-import likeIcon from '../../resources/like-16x16(1).png';
 import emailIcon from '../../resources/email.png';
 
 function Friend({key, id, emailAdd, name, profilePic}) {
@@ -19,7 +18,7 @@ function Friend({key, id, emailAdd, name, profilePic}) {
         // </div>
 
     <div class="card" style={{height: "fit-content"}}>
-        <div class="card-header" style={{width: "297px"}}>
+        <div class="card-header" style={{width: "100%"}}>
         </div>
         <div class="card-body" style={{width: "100%"}}>
             <div className='card-inline'><Avatar src={profilePic} />&nbsp;&nbsp;

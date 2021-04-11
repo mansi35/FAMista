@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Form, Button, Card, Alert } from "react-bootstrap"
+import { Form, Button, Alert } from "react-bootstrap"
 import { useAuth } from "../../contexts/AuthContext.js"
 import { Link } from "react-router-dom"
 import Header from "../social/Header";

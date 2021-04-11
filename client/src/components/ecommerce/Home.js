@@ -29,7 +29,7 @@ function Home() {
             alt=""
             />
 
-            <div className="home_row">
+            <div className="home_row row">
             <Product
                 id="12321341"
                 title="H&M Summer Long Dress, Easy to maintain"
@@ -61,7 +61,7 @@ function Home() {
                 setLength = {setLength}
             />
             </div>
-            <div className="home_row">
+            <div className="home_row row">
             <Product
                 id="123213411"
                 title="Maniac Men's Full sleeve Round Neck Printed Navy Cotton T shirt"
@@ -77,7 +77,7 @@ function Home() {
                 title="Classic Dotted Pattern Cotton Leisure Mens Shirt, Blue Coloured"
                 price={899}
                 rating={4}
-                image="https://lh3.googleusercontent.com/proxy/hJRdGRhb-9tYzstPQ_jBDsSJHdNLb295eukYReKveZ75uF635aTGaw9dsZB53FQNcPBl30hReVOtyBGEyZlwh44_u_8smN1F9ivN"
+                image="https://assetscdn1.paytm.com/images/catalog/product/A/AP/APPDEZANO-MEN-BDEZA115490847DEEC85/1608742345930_0..jpg?imwidth=282&impolicy=hq"
                 quantity={0}
                 userId={currentUser.uid}
                 setLength = {setLength}
@@ -93,7 +93,7 @@ function Home() {
                 setLength = {setLength}
             />
             </div>
-            <div className="home_row">
+            <div className="home_row row">
             <Product
                 id="23445930"
                 title="Women Extra Stretch Black Panther Sports Wear, sweat-proof, high durability and low maintanence"
@@ -125,7 +125,7 @@ function Home() {
                 setLength = {setLength}
             />
             </div>
-            <div className="home_row">
+            <div className="home_row row">
             <Product
                 id="234459301"
                 title="Premium Quality Leather Navy Blue Four Pocket Jacket, Lightweight"
@@ -141,7 +141,7 @@ function Home() {
                 title="Deca Dev Mens Long Sleeve Autumn Winter Casual Sweatshirt"
                 price={1099}
                 rating={4}
-                image="https://lh3.googleusercontent.com/proxy/XfpuDsZUKlClrSxTYqgcOItzetY3MCfXviPYLZw_srh2Py88MmYAC5K48TKdnUpXw8ubThmg0rVoQlOlTMWnUPM5XbvH3WcvSPPc"
+                image="https://decadev.co.uk/wp-content/uploads/2018/10/Mens-Long-Sleeve-Autumn-Winter-Casual-Sweatshirt-Hoodies-Top-Blouse-Tracksuits-sweatshirts-hoodies-men-para.jpg"
                 quantity={0}
                 userId={currentUser.uid}
                 setLength = {setLength}

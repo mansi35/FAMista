@@ -20,6 +20,7 @@ function ShareProduct({key, id, emailAdd, name, profilePic, handleClose}) {
                 setAlreadyReadPermission(true);
             }
         })
+    // eslint-disable-next-line
     }, [])
 
     const revokeAccess = () => {

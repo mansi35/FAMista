@@ -152,8 +152,8 @@ function Header({length}) {
             </div>
             <div className="header__right">
                 <div className="header__info">
-                    <Avatar src={currentUser.photoURL} />
-                    <a onClick={goToDashboard} style={{color: "white", cursor:"pointer"}}>{currentUser.displayName}</a>
+                    <button onClick={goToDashboard} style={{backgroundColor: "transparent", border:"none", color: "white", cursor:"pointer"}}><Avatar src={currentUser.photoURL} /></button>
+                    <button onClick={goToDashboard} style={{backgroundColor: "transparent", border:"none", color: "white", cursor:"pointer"}}>{currentUser.displayName}</button>
                 </div>
                 <IconButton>
                     <div className="header__option2">
