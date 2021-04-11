@@ -1,4 +1,4 @@
-**Website Link: ** 
+**Website Link:** 
 [FAMista](https://github.com/mansi35/FAMista)
 
 ![slide1](/images/i1.png)
