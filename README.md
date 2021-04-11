@@ -1,5 +1,5 @@
 **Website Link:** 
-[FAMista](https://github.com/mansi35/FAMista)
+[FAMista](http://famista.herokuapp.com/)
 
 ![slide1](/images/i1.png)
 ![slide2](/images/i2.png)
