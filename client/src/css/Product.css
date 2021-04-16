@@ -27,6 +27,8 @@
 	display: flex;
 	flex-direction: column;
 	align-content: center;
+    position: absolute;
+    bottom: 0;
 }
   
 .product_price {
