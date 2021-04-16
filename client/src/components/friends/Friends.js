@@ -14,12 +14,12 @@ import Post from "../social/Post";
 function Friends({id, emailAdd, gender, name, profilePic}) {
     const history = useHistory();
     const [friends, setFriends] = useState([]);
-    // const [error, setError] = useState("")
     const { currentUser} = useAuth();
     const [length, setLength] = useState(0);
     const [posts, setPosts] = useState([]);
     const [Gender, setGender] = useState('')
     const [phoneNumber, setPhoneNumber] = useState('')
+    const [requests, setRequests] = useState(0);
 
     useEffect(() => {
         if (currentUser) {
@@ -29,6 +29,9 @@ function Friends({id, emailAdd, gender, name, profilePic}) {
                 setPhoneNumber(data.phoneNumber);
                 setGender(data.gender)
             })
+            db.collection("users").doc(currentUser.uid).collection("friendRequests").get().then(snapshot => {
+              setRequests(snapshot.size);
+          })
         }
     })
 
@@ -68,7 +71,7 @@ function Friends({id, emailAdd, gender, name, profilePic}) {
 
   return (
     <div>
-    <Header length = {length}/>
+    <Header length = {length} noRequests={requests} />
     <div className="row" style={{width: "99%"}}>
       <div className="col-md-8" style={{alignItems: "center"}}>
       <h2 className="users-heading">Your Profile</h2>

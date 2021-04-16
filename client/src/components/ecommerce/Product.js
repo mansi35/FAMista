@@ -113,37 +113,41 @@ function Product({id, title, image, price, rating, quantity, userId, setLength})
                         <p className="star">⭐</p>
                     ))}
                 </div>
-                <div style={{zIndex:2, backgroundColor:"#440A67", color:"white", width:"fit-content", padding:10, marginTop:10, borderRadius:12}}>
-                    {twins.map( e =>
-                        <div>{ e }</div>
-                    )}
+                
+                <div className="product__options">
+                    <GroupAddIcon fontSize="large" onClick={seeTwinCount} id={`twincount${id}`} style={{color:"#440a67", cursor:"pointer", pointerEvents:"auto", marginBottom:10, marginTop:10, marginRight:20}}/> 
+                    <br />
+                    <Tooltip placement="bottom" isOpen={tooltipOpenTwinCount} target={`twincount${id}`} toggle={toggleTwinCount}>
+                        See Twin Count
+                    </Tooltip>
+                    <AddShoppingCartIcon fontSize="large" onClick={addToBasket} id={`addtocart${id}`} style={{color:"#440a67", cursor:"pointer", marginBottom:10, marginRight:20}}/> 
+                    <br/>
+                    <Tooltip placement="bottom" isOpen={tooltipOpenAddToCart} target={`addtocart${id}`} toggle={toggleAddToCart}>
+                        Add to basket
+                    </Tooltip>
+                    <ShareIcon fontSize="large" onClick={showModal} id={`productreview${id}`} style={{color:"#440a67", cursor:"pointer", marginBottom:10, marginRight:20}}/>
+                    <br/>
+                    <Tooltip placement="bottom" isOpen={tooltipOpenProductReview} target={`productreview${id}`} toggle={toggleProdutcReview}>
+                        Ask for Product Review
+                    </Tooltip>
                 </div>
             </div>
-            <img
-            alt="Lean Startup"
-            src={image}
-            />
+            <div style={{display: "flex", flexDirection: "row"}}>
+                <img
+                alt="productImage"
+                src={image}
+                />
+                <div style={{position: "absolute", right: "20px", zIndex:2, backgroundColor:"#440A67", color:"white", width:"fit-content", height:"fit-content", padding:10, marginTop:"-60px", borderRadius:12}}>
+                        {twins.map( e =>
+                            <div>{ e }</div>
+                        )}
+                </div>
+            </div>
             <ShareProductModal show={show} handleClose={hideModal} image={image} id={id} title={title} userid={currentUser.uid}>
                 <p>Modal</p>
             </ShareProductModal>
             
-            <div className="product__options">
-                <GroupAddIcon fontSize="large" onClick={seeTwinCount} id="twincount" style={{color:"#440a67", cursor:"pointer", pointerEvents:"auto", marginBottom:10, marginTop:10, marginRight:20}}/> 
-                <br />
-                <Tooltip placement="bottom" isOpen={tooltipOpenTwinCount} target="twincount" toggle={toggleTwinCount}>
-                    See Twin Count
-                </Tooltip>
-                <AddShoppingCartIcon fontSize="large" onClick={addToBasket} id="addtocart" style={{color:"#440a67", cursor:"pointer", marginBottom:10, marginRight:20}}/> 
-                <br/>
-                <Tooltip placement="bottom" isOpen={tooltipOpenAddToCart} target="addtocart" toggle={toggleAddToCart}>
-                    Add to basket
-                </Tooltip>
-                <ShareIcon fontSize="large" onClick={showModal} id="productreview" style={{color:"#440a67", cursor:"pointer", marginBottom:10, marginRight:20}}/>
-                <br/>
-                <Tooltip placement="bottom" isOpen={tooltipOpenProductReview} target="productreview" toggle={toggleProdutcReview}>
-                    Ask for Product Review
-                </Tooltip>
-            </div>
+            
         </div>
     )
 }

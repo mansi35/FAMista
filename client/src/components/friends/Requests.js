@@ -10,6 +10,7 @@ function Requests() {
     const {currentUser} = useAuth();
     const [friends, setFriends] = useState([]);
     const [length, setLength] = useState(0);
+    const [requests, setRequests] = useState(0);
 
     useEffect(() => {
         if (currentUser) {
@@ -17,8 +18,12 @@ function Requests() {
                 const data = docc.data();
                 setLength(data.noItems);
             })
+            db.collection("users").doc(currentUser.uid).collection("friendRequests").get().then(snapshot => {
+              setRequests(snapshot.size);
+          })
         }
     })
+
     useEffect(() => {
         db.collection("users").doc(currentUser.uid).collection("friendRequests")
         .onSnapshot((snapshot) => 
@@ -32,7 +37,7 @@ function Requests() {
 
     return (
     <div>
-    <Header length = {length}/>
+    <Header length = {length} noRequests={requests} />
     <h2 className="users-heading">Friend Requests</h2>
     <div className="user__row">
     {friends.map(({ requestId, request }) => (

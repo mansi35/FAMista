@@ -17,7 +17,7 @@ import AssignmentIcon from '@material-ui/icons/Assignment';
 import { Tooltip } from 'reactstrap';
 
 
-function Header({length}) {
+function Header({length, noRequests}) {
     const { currentUser, logout } = useAuth();
     const history = useHistory();
     const [tooltipOpenHome, setTooltipOpenHome] = useState(false);
@@ -26,6 +26,9 @@ function Header({length}) {
     const [tooltipOpenSharedBasket, setTooltipOpenSharedBasket] = useState(false);
     const [tooltipOpenBasket, setTooltipOpenBasket] = useState(false);
     const [tooltipOpenSurveyResults, setTooltipOpenSurveyResults] = useState(false);
+    const [tooltipNotifications, setTooltipNotifications] = useState(false);
+    const [tooltipChat, setTooltipChat] = useState(false);
+    const [tooltipLogOut, setTooltipLogOut] = useState(false);
 
     const toggleHome = () => setTooltipOpenHome(!tooltipOpenHome);
     
@@ -38,6 +41,12 @@ function Header({length}) {
     const toggleBasket = () => setTooltipOpenBasket(!tooltipOpenBasket);
     
     const toggleSurveyResults = () => setTooltipOpenSurveyResults(!tooltipOpenSurveyResults);
+
+    const toggleNotifications = () => setTooltipNotifications(!tooltipNotifications);
+
+    const toggleChat = () => setTooltipChat(!tooltipChat);
+
+    const toggleLogOut = () => setTooltipLogOut(!tooltipLogOut);
 
     async function handleSubmit() {
         try {
@@ -162,17 +171,27 @@ function Header({length}) {
                 </IconButton>
                 <IconButton>
                     <div className="header__option2">
-                        <ForumIcon onClick={goToChat} />
+                        <ForumIcon id="chat" onClick={goToChat} />
+                        <Tooltip placement="bottom" isOpen={tooltipChat} target="chat" toggle={toggleChat}>
+                            Chat
+                        </Tooltip>
                     </div>
                 </IconButton>
                 <IconButton>
                     <div className="header__option2">
-                        <NotificationsActiveIcon onClick={goToRequests}/>
+                        <NotificationsActiveIcon id="requests" onClick={goToRequests}/>
+                        <span style={{fontSize: "12px"}} className="header_optionLineTwo header_basketCount">{noRequests}</span>
+                        <Tooltip placement="bottom" isOpen={tooltipNotifications} target="requests" toggle={toggleNotifications}>
+                            Friend Requests
+                        </Tooltip>
                     </div>
                 </IconButton>
                 <IconButton onClick={handleSubmit}>
                     <div className="header__option2">
-                        <ExitToAppIcon />
+                        <ExitToAppIcon id="logOut" />
+                        <Tooltip placement="bottom" isOpen={tooltipLogOut} target="logOut" toggle={toggleLogOut}>
+                            Log Out
+                        </Tooltip>
                     </div>
                 </IconButton>
             </div>

@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import { Form, Button, Alert } from "react-bootstrap"
 import { useAuth } from "../../contexts/AuthContext.js"
 import { Link } from "react-router-dom"
-import Header from "../social/Header";
 import '../../css/UpdateProfile.css';
 
 export default function ForgotPassword() {
@@ -30,7 +29,6 @@ export default function ForgotPassword() {
 
     return (
         <div>
-            <Header />
             <div className="main-card">
                 {error && <Alert variant="danger">{error}</Alert>}
                 {message && <Alert variant="success">{message}</Alert>}

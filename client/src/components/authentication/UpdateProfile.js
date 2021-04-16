@@ -14,17 +14,21 @@ export default function UpdateProfile() {
   const { currentUser, updatePassword, updateEmail, updateDisplayName } = useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
-  const [length, setLength] = useState(0);
   const history = useHistory()
+  const [requests, setRequests] = useState(0);
+  const [length, setLength] = useState(0);
 
   useEffect(() => {
-    if (currentUser) {
-        db.collection("users").doc(currentUser.uid).get().then(docc => {
-            const data = docc.data();
-            setLength(data.noItems);
-        })
-    }
-})
+      if (currentUser) {
+          db.collection("users").doc(currentUser.uid).get().then(docc => {
+              const data = docc.data();
+              setLength(data.noItems);
+          })
+          db.collection("users").doc(currentUser.uid).collection("friendRequests").get().then(snapshot => {
+            setRequests(snapshot.size);
+          })
+      }
+  })
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -60,7 +64,7 @@ export default function UpdateProfile() {
 
   return (
     <div>
-      <Header length={length} />
+    <Header length={length} noRequests={requests} />
       <div className="main-card">
         {error && <Alert variant="danger">{error}</Alert>}
         <Form onSubmit={handleSubmit} class="profile-form">

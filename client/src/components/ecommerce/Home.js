@@ -8,6 +8,7 @@ import db from '../../firebase';
 function Home() {
     const {currentUser} = useAuth();
     const [length, setLength] = useState(0);
+    const [requests, setRequests] = useState(0);
 
     useEffect(() => {
         if (currentUser) {
@@ -15,12 +16,15 @@ function Home() {
                 const data = docc.data();
                 setLength(data.noItems);
             })
+            db.collection("users").doc(currentUser.uid).collection("friendRequests").get().then(snapshot => {
+              setRequests(snapshot.size);
+          })
         }
     })
 
     return (
         <div>
-        <Header length={length} />
+        <Header length={length} noRequests={requests}/>
         <div className="home">
         <div className="home_container">
             <img
@@ -32,7 +36,7 @@ function Home() {
             <div className="home_row row">
             <Product
                 id="12321341"
-                title="H&M Summer Long Dress, Easy to maintain"
+                title="H&M Summer Long Dress, Easy to maintain and comfortable to carry"
                 price={1999}
                 rating={5}
                 image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxaXnUdilhYcwlS_xbsMktRgMEhJWah0RaPA&usqp=CAU"
@@ -42,7 +46,7 @@ function Home() {
             />
             <Product
                 id="49538094"
-                title="Tokyo Talkies Green Solid A line Dress, perfect for nightout"
+                title="Tokyo Talkies Green Solid A line Dress, perfect for nightouts and parties"
                 price={1299}
                 rating={4}
                 image="https://allensolly.imgix.net/img/app/product/2/291710-1252219.jpg"

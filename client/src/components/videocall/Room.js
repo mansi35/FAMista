@@ -45,6 +45,7 @@ const Room = (props) => {
     const roomID = props.match.params.roomID;
     const {currentUser} = useAuth();
     const [length, setLength] = useState(0);
+    const [requests, setRequests] = useState(0);
 
     useEffect(() => {
         if (currentUser) {
@@ -52,8 +53,12 @@ const Room = (props) => {
                 const data = docc.data();
                 setLength(data.noItems);
             })
+            db.collection("users").doc(currentUser.uid).collection("friendRequests").get().then(snapshot => {
+              setRequests(snapshot.size);
+          })
         }
     })
+
     useEffect(() => {
         socketRef.current = io.connect("/");
         navigator.mediaDevices.getUserMedia({ video: videoConstraints, audio: true }).then(stream => {
@@ -205,7 +210,7 @@ const Room = (props) => {
 
     return (
         <div>
-            <Header length = {length}/>
+            <Header length = {length} noRequests={requests} />
             <h2 className="title d-none">Shop together with your friends!<img alt = "" src="https://img.icons8.com/fluent/50/000000/online-order.png" style={{marginLeft:10}}/>
             <img src="https://img.icons8.com/color/48/000000/teams.png" alt = ""/></h2>
             <div className="video__row">
