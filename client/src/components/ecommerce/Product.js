@@ -110,7 +110,7 @@ function Product({id, title, image, price, rating, quantity, userId, setLength})
                     {Array(rating)
                         .fill()
                         .map((_, i) => (
-                        <p className="star">⭐</p>
+                        <img src="https://img.icons8.com/fluent/48/000000/star.png" alt="star" height="25px" style={{marginTop: "10px"}} />
                     ))}
                 </div>
                 
