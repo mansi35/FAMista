@@ -1,6 +1,3 @@
-**Website Link:** 
-[FAMista](http://famista.herokuapp.com/)
-
 ![slide1](/images/i1.png)
 ![slide2](/images/i2.png)
 ![slide3](/images/i3.png)
