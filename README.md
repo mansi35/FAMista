@@ -1,9 +1,6 @@
-**Website Link:** 
-[FAMista](http://famista.herokuapp.com/)
-
-![slide1](/images/i1.png)
-![slide2](/images/i2.png)
-![slide3](/images/i3.png)
-![slide4](/images/i4.png)
-![slide5](/images/i5.png)
-![slide6](/images/i6.png)
+![1](https://user-images.githubusercontent.com/53896251/115037299-f3d11080-9eeb-11eb-8488-df3a1ac7d42c.PNG)
+![2](https://user-images.githubusercontent.com/53896251/115037305-f6336a80-9eeb-11eb-82ca-08cad3e82ae0.PNG)
+![3](https://user-images.githubusercontent.com/53896251/115037307-f6cc0100-9eeb-11eb-8342-94b990e28698.PNG)
+![4](https://user-images.githubusercontent.com/53896251/115037314-f6cc0100-9eeb-11eb-8482-1570bcbac716.PNG)
+![5](https://user-images.githubusercontent.com/53896251/115037316-f7649780-9eeb-11eb-92f0-db287c7dad41.PNG)
+![6](https://user-images.githubusercontent.com/53896251/115037659-532f2080-9eec-11eb-9305-0bf8ec3eb806.PNG)
