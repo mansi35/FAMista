@@ -21,7 +21,6 @@
 }
 
 .card {
-    width: 23%;
     background: #fff;
     margin-bottom: 50px;
     transition: 0.3s;
@@ -32,7 +31,7 @@
 
 .card-header {
     text-align: center;
-    padding: 50px 10px;
+    height: 80px;
     background: linear-gradient(to right, #440a67, #b4aee8);
     color: #fff;
 }
@@ -92,6 +91,20 @@
     border-radius: 20px;
     opacity: 1;
     margin-top: 10px;
+}
+
+.shareBasket__link > button {
+    background-color: #440a67;
+    border: none;
+    color: white;
+    padding: 7px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 20px;
+    opacity: 1;
+    margin-top: 20px;
 }
 
 .user__dashboard {

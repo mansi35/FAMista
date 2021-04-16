@@ -39,15 +39,15 @@ function User({key, id, emailAdd, gender, name, profilePic}) {
 
     return (
         <div class="card"  style={{height: "fit-content"}}>
-            <div class="card-header" style={{width: "93.5%"}}>
+            <div class="card-header">
                 
             </div>
-            <div class="card-body" style={{width: "93.5%"}}>
+            <div class="card-body">
                 <div className='card-inline'><Avatar src={profilePic} />&nbsp;&nbsp;
                     <h3>{name}</h3>
                 </div>
                 <p><span><img src={likeIcon} alt="like" style={{height:16, width:16, marginRight:10}} /></span>{gender}</p>
-                <p><span><img src={emailIcon} alt="like" style={{height:22, width:22, marginRight:5}} /></span>{emailAdd}</p>
+                <p><span><img src={emailIcon} alt="email" style={{height:22, width:22, marginRight:5}} /></span>{emailAdd}</p>
                 {alreadyFriend? <p><br />👩🏻‍🤝‍🧑🏻 Friends</p>: <button onClick={sendRequest}>Add Buddy</button>}
             </div>
         </div>

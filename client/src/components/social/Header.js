@@ -114,45 +114,45 @@ function Header({length, noRequests}) {
                 </div>
             </div>
             <div className="header__middle">
-                <div className="header__option header__option--active">
-                    <HomeIcon fontSize="large" id = "home" onClick={goToHome} />
+                <div className="header__option header__option--active" onClick={goToHome} >
+                    <HomeIcon fontSize="large" id = "home" style={{outline: "none"}} />
                     <Tooltip placement="bottom" isOpen={tooltipOpenHome} target="home" toggle={toggleHome}>
                         Home
                     </Tooltip>
                 </div>
                 
-                <div className="header__option">
-                    <StorefrontOutlinedIcon fontSize="large" id = "social" onClick={goToSocial} />
+                <div className="header__option" onClick={goToSocial} >
+                    <StorefrontOutlinedIcon fontSize="large" id = "social" style={{outline: "none"}} />
                     <Tooltip placement="bottom" isOpen={tooltipOpenSocial} target="social" toggle={toggleSocial}>
                         Social
                     </Tooltip>
                 </div>
                 
-                <div className="header__option">
-                    <ShoppingBasketIcon fontSize="large" id = "basket" onClick={goToMyBasket} />
+                <div className="header__option" onClick={goToMyBasket} >
+                    <ShoppingBasketIcon fontSize="large" id = "basket" style={{outline: "none"}} />
                     <span className="header_optionLineTwo header_basketCount">{length}</span>
                     <Tooltip placement="bottom" isOpen={tooltipOpenBasket} target="basket" toggle={toggleBasket}>
                     Your Basket
                     </Tooltip>
                 </div>
                 
-                <div className="header__option">
-                    <img src="https://img.icons8.com/material/80/000000/favorite-cart.png" id = "sharedBasket" onClick={goToSharedBaskets} 
-                        style={{height: 32, width: 32, filter: "brightness(0) invert(1)"}} alt="shared basket icon"/>
+                <div className="header__option" onClick={goToSharedBaskets}>
+                    <img src="https://img.icons8.com/material/80/000000/favorite-cart.png" id = "sharedBasket" 
+                        style={{height: 32, width: 32, filter: "brightness(0) invert(1)", outline: "none"}} alt="shared basket icon"/>
                         <Tooltip placement="bottom" isOpen={tooltipOpenSharedBasket} target="sharedBasket" toggle={toggleSharedBasket}>
                             Shared Basket
                         </Tooltip>
                 </div>
                 
-                <div className="header__option">
-                    <SupervisedUserCircleIcon fontSize="large" id="users" onClick={goToFriends} />
+                <div className="header__option" onClick={goToFriends} >
+                    <SupervisedUserCircleIcon fontSize="large" id="users" style={{outline: "none"}} />
                     <Tooltip placement="bottom" isOpen={tooltipOpenUsers} target="users" toggle={toggleUsers}>
                         Users
                     </Tooltip>
                 </div>
                 
-                <div className="header__option header__option--active">
-                    <AssignmentIcon fontSize="large" id = "surveyResult"onClick={goToSurveyResults} />
+                <div className="header__option header__option--active" onClick={goToSurveyResults} >
+                    <AssignmentIcon fontSize="large" id = "surveyResult" style={{outline: "none"}} />
                     <Tooltip placement="bottom" isOpen={tooltipOpenSurveyResults} target="surveyResult" toggle={toggleSurveyResults}>
                         Survey Results
                     </Tooltip>
@@ -171,7 +171,7 @@ function Header({length, noRequests}) {
                 </IconButton>
                 <IconButton>
                     <div className="header__option2">
-                        <ForumIcon id="chat" onClick={goToChat} />
+                        <ForumIcon id="chat" onClick={goToChat}  style={{outline: "none"}} />
                         <Tooltip placement="bottom" isOpen={tooltipChat} target="chat" toggle={toggleChat}>
                             Chat
                         </Tooltip>
@@ -179,8 +179,8 @@ function Header({length, noRequests}) {
                 </IconButton>
                 <IconButton>
                     <div className="header__option2">
-                        <NotificationsActiveIcon id="requests" onClick={goToRequests}/>
-                        <span style={{fontSize: "12px"}} className="header_optionLineTwo header_basketCount">{noRequests}</span>
+                        <NotificationsActiveIcon id="requests" onClick={goToRequests}  style={{outline: "none"}} />
+                        <sup><span style={{fontSize: "12px", marginLeft: 0}} className="header_optionLineTwo header_basketCount">{noRequests}</span></sup>
                         <Tooltip placement="bottom" isOpen={tooltipNotifications} target="requests" toggle={toggleNotifications}>
                             Friend Requests
                         </Tooltip>
@@ -188,7 +188,7 @@ function Header({length, noRequests}) {
                 </IconButton>
                 <IconButton onClick={handleSubmit}>
                     <div className="header__option2">
-                        <ExitToAppIcon id="logOut" />
+                        <ExitToAppIcon id="logOut"   style={{outline: "none"}} />
                         <Tooltip placement="bottom" isOpen={tooltipLogOut} target="logOut" toggle={toggleLogOut}>
                             Log Out
                         </Tooltip>

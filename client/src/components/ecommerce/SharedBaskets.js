@@ -2,11 +2,9 @@ import React, { useEffect, useState } from 'react';
 import '../../css/Checkout.css';
 import '../../css/CheckoutProduct.css';
 import '../../css/Users.css';
-import { Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import db from '../../firebase';
-import User from '../friends/User';
+import SharedBasketUser from './SharedBasketUser';
 
 function SharedBaskets() {
     const [friends, setFriends] = useState([]);
@@ -31,12 +29,7 @@ function SharedBaskets() {
                     <div>
                     {data.read === true? 
                         <div>
-                        <User key={id} id={id} name={data.friendName} emailAdd={data.friendEmail} profilePic={data.friendProfilePic} />
-                        <div className='shareBasket__button'>
-                        <Link to={`/basket/${id}`}>
-                            <Button variant="flat" style={{justifyContent: "center"}}>See Shared Basket</Button>
-                        </Link>
-                        </div>
+                        <SharedBasketUser key={id} id={id} name={data.friendName} emailAdd={data.friendEmail} profilePic={data.friendProfilePic} />
                         </div>
                         : <div></div>
                     }
