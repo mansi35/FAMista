@@ -8,6 +8,7 @@
     background-color: white;
     background-clip: padding-box;
     border: 10px solid transparent;
+    border-radius: 20px;
     position: relative;
 }
   

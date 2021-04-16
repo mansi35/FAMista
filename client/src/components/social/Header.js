@@ -180,7 +180,7 @@ function Header({length, noRequests}) {
                 <IconButton>
                     <div className="header__option2">
                         <NotificationsActiveIcon id="requests" onClick={goToRequests}/>
-                        <span style={{fontSize: "12px"}} className="header_optionLineTwo header_basketCount">{noRequests}</span>
+                        <sup><span style={{fontSize: "12px", marginLeft: 0}} className="header_optionLineTwo header_basketCount">{noRequests}</span></sup>
                         <Tooltip placement="bottom" isOpen={tooltipNotifications} target="requests" toggle={toggleNotifications}>
                             Friend Requests
                         </Tooltip>

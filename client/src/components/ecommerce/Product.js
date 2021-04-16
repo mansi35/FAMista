@@ -3,9 +3,6 @@ import { useAuth } from '../../contexts/AuthContext';
 import '../../css/Product.css'
 import db from '../../firebase'
 import ShareProductModal from './ShareProductModal';
-import ShareIcon from '@material-ui/icons/Share';
-import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
-import GroupAddIcon from '@material-ui/icons/GroupAdd';
 import { Tooltip } from 'reactstrap';
 
 
@@ -82,11 +79,12 @@ function Product({id, title, image, price, rating, quantity, userId, setLength})
         })
         setTwinCount(0);
         setTwins([]);
+    // eslint-disable-next-line
     }, [])
 
     const seeTwinCount = (event) => {
         event.preventDefault();
-        if (document.getElementById(`twinList${id}`).style.visibility == "hidden")
+        if (document.getElementById(`twinList${id}`).style.visibility === "hidden")
             document.getElementById(`twinList${id}`).style.visibility = "visible";
         else
             document.getElementById(`twinList${id}`).style.visibility = "hidden";
@@ -108,10 +106,6 @@ function Product({id, title, image, price, rating, quantity, userId, setLength})
                     <small>₹</small>
                     <strong>{price}</strong>    
                 </p>
-                <p className="product_price">
-                    <small>💖</small>&nbsp;
-                    <strong>{twinCount}</strong>
-                </p> 
                 <div className="product_rating">
                     {Array(rating)
                         .fill()
@@ -121,17 +115,18 @@ function Product({id, title, image, price, rating, quantity, userId, setLength})
                 </div>
                 
                 <div className="product__options">
-                    <GroupAddIcon fontSize="large" onClick={seeTwinCount} id={`twincount${id}`} style={{outline: "none", color:"#440a67", cursor:"pointer", pointerEvents:"auto", marginBottom:10, marginTop:10, marginRight:20}}/> 
+                    <sub style={{marginLeft: "30px", marginBottom: "-10px", fontSize: "15px"}}><strong>{twinCount}</strong></sub>
+                    <img src="https://img.icons8.com/color/48/000000/friends-hanging-out.png" alt="emoji" height="35px" onClick={seeTwinCount} id={`twincount${id}`} style={{outline: "none", color:"#440a67", cursor:"pointer", pointerEvents:"auto", marginBottom:10, marginTop:10, marginRight:20}} />
                     <br />
                     <Tooltip placement="bottom" isOpen={tooltipOpenTwinCount} target={`twincount${id}`} toggle={toggleTwinCount}>
                         See Twin Count
                     </Tooltip>
-                    <AddShoppingCartIcon fontSize="large" onClick={addToBasket} id={`addtocart${id}`} style={{outline: "none", color:"#440a67", cursor:"pointer", marginBottom:10, marginRight:20}}/> 
+                    <img src="https://img.icons8.com/doodle/48/000000/shopping-basket-2--v1.png" alt="basket" height="35px" onClick={addToBasket} id={`addtocart${id}`} style={{outline: "none", color:"#440a67", cursor:"pointer", marginBottom:10, marginRight:20}} />
                     <br/>
                     <Tooltip placement="bottom" isOpen={tooltipOpenAddToCart} target={`addtocart${id}`} toggle={toggleAddToCart}>
                         Add to basket
                     </Tooltip>
-                    <ShareIcon fontSize="large" onClick={showModal} id={`productreview${id}`} style={{outline: "none", color:"#440a67", cursor:"pointer", marginBottom:10, marginRight:20}}/>
+                    <img src="https://img.icons8.com/color/48/000000/reviewer-female.png" alt="review" height="35px" onClick={showModal} id={`productreview${id}`} style={{outline: "none", color:"#440a67", cursor:"pointer", marginBottom:10, marginRight:20}}/>
                     <br/>
                     <Tooltip placement="bottom" isOpen={tooltipOpenProductReview} target={`productreview${id}`} toggle={toggleProdutcReview}>
                         Ask for Product Review
