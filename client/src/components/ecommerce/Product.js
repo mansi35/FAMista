@@ -121,7 +121,7 @@ function Product({id, title, image, price, rating, quantity, userId, setLength})
                     <Tooltip placement="bottom" isOpen={tooltipOpenTwinCount} target={`twincount${id}`} toggle={toggleTwinCount}>
                         See Twin Count
                     </Tooltip>
-                    <img src="https://img.icons8.com/doodle/48/000000/shopping-basket-2--v1.png" alt="basket" height="35px" onClick={addToBasket} id={`addtocart${id}`} style={{outline: "none", color:"#440a67", cursor:"pointer", marginBottom:10, marginRight:20}} />
+                    <img src="https://img.icons8.com/color/48/000000/shopping-cart--v2.png" alt="basket" height="35px" onClick={addToBasket} id={`addtocart${id}`} style={{outline: "none", color:"#440a67", cursor:"pointer", marginBottom:10, marginRight:20}} />
                     <br/>
                     <Tooltip placement="bottom" isOpen={tooltipOpenAddToCart} target={`addtocart${id}`} toggle={toggleAddToCart}>
                         Add to basket

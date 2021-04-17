@@ -20,13 +20,6 @@ function AddGroupUsers({handleClose, setGroupName, setGroupUsers, groupUsers, gr
             })
             .then(function(docRef) {
                 console.log("Document written with ID: ", docRef.id);
-                // eslint-disable-next-line
-                groupUsers.map((userId) => {
-                    db.collection('users').doc(userId).collection('groups').doc(docRef.id).set({
-                        groupId: docRef.id,
-                        groupName: groupName
-                    })
-                })
             })
             setGroupUsers([currentUser.uid]);
             setGroupName('');
