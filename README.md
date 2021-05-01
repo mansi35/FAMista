@@ -35,15 +35,15 @@ To contribute to FAMista, follow the guidelines [here](./contributing.md)!
             </a>
         </td>
         <td align="center">
-            <a href = "https://github.com/Adititiwari02" style = "text-align:center">
-                <img src = "https://avatars.githubusercontent.com/u/67101989?v=4" width="200px;">
-                </br><sub><b>Aditi Tiwari</b></sub>
+            <a href = "https://github.com/pooja-gera" style = "text-align:center">
+                <img src = "https://firebasestorage.googleapis.com/v0/b/famista-cb7e9.appspot.com/o/images%2Ffariyal2.jpeg?alt=media&token=a06de342-e933-4036-958d-ffeb90c0e550" width="200px;">
+                </br><sub><b>Fariyal Ajrad</b></sub>
             </a>
         </td>
         <td align="center">
-            <a href = "https://github.com/pooja-gera" style = "text-align:center">
-                <img src = "https://avatars.githubusercontent.com/u/19347415?v=4" width="200px;">
-                </br><sub><b>Fariyal Ajrad</b></sub>
+            <a href = "https://github.com/Adititiwari02" style = "text-align:center">
+                <img src = "https://avatars.githubusercontent.com/u/67101989?v=4" width="200px;">
+                </br><sub><b>Aditi Tiwari</b></sub>
             </a>
         </td>
     </tr>
