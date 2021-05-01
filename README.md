@@ -3,6 +3,7 @@ This project is a web app that is created to provide users with the ease of shop
 
 # Tools
 - React
+- Firebase
 - Nodejs
 - Socket.io
 
