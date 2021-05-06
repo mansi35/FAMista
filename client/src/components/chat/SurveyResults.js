@@ -37,17 +37,17 @@ function SurveyResults() {
     return (
       <div>
         <Header length={length} noRequests={requests} />
-		<h2 className="users-heading">Survey Results <span><img src="https://img.icons8.com/color/64/000000/report-card.png" alt="" /></span></h2>
-		<div className="user__row" style={{marginTop: "40px"}}>
-        {products.map(({ productId, product }) => (
-                 <SurveyProduct 
-                   key = {productId}
-                   id = {productId}
-                   productName = {product.itemName}
-                   productImage = {product.itemImage}
-                 />
-        ))}
-      </div>
+        <h2 className="users-heading">Survey Results <span><img src="https://img.icons8.com/color/64/000000/report-card.png" alt="" /></span></h2>
+        <div className="user__row" style={{marginTop: "40px"}}>
+            {products.map(({ productId, product }) => (
+				<SurveyProduct 
+					key = {productId}
+					id = {productId}
+					productName = {product.itemName}
+					productImage = {product.itemImage}
+				/>
+            ))}
+          </div>
     </div>
     )
 }

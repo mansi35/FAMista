@@ -53,7 +53,7 @@ function Checkout() {
           alt=""
         />
 
-        <div>
+        <div className="checkout__products">
           <h2 className="checkout__title">Your shopping Basket</h2>
           {items.map(({ id, item }) => (
               <CheckoutProduct 

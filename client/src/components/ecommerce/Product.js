@@ -1,11 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAuth } from '../../contexts/AuthContext';
 import '../../css/Product.css'
 import db from '../../firebase'
 import ShareProductModal from './ShareProductModal';
-import ShareIcon from '@material-ui/icons/Share';
-import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
-import GroupAddIcon from '@material-ui/icons/GroupAdd';
 import { Tooltip } from 'reactstrap';
 
 
@@ -58,9 +55,7 @@ function Product({id, title, image, price, rating, quantity, userId, setLength})
         })
     }
 
-
-    const seeTwinCount = (event) => {
-        event.preventDefault();
+    useEffect(() => {
         var count = 0;
         db.collection("users").doc(currentUser.uid).collection("friends").get().then(querySnapshot => {
             querySnapshot.forEach(doc => {
@@ -84,6 +79,15 @@ function Product({id, title, image, price, rating, quantity, userId, setLength})
         })
         setTwinCount(0);
         setTwins([]);
+    // eslint-disable-next-line
+    }, [])
+
+    const seeTwinCount = (event) => {
+        event.preventDefault();
+        if (document.getElementById(`twinList${id}`).style.visibility === "hidden")
+            document.getElementById(`twinList${id}`).style.visibility = "visible";
+        else
+            document.getElementById(`twinList${id}`).style.visibility = "hidden";
     }
 
     const showModal = () => {
@@ -102,30 +106,27 @@ function Product({id, title, image, price, rating, quantity, userId, setLength})
                     <small>₹</small>
                     <strong>{price}</strong>    
                 </p>
-                <p className="product_price">
-                    <small>💖</small>
-                    <strong>{twinCount}</strong>
-                </p> 
                 <div className="product_rating">
                     {Array(rating)
                         .fill()
                         .map((_, i) => (
-                        <p className="star">⭐</p>
+                        <img src="https://img.icons8.com/fluent/48/000000/star.png" alt="star" height="25px" style={{marginTop: "10px"}} />
                     ))}
                 </div>
                 
                 <div className="product__options">
-                    <GroupAddIcon fontSize="large" onClick={seeTwinCount} id={`twincount${id}`} style={{color:"#440a67", cursor:"pointer", pointerEvents:"auto", marginBottom:10, marginTop:10, marginRight:20}}/> 
+                    <sub style={{marginLeft: "30px", marginBottom: "-10px", fontSize: "15px"}}><strong>{twinCount}</strong></sub>
+                    <img src="https://img.icons8.com/color/48/000000/friends-hanging-out.png" alt="emoji" height="35px" onClick={seeTwinCount} id={`twincount${id}`} style={{outline: "none", color:"#440a67", cursor:"pointer", pointerEvents:"auto", marginBottom:10, marginTop:10, marginRight:20}} />
                     <br />
                     <Tooltip placement="bottom" isOpen={tooltipOpenTwinCount} target={`twincount${id}`} toggle={toggleTwinCount}>
                         See Twin Count
                     </Tooltip>
-                    <AddShoppingCartIcon fontSize="large" onClick={addToBasket} id={`addtocart${id}`} style={{color:"#440a67", cursor:"pointer", marginBottom:10, marginRight:20}}/> 
+                    <img src="https://img.icons8.com/color/48/000000/shopping-cart--v2.png" alt="basket" height="35px" onClick={addToBasket} id={`addtocart${id}`} style={{outline: "none", color:"#440a67", cursor:"pointer", marginBottom:10, marginRight:20}} />
                     <br/>
                     <Tooltip placement="bottom" isOpen={tooltipOpenAddToCart} target={`addtocart${id}`} toggle={toggleAddToCart}>
                         Add to basket
                     </Tooltip>
-                    <ShareIcon fontSize="large" onClick={showModal} id={`productreview${id}`} style={{color:"#440a67", cursor:"pointer", marginBottom:10, marginRight:20}}/>
+                    <img src="https://img.icons8.com/color/48/000000/reviewer-female.png" alt="review" height="35px" onClick={showModal} id={`productreview${id}`} style={{outline: "none", color:"#440a67", cursor:"pointer", marginBottom:10, marginRight:20}}/>
                     <br/>
                     <Tooltip placement="bottom" isOpen={tooltipOpenProductReview} target={`productreview${id}`} toggle={toggleProdutcReview}>
                         Ask for Product Review
@@ -137,7 +138,7 @@ function Product({id, title, image, price, rating, quantity, userId, setLength})
                 alt="productImage"
                 src={image}
                 />
-                <div style={{position: "absolute", right: "20px", zIndex:2, backgroundColor:"#440A67", color:"white", width:"fit-content", height:"fit-content", padding:10, marginTop:"-60px", borderRadius:12}}>
+                <div id={`twinList${id}`} style={{visibility: "hidden", position: "absolute", right: "20px", zIndex:2, backgroundColor:"#440A67", color:"white", width:"fit-content", height:"fit-content", padding:10, marginTop:"-60px", borderRadius:12}}>
                         {twins.map( e =>
                             <div>{ e }</div>
                         )}
@@ -153,11 +154,3 @@ function Product({id, title, image, price, rating, quantity, userId, setLength})
 }
 
 export default Product
-
-
-// {/* <button onClick={seeTwinCount}>Twin Count</button> */}
-// <GroupAddIcon fontSize="large" onClick={seeTwinCount} style={{color:"#440a67", cursor:"pointer", pointerEvents:"auto", marginBottom:10, marginTop:10}}/> <br />
-// {/* <button onClick={addToBasket}>Add to Basket</button> */}
-// <AddShoppingCartIcon fontSize="large" onClick={addToBasket} style={{color:"#440a67", cursor:"pointer", marginBottom:10}}/> <br/>
-// <ShareIcon fontSize="large" onClick={showModal} style={{color:"#440a67", cursor:"pointer", marginBottom:10}}/><br/>
-// {/* <button onClick={showModal}>Share Product</button> */}
