@@ -59,8 +59,13 @@ function CheckoutProduct({productId, title, price, image, rating, quantity, setL
                     <small>₹</small>
                     <strong>{price}</strong>
                 </p>
+
+
                 <p>Quantity: &nbsp;
                 <strong>{quantity}</strong></p>
+
+
+
                 <div className="checkoutProduct_rating">
                     {Array(rating)
                         .fill()
